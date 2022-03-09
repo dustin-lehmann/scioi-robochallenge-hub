@@ -1,0 +1,5 @@
+distance.c:13:6:init_distance_sensor_handler	24	static
+distance.c:23:6:register_distance_sensor	16	static
+distance.c:31:6:distance_meas_task	16	static
+distance.c:53:6:start_distance_measure	16	static
+distance.c:66:6:HAL_GPIO_EXTI_Callback	16	static

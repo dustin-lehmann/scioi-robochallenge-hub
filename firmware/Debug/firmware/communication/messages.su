@@ -1,0 +1,3 @@
+messages.c:12:6:msg_handler	16	static
+messages.c:34:6:send_msg	24	static
+messages.c:54:6:error_msg	16	static

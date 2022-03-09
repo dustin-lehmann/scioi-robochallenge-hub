@@ -1,0 +1,4 @@
+led.c:10:6:set_led	16	static
+led.c:24:6:toggle_led	16	static
+led.c:38:6:set_status_led_color	16	static
+led.c:41:6:set_status_led	16	static

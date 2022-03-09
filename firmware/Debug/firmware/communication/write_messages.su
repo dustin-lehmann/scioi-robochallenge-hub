@@ -1,0 +1,2 @@
+write_messages.c:11:6:msg_write_discrete_led	16	static
+write_messages.c:37:6:msg_write_status_led	16	static

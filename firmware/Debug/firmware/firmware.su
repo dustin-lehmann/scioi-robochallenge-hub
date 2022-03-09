@@ -1,0 +1,2 @@
+firmware.c:15:6:firmware_init	8	static
+firmware.c:38:6:error_handler	16	static
