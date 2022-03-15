@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 -include ../makefile.init
@@ -55,14 +55,14 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 firmware_robochallenge_hub.elf \
 
+MAP_FILES += \
+firmware_robochallenge_hub.map \
+
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
 firmware_robochallenge_hub.list \
-
-OBJCOPY_BIN += \
-firmware_robochallenge_hub.bin \
 
 
 # All Target
@@ -72,8 +72,8 @@ all: main-build
 main-build: firmware_robochallenge_hub.elf secondary-outputs
 
 # Tool invocations
-firmware_robochallenge_hub.elf: $(OBJS) $(USER_OBJS) C:\work_dir\projects\side_projects\robolympics\software\robochallenge_stm32_firmware\firmware_robochallenge_hub\STM32F401RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "firmware_robochallenge_hub.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\work_dir\projects\side_projects\robolympics\software\robochallenge_stm32_firmware\firmware_robochallenge_hub\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="firmware_robochallenge_hub.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+firmware_robochallenge_hub.elf firmware_robochallenge_hub.map: $(OBJS) $(USER_OBJS) C:\Users\lehmann_workstation\Desktop\firmware_robochallenge_hub\firmware_robochallenge_hub\STM32F401RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "firmware_robochallenge_hub.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\lehmann_workstation\Desktop\firmware_robochallenge_hub\firmware_robochallenge_hub\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="firmware_robochallenge_hub.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -87,17 +87,12 @@ firmware_robochallenge_hub.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL
 	@echo 'Finished building: $@'
 	@echo ' '
 
-firmware_robochallenge_hub.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "firmware_robochallenge_hub.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) default.size.stdout firmware_robochallenge_hub.bin firmware_robochallenge_hub.elf firmware_robochallenge_hub.list
+	-$(RM) default.size.stdout firmware_robochallenge_hub.elf firmware_robochallenge_hub.list firmware_robochallenge_hub.map
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

@@ -11,6 +11,8 @@ TIM_HandleTypeDef *distance_sensor_timer;
 
 distance_sensor_handler_t distance_sensor_handler;
 distance_sensor_t distance_sensor_1;
+distance_sensor_t distance_sensor_2;
+
 
 void firmware_init() {
 
@@ -26,12 +28,21 @@ void firmware_init() {
 	init_distance_sensor_handler(&distance_sensor_handler,
 			distance_sensor_timer, NULL);
 
+	//sensor 1
 	distance_sensor_1.echo_port = GPIOB;
 	distance_sensor_1.echo_pin = GPIO_PIN_14;
 	distance_sensor_1.trig_port = GPIOB;
 	distance_sensor_1.trig_pin = GPIO_PIN_13;
 
+	//sensor 2
+	distance_sensor_2.echo_port = GPIOB;
+	distance_sensor_2.echo_pin = GPIO_PIN_1;
+	distance_sensor_2.trig_port = GPIOB;
+	distance_sensor_2.trig_pin = GPIO_PIN_0;
+
+	//register sensors
 	register_distance_sensor(&distance_sensor_handler, &distance_sensor_1);
+	register_distance_sensor(&distance_sensor_handler, &distance_sensor_2);
 
 }
 

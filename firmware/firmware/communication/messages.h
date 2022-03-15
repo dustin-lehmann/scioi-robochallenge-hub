@@ -18,6 +18,7 @@
 
 #include "write_messages.h"
 #include "request_messages.h"
+#include "stream_messages.h"
 
 extern uint8_t msg_in_buf[128];
 extern uint8_t msg_out_buf[128];
@@ -34,6 +35,8 @@ extern uint8_t msg_out_buf[128];
 #define ERROR_MSG_LEN 0x02
 
 void uint32_to_byte(uint8_t* buf, uint32_t val);
+
+void float_to_byte(uint8_t* buf, float val);
 
 void msg_handler(uint8_t type, uint8_t id, uint8_t* msg, uint16_t length);
 void send_msg(uint8_t type, uint8_t id, uint8_t* data, uint16_t length);

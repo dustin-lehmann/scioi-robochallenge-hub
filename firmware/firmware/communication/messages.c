@@ -37,7 +37,7 @@ void send_msg(uint8_t type, uint8_t id, uint8_t *data, uint16_t length) {
 	usb_tx_buf[2] = type;
 	usb_tx_buf[3] = id;
 	usb_tx_buf[4] = length;
-	if (MSG_CRC8_ENABLE){
+	if (MSG_CRC8_ENABLE) {
 
 	} else {
 		usb_tx_buf[5] = 0x00; //CRC8
@@ -46,11 +46,19 @@ void send_msg(uint8_t type, uint8_t id, uint8_t *data, uint16_t length) {
 	usb_tx_buf[6 + length] = FOOTER_0;
 
 	uint8_t ret = usb_send_data(usb_tx_buf, length + 7);
-	if (!ret){
+	if (!ret) {
 		error_handler(ERROR_ID_USB_TRANSMIT);
 	}
 }
 
 void error_msg(uint8_t error_id, uint8_t *data, uint16_t length) {
 	send_msg(MSG_TYPE_ERROR, error_id, data, length);
+}
+
+void float_to_byte(uint8_t *buf, float val) {
+	uint32_t temp = *(uint32_t*) &val;
+	*(buf) = temp & 0x00FF;
+	*(buf++) = (temp >> 8) & 0x00FF;
+	*(buf++) = (temp >> 16) & 0x00FF;
+	*(buf++) = (temp >> 24);
 }

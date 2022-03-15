@@ -59,6 +59,11 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define RANGE_4_TRIG_Pin GPIO_PIN_0
+#define RANGE_4_TRIG_GPIO_Port GPIOB
+#define RANGE_4_ECHO_Pin GPIO_PIN_1
+#define RANGE_4_ECHO_GPIO_Port GPIOB
+#define RANGE_4_ECHO_EXTI_IRQn EXTI1_IRQn
 #define RANGE_3_TRIG_Pin GPIO_PIN_13
 #define RANGE_3_TRIG_GPIO_Port GPIOB
 #define RANGE_3_ECHO_Pin GPIO_PIN_14

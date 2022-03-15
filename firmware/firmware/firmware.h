@@ -20,19 +20,19 @@
 
 extern TIM_HandleTypeDef* distance_sensor_timer;
 
-
 extern distance_sensor_handler_t distance_sensor_handler;
 extern distance_sensor_t distance_sensor_1;
+extern uint8_t RunVar;
 
 void firmware_init();
 
 void error_handler(uint8_t error_id);
 
 /* Threads */
-osThreadId_t usb_task_handle;
+extern osThreadId_t usb_task_handle;
 void usb_comm_thread(void const * argument);
 
-osThreadId_t distanceMeas_task_handle;
+extern osThreadId_t distanceMeas_task_handle;
 void distance_meas_thread(void const * argument);
 
 

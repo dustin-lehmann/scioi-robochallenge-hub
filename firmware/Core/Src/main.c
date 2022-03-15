@@ -42,8 +42,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
-TIM_HandleTypeDef htim10;
 DMA_HandleTypeDef hdma_tim4_ch2;
 
 /* Definitions for test_task */
@@ -52,6 +52,20 @@ const osThreadAttr_t test_task_attributes = {
   .name = "test_task",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for DistanceSensorT */
+osThreadId_t DistanceSensorTHandle;
+const osThreadAttr_t DistanceSensorT_attributes = {
+  .name = "DistanceSensorT",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for streaming_task */
+osThreadId_t streaming_taskHandle;
+const osThreadAttr_t streaming_task_attributes = {
+  .name = "streaming_task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* USER CODE BEGIN PV */
 
@@ -62,8 +76,10 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_TIM4_Init(void);
-static void MX_TIM10_Init(void);
+static void MX_TIM3_Init(void);
 void test_task_fun(void *argument);
+void DistanceSensorTask_Init(void *argument);
+void streaming_task_entry(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -104,12 +120,12 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_TIM4_Init();
-  MX_TIM10_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+	//Timer used for distance Sensors
+	distance_sensor_timer = &htim3;
 
-  distance_sensor_timer = &htim10;
-
-   ws2812_init(&htim4);
+	ws2812_init(&htim4);
 
 	firmware_init();
   /* USER CODE END 2 */
@@ -136,6 +152,12 @@ int main(void)
   /* Create the thread(s) */
   /* creation of test_task */
   test_taskHandle = osThreadNew(test_task_fun, NULL, &test_task_attributes);
+
+  /* creation of DistanceSensorT */
+  DistanceSensorTHandle = osThreadNew(DistanceSensorTask_Init, NULL, &DistanceSensorT_attributes);
+
+  /* creation of streaming_task */
+  streaming_taskHandle = osThreadNew(streaming_task_entry, NULL, &streaming_task_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
@@ -172,6 +194,7 @@ void SystemClock_Config(void)
   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -188,6 +211,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -201,6 +225,51 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 240;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_DOWN;
+  htim3.Init.Period = 65535;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+
 }
 
 /**
@@ -263,37 +332,6 @@ static void MX_TIM4_Init(void)
 }
 
 /**
-  * @brief TIM10 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM10_Init(void)
-{
-
-  /* USER CODE BEGIN TIM10_Init 0 */
-
-  /* USER CODE END TIM10_Init 0 */
-
-  /* USER CODE BEGIN TIM10_Init 1 */
-
-  /* USER CODE END TIM10_Init 1 */
-  htim10.Instance = TIM10;
-  htim10.Init.Prescaler = 1;
-  htim10.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim10.Init.Period = 65535;
-  htim10.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim10.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim10) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM10_Init 2 */
-
-  /* USER CODE END TIM10_Init 2 */
-
-}
-
-/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -324,7 +362,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RANGE_3_TRIG_GPIO_Port, RANGE_3_TRIG_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, RANGE_4_TRIG_Pin|RANGE_3_TRIG_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9|GPIO_PIN_10, GPIO_PIN_RESET);
@@ -332,18 +370,18 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : RANGE_3_TRIG_Pin */
-  GPIO_InitStruct.Pin = RANGE_3_TRIG_Pin;
+  /*Configure GPIO pins : RANGE_4_TRIG_Pin RANGE_3_TRIG_Pin */
+  GPIO_InitStruct.Pin = RANGE_4_TRIG_Pin|RANGE_3_TRIG_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RANGE_3_TRIG_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : RANGE_3_ECHO_Pin */
-  GPIO_InitStruct.Pin = RANGE_3_ECHO_Pin;
+  /*Configure GPIO pins : RANGE_4_ECHO_Pin RANGE_3_ECHO_Pin */
+  GPIO_InitStruct.Pin = RANGE_4_ECHO_Pin|RANGE_3_ECHO_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(RANGE_3_ECHO_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC9 PC10 */
   GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
@@ -360,6 +398,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
@@ -388,6 +429,43 @@ void test_task_fun(void *argument)
   /* USER CODE END 5 */
 }
 
+/* USER CODE BEGIN Header_DistanceSensorTask_Init */
+/**
+ * @brief Function implementing the DistanceSensorT thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_DistanceSensorTask_Init */
+void DistanceSensorTask_Init(void *argument)
+{
+  /* USER CODE BEGIN DistanceSensorTask_Init */
+	distance_meas_task(&distance_sensor_handler);
+  /* USER CODE END DistanceSensorTask_Init */
+}
+
+/* USER CODE BEGIN Header_streaming_task_entry */
+/**
+* @brief Function implementing the streaming_task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_streaming_task_entry */
+void streaming_task_entry(void *argument)
+{
+  /* USER CODE BEGIN streaming_task_entry */
+  /* Infinite loop */
+  for(;;)
+  {
+
+	  // Send all distance sensors
+	  for (int i=0;i<distance_sensor_handler.num_sensors; i++){
+		  msg_stream_distance(msg_out_buf, distance_sensor_handler.distance_sensors[i]);
+	  }
+    osDelay(100);
+  }
+  /* USER CODE END streaming_task_entry */
+}
+
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM11 interrupt took place, inside
@@ -405,7 +483,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+	if (htim->Instance == TIM3) {
+		distance_sensor_timer_callback();
+	}
   /* USER CODE END Callback 1 */
 }
 
@@ -439,4 +519,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-

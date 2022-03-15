@@ -1,2 +1,2 @@
-request_messages.c:10:6:msg_request_echo	16	static
-request_messages.c:13:6:msg_request_echo_answer	16	static
+../firmware/communication/request_messages.c:10:6:msg_request_echo	16	static
+../firmware/communication/request_messages.c:13:6:msg_request_echo_answer	16	static

@@ -1,6 +1,6 @@
-ws2812.c:20:6:HAL_TIM_PWM_PulseFinishedCallback	16	static
-ws2812.c:26:6:ws2812_init	24	static
-ws2812.c:36:6:ws2812_set	24	static
-ws2812.c:44:6:ws2812_brightness	16	static
-ws2812.c:60:6:ws2812_send	32	static
-ws2812.c:101:6:ws2812_reset	16	static
+../firmware/led/ws2812.c:20:6:HAL_TIM_PWM_PulseFinishedCallback	16	static
+../firmware/led/ws2812.c:26:6:ws2812_init	24	static
+../firmware/led/ws2812.c:36:6:ws2812_set	24	static
+../firmware/led/ws2812.c:44:6:ws2812_brightness	16	static
+../firmware/led/ws2812.c:60:6:ws2812_send	32	static
+../firmware/led/ws2812.c:101:6:ws2812_reset	16	static

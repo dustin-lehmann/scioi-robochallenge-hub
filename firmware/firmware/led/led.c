@@ -53,4 +53,5 @@ void set_status_led(uint8_t state) {
 		set_status_led_color(0, 0, 60);
 		break;
 	}
+	ws2812_send();
 }

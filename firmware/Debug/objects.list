@@ -45,6 +45,7 @@
 "./USB_DEVICE/Target/usbd_conf.o"
 "./firmware/communication/messages.o"
 "./firmware/communication/request_messages.o"
+"./firmware/communication/stream_messages.o"
 "./firmware/communication/usb_comm.o"
 "./firmware/communication/write_messages.o"
 "./firmware/firmware.o"
