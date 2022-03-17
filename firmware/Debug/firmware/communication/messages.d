@@ -1,6 +1,6 @@
 firmware/communication/messages.o: ../firmware/communication/messages.c \
  ../firmware/communication/messages.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/common.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/common.h \
  ../firmware/communication/usb_comm.h ../USB_DEVICE/App/usb_device.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h \
@@ -42,16 +42,16 @@ firmware/communication/messages.o: ../firmware/communication/messages.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
  ../firmware/communication/usb_comm.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/config.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/errors.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/config.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/errors.h \
  ../firmware/communication/write_messages.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/led.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/board.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/led.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/board.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h \
  ../firmware/communication/request_messages.h \
  ../firmware/communication/stream_messages.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/sensors/distance.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/sensors/distance.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -64,7 +64,7 @@ firmware/communication/messages.o: ../firmware/communication/messages.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 ../firmware/communication/messages.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/common.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/common.h:
 ../firmware/communication/usb_comm.h:
 ../USB_DEVICE/App/usb_device.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
@@ -108,16 +108,16 @@ C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robocha
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
 ../firmware/communication/usb_comm.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/config.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/errors.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/config.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/errors.h:
 ../firmware/communication/write_messages.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/led.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/board.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/led.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/board.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h:
 ../firmware/communication/request_messages.h:
 ../firmware/communication/stream_messages.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/sensors/distance.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/sensors/distance.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:

@@ -87,15 +87,16 @@ void start_distance_measure(distance_sensor_handler_t *handler,
 	current_sensor_ptr = handler->distance_sensors[sensor_id];
 
 	//Set Counter of timer to 1 -> triggers in ~10ys
-	__HAL_TIM_SET_COUNTER(&*handler->timer, 1);
+	__HAL_TIM_SET_COUNTER(handler->timer, 1);
 
 	// Start the timer
-	HAL_TIM_Base_Start_IT(&*handler->timer);
+	HAL_TIM_Base_Start_IT(handler->timer);
 
 	//Generate trigger Pulse for at least 10us -> Counter Period = 1sec*CPU Clockspeed[MHZ] / Total prescaler-value
 	HAL_GPIO_WritePin(
 			handler->distance_sensors[handler->current_sensor]->trig_port,
 			handler->distance_sensors[handler->current_sensor]->trig_pin, 1);
+	TriggerFlag = 1;
 
 }
 
@@ -134,7 +135,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		}
 	}
 	//Interrupt is caused by SensorTrigger to put Trigger Signal to low again
-	TriggerFlag = 1;
+//	TriggerFlag = 1;
 }
 
 void sensor_timeout() {
@@ -143,17 +144,19 @@ void sensor_timeout() {
 			-1;
 	distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->overflow =
 			1;
+	RunVar = 1;
 }
 
 void distance_sensor_timer_callback() {
-	if (TriggerFlag == 1) //Innterupt from Distance-Sensor Trigger Function
+	if (TriggerFlag == 1) //Interrupt from Distance-Sensor Trigger Function
 			{
 		HAL_GPIO_WritePin(
 				distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->trig_port,
 				distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->trig_pin,
 				0);
+		TriggerFlag = 0;
 	}
-	if (TriggerFlag == 0) //Interrupt from Distance-Sensor Timeout Echo
+	else if (TriggerFlag == 0) //Interrupt from Distance-Sensor Timeout Echo
 			{
 		sensor_timeout();
 	}

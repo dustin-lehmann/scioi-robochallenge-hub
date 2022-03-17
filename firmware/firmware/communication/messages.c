@@ -58,7 +58,7 @@ void error_msg(uint8_t error_id, uint8_t *data, uint16_t length) {
 void float_to_byte(uint8_t *buf, float val) {
 	uint32_t temp = *(uint32_t*) &val;
 	*(buf) = temp & 0x00FF;
-	*(buf++) = (temp >> 8) & 0x00FF;
-	*(buf++) = (temp >> 16) & 0x00FF;
-	*(buf++) = (temp >> 24);
+	*(++buf) = (temp >> 8) & 0x00FF;
+	*(++buf) = (temp >> 16) & 0x00FF;
+	*(++buf) = (temp >> 24);
 }

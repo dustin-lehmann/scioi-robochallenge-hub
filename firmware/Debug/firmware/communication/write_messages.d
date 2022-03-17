@@ -1,8 +1,8 @@
 firmware/communication/write_messages.o: \
  ../firmware/communication/write_messages.c \
  ../firmware/communication/write_messages.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/led.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/board.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/led.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/board.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -33,11 +33,11 @@ firmware/communication/write_messages.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h \
- C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h \
+ C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h
 ../firmware/communication/write_messages.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/led.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/board.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/led.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/board.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -68,5 +68,5 @@ C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robocha
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h:
-C:/Users/lehmann_workstation/Desktop/firmware_robochallenge_hub/firmware_robochallenge_hub/firmware/led/ws2812.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h:
+C:/Users/lehmann_workstation/Desktop/work_dir/projects/side_projects/robolympics/scioi-robochallenge-hub/firmware/firmware/led/ws2812.h:

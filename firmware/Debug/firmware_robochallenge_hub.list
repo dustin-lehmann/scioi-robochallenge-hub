@@ -5,25 +5,25 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000194  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         0000cfb4  080001a0  080001a0  000101a0  2**4
+  1 .text         0000cfcc  080001a0  080001a0  000101a0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000178  0800d154  0800d154  0001d154  2**2
+  2 .rodata       00000178  0800d16c  0800d16c  0001d16c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800d2cc  0800d2cc  00020164  2**0
+  3 .ARM.extab    00000000  0800d2e4  0800d2e4  00020164  2**0
                   CONTENTS
-  4 .ARM          00000008  0800d2cc  0800d2cc  0001d2cc  2**2
+  4 .ARM          00000008  0800d2e4  0800d2e4  0001d2e4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  0800d2d4  0800d2d4  00020164  2**0
+  5 .preinit_array 00000000  0800d2ec  0800d2ec  00020164  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  0800d2d4  0800d2d4  0001d2d4  2**2
+  6 .init_array   00000004  0800d2ec  0800d2ec  0001d2ec  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  0800d2d8  0800d2d8  0001d2d8  2**2
+  7 .fini_array   00000004  0800d2f0  0800d2f0  0001d2f0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000164  20000000  0800d2dc  00020000  2**2
+  8 .data         00000164  20000000  0800d2f4  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00006578  20000164  0800d440  00020164  2**2
+  9 .bss          00006578  20000164  0800d458  00020164  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  200066dc  0800d440  000266dc  2**0
+ 10 ._user_heap_stack 00000604  200066dc  0800d458  000266dc  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020164  2**0
                   CONTENTS, READONLY
@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  0000952d  00000000  00000000  0004c0b8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00024bcd  00000000  00000000  000555e5  2**0
+ 17 .debug_line   00024e41  00000000  00000000  000555e5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0009ad99  00000000  00000000  0007a1b2  2**0
+ 18 .debug_str    0009adb0  00000000  00000000  0007a426  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  00114f4b  2**0
+ 19 .comment      00000050  00000000  00000000  001151d6  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000745c  00000000  00000000  00114f9c  2**2
+ 20 .debug_frame  0000745c  00000000  00000000  00115228  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -62,7 +62,7 @@ Disassembly of section .text:
  80001b6:	bd10      	pop	{r4, pc}
  80001b8:	20000164 	.word	0x20000164
  80001bc:	00000000 	.word	0x00000000
- 80001c0:	0800d13c 	.word	0x0800d13c
+ 80001c0:	0800d154 	.word	0x0800d154
 
 080001c4 <frame_dummy>:
  80001c4:	b508      	push	{r3, lr}
@@ -74,7 +74,7 @@ Disassembly of section .text:
  80001d2:	bd08      	pop	{r3, pc}
  80001d4:	00000000 	.word	0x00000000
  80001d8:	20000168 	.word	0x20000168
- 80001dc:	0800d13c 	.word	0x0800d13c
+ 80001dc:	0800d154 	.word	0x0800d154
 
 080001e0 <__aeabi_drsub>:
  80001e0:	f081 4100 	eor.w	r1, r1, #2147483648	; 0x80000000
@@ -1071,10 +1071,10 @@ int main(void)
 
 	ws2812_init(&htim4);
  8000d42:	4813      	ldr	r0, [pc, #76]	; (8000d90 <main+0x70>)
- 8000d44:	f00b fe9a 	bl	800ca7c <ws2812_init>
+ 8000d44:	f00b fe9c 	bl	800ca80 <ws2812_init>
 
 	firmware_init();
- 8000d48:	f00b fd94 	bl	800c874 <firmware_init>
+ 8000d48:	f00b fd96 	bl	800c878 <firmware_init>
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -1130,13 +1130,13 @@ int main(void)
  8000d88:	200062b4 	.word	0x200062b4
  8000d8c:	20000180 	.word	0x20000180
  8000d90:	200001c8 	.word	0x200001c8
- 8000d94:	0800d1e0 	.word	0x0800d1e0
+ 8000d94:	0800d1f8 	.word	0x0800d1f8
  8000d98:	08001191 	.word	0x08001191
  8000d9c:	20000270 	.word	0x20000270
- 8000da0:	0800d204 	.word	0x0800d204
+ 8000da0:	0800d21c 	.word	0x0800d21c
  8000da4:	080011a5 	.word	0x080011a5
  8000da8:	20000274 	.word	0x20000274
- 8000dac:	0800d228 	.word	0x0800d228
+ 8000dac:	0800d240 	.word	0x0800d240
  8000db0:	080011c1 	.word	0x080011c1
  8000db4:	20000278 	.word	0x20000278
 
@@ -1155,7 +1155,7 @@ void SystemClock_Config(void)
  8000dc2:	2230      	movs	r2, #48	; 0x30
  8000dc4:	2100      	movs	r1, #0
  8000dc6:	4618      	mov	r0, r3
- 8000dc8:	f00c f8ee 	bl	800cfa8 <memset>
+ 8000dc8:	f00c f8fa 	bl	800cfc0 <memset>
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  8000dcc:	f107 030c 	add.w	r3, r7, #12
  8000dd0:	2200      	movs	r2, #0
@@ -1810,7 +1810,7 @@ void DistanceSensorTask_Init(void *argument)
   /* USER CODE BEGIN DistanceSensorTask_Init */
 	distance_meas_task(&distance_sensor_handler);
  80011ac:	4803      	ldr	r0, [pc, #12]	; (80011bc <DistanceSensorTask_Init+0x18>)
- 80011ae:	f00b fd87 	bl	800ccc0 <distance_meas_task>
+ 80011ae:	f00b fd89 	bl	800ccc4 <distance_meas_task>
   /* USER CODE END DistanceSensorTask_Init */
 }
  80011b2:	bf00      	nop
@@ -1849,7 +1849,7 @@ void streaming_task_entry(void *argument)
  80011d8:	681b      	ldr	r3, [r3, #0]
  80011da:	4619      	mov	r1, r3
  80011dc:	4808      	ldr	r0, [pc, #32]	; (8001200 <streaming_task_entry+0x40>)
- 80011de:	f00b fa3e 	bl	800c65e <msg_stream_distance>
+ 80011de:	f00b fa41 	bl	800c664 <msg_stream_distance>
 	  for (int i=0;i<distance_sensor_handler.num_sensors; i++){
  80011e2:	68fb      	ldr	r3, [r7, #12]
  80011e4:	3301      	adds	r3, #1
@@ -1900,7 +1900,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  8001220:	4293      	cmp	r3, r2
  8001222:	d101      	bne.n	8001228 <HAL_TIM_PeriodElapsedCallback+0x24>
 		distance_sensor_timer_callback();
- 8001224:	f00b fe62 	bl	800ceec <distance_sensor_timer_callback>
+ 8001224:	f00b fe6a 	bl	800cefc <distance_sensor_timer_callback>
 	}
   /* USER CODE END Callback 1 */
 }
@@ -2670,7 +2670,7 @@ LoopFillZerobss:
  800158e:	f7ff ffd7 	bl	8001540 <SystemInit>
 /* Call static constructors */
     bl __libc_init_array
- 8001592:	f00b fcd5 	bl	800cf40 <__libc_init_array>
+ 8001592:	f00b fce1 	bl	800cf58 <__libc_init_array>
 /* Call the application's entry point.*/
   bl  main
  8001596:	f7ff fbc3 	bl	8000d20 <main>
@@ -2683,7 +2683,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  80015a4:	20000164 	.word	0x20000164
   ldr r2, =_sidata
- 80015a8:	0800d2dc 	.word	0x0800d2dc
+ 80015a8:	0800d2f4 	.word	0x0800d2f4
   ldr r2, =_sbss
  80015ac:	20000164 	.word	0x20000164
   ldr r4, =_ebss
@@ -4373,7 +4373,7 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma)
  8001e68:	4770      	bx	lr
  8001e6a:	bf00      	nop
  8001e6c:	aaaaaaab 	.word	0xaaaaaaab
- 8001e70:	0800d264 	.word	0x0800d264
+ 8001e70:	0800d27c 	.word	0x0800d27c
 
 08001e74 <DMA_CheckFifoParam>:
   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
@@ -5200,7 +5200,7 @@ void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
     HAL_GPIO_EXTI_Callback(GPIO_Pin);
  8002328:	88fb      	ldrh	r3, [r7, #6]
  800232a:	4618      	mov	r0, r3
- 800232c:	f00a fd38 	bl	800cda0 <HAL_GPIO_EXTI_Callback>
+ 800232c:	f00a fd40 	bl	800cdb0 <HAL_GPIO_EXTI_Callback>
   }
 }
  8002330:	bf00      	nop
@@ -9881,7 +9881,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8003ede:	bf00      	nop
  8003ee0:	40023c00 	.word	0x40023c00
  8003ee4:	40023800 	.word	0x40023800
- 8003ee8:	0800d24c 	.word	0x0800d24c
+ 8003ee8:	0800d264 	.word	0x0800d264
  8003eec:	20000000 	.word	0x20000000
  8003ef0:	20000004 	.word	0x20000004
 
@@ -10136,7 +10136,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  80040b4:	4618      	mov	r0, r3
  80040b6:	bd80      	pop	{r7, pc}
  80040b8:	40023800 	.word	0x40023800
- 80040bc:	0800d25c 	.word	0x0800d25c
+ 80040bc:	0800d274 	.word	0x0800d274
 
 080040c0 <HAL_RCC_GetClockConfig>:
   * will be configured.
@@ -11595,7 +11595,7 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
  8004978:	f000 fa69 	bl	8004e4e <HAL_TIM_OC_DelayElapsedCallback>
           HAL_TIM_PWM_PulseFinishedCallback(htim);
  800497c:	6878      	ldr	r0, [r7, #4]
- 800497e:	f008 f867 	bl	800ca50 <HAL_TIM_PWM_PulseFinishedCallback>
+ 800497e:	f008 f869 	bl	800ca54 <HAL_TIM_PWM_PulseFinishedCallback>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
         }
         htim->Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
@@ -11657,7 +11657,7 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
  80049cc:	f000 fa3f 	bl	8004e4e <HAL_TIM_OC_DelayElapsedCallback>
         HAL_TIM_PWM_PulseFinishedCallback(htim);
  80049d0:	6878      	ldr	r0, [r7, #4]
- 80049d2:	f008 f83d 	bl	800ca50 <HAL_TIM_PWM_PulseFinishedCallback>
+ 80049d2:	f008 f83f 	bl	800ca54 <HAL_TIM_PWM_PulseFinishedCallback>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
       }
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
@@ -11718,7 +11718,7 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
  8004a20:	f000 fa15 	bl	8004e4e <HAL_TIM_OC_DelayElapsedCallback>
         HAL_TIM_PWM_PulseFinishedCallback(htim);
  8004a24:	6878      	ldr	r0, [r7, #4]
- 8004a26:	f008 f813 	bl	800ca50 <HAL_TIM_PWM_PulseFinishedCallback>
+ 8004a26:	f008 f815 	bl	800ca54 <HAL_TIM_PWM_PulseFinishedCallback>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
       }
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
@@ -11779,7 +11779,7 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim)
  8004a74:	f000 f9eb 	bl	8004e4e <HAL_TIM_OC_DelayElapsedCallback>
         HAL_TIM_PWM_PulseFinishedCallback(htim);
  8004a78:	6878      	ldr	r0, [r7, #4]
- 8004a7a:	f007 ffe9 	bl	800ca50 <HAL_TIM_PWM_PulseFinishedCallback>
+ 8004a7a:	f007 ffeb 	bl	800ca54 <HAL_TIM_PWM_PulseFinishedCallback>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
       }
       htim->Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
@@ -12790,7 +12790,7 @@ static void TIM_DMADelayPulseCplt(DMA_HandleTypeDef *hdma)
 #else
   HAL_TIM_PWM_PulseFinishedCallback(htim);
  8004fd8:	68f8      	ldr	r0, [r7, #12]
- 8004fda:	f007 fd39 	bl	800ca50 <HAL_TIM_PWM_PulseFinishedCallback>
+ 8004fda:	f007 fd3b 	bl	800ca54 <HAL_TIM_PWM_PulseFinishedCallback>
 #endif /* USE_HAL_TIM_REGISTER_CALLBACKS */
 
   htim->Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
@@ -18113,7 +18113,7 @@ static uint8_t USBD_CDC_Init(USBD_HandleTypeDef *pdev, uint8_t cfgidx)
  8006fbc:	f44f 7207 	mov.w	r2, #540	; 0x21c
  8006fc0:	2100      	movs	r1, #0
  8006fc2:	68f8      	ldr	r0, [r7, #12]
- 8006fc4:	f005 fff0 	bl	800cfa8 <memset>
+ 8006fc4:	f005 fffc 	bl	800cfc0 <memset>
 
   pdev->pClassDataCmsit[pdev->classId] = (void *)hcdc;
  8006fc8:	687b      	ldr	r3, [r7, #4]
@@ -26001,7 +26001,7 @@ UBaseType_t uxMessagesWaiting;
  8009aa6:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  8009aa8:	461a      	mov	r2, r3
  8009aaa:	68b9      	ldr	r1, [r7, #8]
- 8009aac:	f003 fa6e 	bl	800cf8c <memcpy>
+ 8009aac:	f003 fa7a 	bl	800cfa4 <memcpy>
 		pxQueue->pcWriteTo += pxQueue->uxItemSize; /*lint !e9016 Pointer arithmetic on char types ok, especially in this use case where it is the clearest way of conveying intent. */
  8009ab0:	68fb      	ldr	r3, [r7, #12]
  8009ab2:	685a      	ldr	r2, [r3, #4]
@@ -26036,7 +26036,7 @@ UBaseType_t uxMessagesWaiting;
  8009ada:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  8009adc:	461a      	mov	r2, r3
  8009ade:	68b9      	ldr	r1, [r7, #8]
- 8009ae0:	f003 fa54 	bl	800cf8c <memcpy>
+ 8009ae0:	f003 fa60 	bl	800cfa4 <memcpy>
 		pxQueue->u.xQueue.pcReadFrom -= pxQueue->uxItemSize;
  8009ae4:	68fb      	ldr	r3, [r7, #12]
  8009ae6:	68da      	ldr	r2, [r3, #12]
@@ -26154,7 +26154,7 @@ static void prvCopyDataFromQueue( Queue_t * const pxQueue, void * const pvBuffer
  8009b6e:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  8009b70:	461a      	mov	r2, r3
  8009b72:	6838      	ldr	r0, [r7, #0]
- 8009b74:	f003 fa0a 	bl	800cf8c <memcpy>
+ 8009b74:	f003 fa16 	bl	800cfa4 <memcpy>
 	}
 }
  8009b78:	bf00      	nop
@@ -26809,7 +26809,7 @@ BaseType_t xReturn;
  8009e94:	009b      	lsls	r3, r3, #2
  8009e96:	461a      	mov	r2, r3
  8009e98:	21a5      	movs	r1, #165	; 0xa5
- 8009e9a:	f003 f885 	bl	800cfa8 <memset>
+ 8009e9a:	f003 f891 	bl	800cfc0 <memset>
 	grows from high memory to low (as per the 80x86) or vice versa.
 	portSTACK_GROWTH is used to make the result positive or negative as required
 	by the port. */
@@ -26997,7 +26997,7 @@ BaseType_t xReturn;
  8009f80:	2260      	movs	r2, #96	; 0x60
  8009f82:	2100      	movs	r1, #0
  8009f84:	4618      	mov	r0, r3
- 8009f86:	f003 f80f 	bl	800cfa8 <memset>
+ 8009f86:	f003 f81b 	bl	800cfc0 <memset>
  8009f8a:	6b3b      	ldr	r3, [r7, #48]	; 0x30
  8009f8c:	4a0c      	ldr	r2, [pc, #48]	; (8009fc0 <prvInitialiseNewTask+0x140>)
  8009f8e:	659a      	str	r2, [r3, #88]	; 0x58
@@ -27046,9 +27046,9 @@ BaseType_t xReturn;
  8009fba:	3720      	adds	r7, #32
  8009fbc:	46bd      	mov	sp, r7
  8009fbe:	bd80      	pop	{r7, pc}
- 8009fc0:	0800d28c 	.word	0x0800d28c
- 8009fc4:	0800d2ac 	.word	0x0800d2ac
- 8009fc8:	0800d26c 	.word	0x0800d26c
+ 8009fc0:	0800d2a4 	.word	0x0800d2a4
+ 8009fc4:	0800d2c4 	.word	0x0800d2c4
+ 8009fc8:	0800d284 	.word	0x0800d284
 
 08009fcc <prvAddNewTaskToReadyList>:
 /*-----------------------------------------------------------*/
@@ -27451,7 +27451,7 @@ BaseType_t xReturn;
  800a1ce:	46bd      	mov	sp, r7
  800a1d0:	bd80      	pop	{r7, pc}
  800a1d2:	bf00      	nop
- 800a1d4:	0800d180 	.word	0x0800d180
+ 800a1d4:	0800d198 	.word	0x0800d198
  800a1d8:	0800a819 	.word	0x0800a819
  800a1dc:	20000f80 	.word	0x20000f80
  800a1e0:	20000a88 	.word	0x20000a88
@@ -28812,7 +28812,7 @@ static void prvCheckTasksWaitingTermination( void )
  800a92c:	687b      	ldr	r3, [r7, #4]
  800a92e:	3354      	adds	r3, #84	; 0x54
  800a930:	4618      	mov	r0, r3
- 800a932:	f002 fb4f 	bl	800cfd4 <_reclaim_reent>
+ 800a932:	f002 fb5b 	bl	800cfec <_reclaim_reent>
 		#elif( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 ) /*lint !e731 !e9029 Macro has been consolidated for readability reasons. */
 		{
 			/* The task could have been allocated statically or dynamically, so
@@ -29352,7 +29352,7 @@ BaseType_t xReturn = pdFAIL;
  800ac08:	46bd      	mov	sp, r7
  800ac0a:	bd80      	pop	{r7, pc}
  800ac0c:	20000fb8 	.word	0x20000fb8
- 800ac10:	0800d188 	.word	0x0800d188
+ 800ac10:	0800d1a0 	.word	0x0800d1a0
  800ac14:	0800ad51 	.word	0x0800ad51
  800ac18:	20000fbc 	.word	0x20000fbc
 
@@ -30452,7 +30452,7 @@ static void prvCheckForValidListAndQueue( void )
  800b218:	20000fb4 	.word	0x20000fb4
  800b21c:	20001064 	.word	0x20001064
  800b220:	20000fc4 	.word	0x20000fc4
- 800b224:	0800d190 	.word	0x0800d190
+ 800b224:	0800d1a8 	.word	0x0800d1a8
 
 0800b228 <pxPortInitialiseStack>:
 
@@ -32184,7 +32184,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
  800bc0a:	681b      	ldr	r3, [r3, #0]
  800bc0c:	4619      	mov	r1, r3
  800bc0e:	6878      	ldr	r0, [r7, #4]
- 800bc10:	f000 fd58 	bl	800c6c4 <usb_rx_handler>
+ 800bc10:	f000 fd5a 	bl	800c6c8 <usb_rx_handler>
   return (USBD_OK);
  800bc14:	2300      	movs	r3, #0
   /* USER CODE END 6 */
@@ -32378,7 +32378,7 @@ uint8_t * USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length
  800bd0c:	bd80      	pop	{r7, pc}
  800bd0e:	bf00      	nop
  800bd10:	20005788 	.word	0x20005788
- 800bd14:	0800d198 	.word	0x0800d198
+ 800bd14:	0800d1b0 	.word	0x0800d1b0
 
 0800bd18 <USBD_FS_ManufacturerStrDescriptor>:
   * @param  speed : Current device speed
@@ -32407,7 +32407,7 @@ uint8_t * USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *l
  800bd34:	46bd      	mov	sp, r7
  800bd36:	bd80      	pop	{r7, pc}
  800bd38:	20005788 	.word	0x20005788
- 800bd3c:	0800d1b0 	.word	0x0800d1b0
+ 800bd3c:	0800d1c8 	.word	0x0800d1c8
 
 0800bd40 <USBD_FS_SerialStrDescriptor>:
   * @param  speed : Current device speed
@@ -32486,7 +32486,7 @@ uint8_t * USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
  800bd94:	bd80      	pop	{r7, pc}
  800bd96:	bf00      	nop
  800bd98:	20005788 	.word	0x20005788
- 800bd9c:	0800d1c4 	.word	0x0800d1c4
+ 800bd9c:	0800d1dc 	.word	0x0800d1dc
 
 0800bda0 <USBD_FS_InterfaceStrDescriptor>:
   * @param  speed : Current device speed
@@ -32530,7 +32530,7 @@ uint8_t * USBD_FS_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *leng
  800bdd0:	bd80      	pop	{r7, pc}
  800bdd2:	bf00      	nop
  800bdd4:	20005788 	.word	0x20005788
- 800bdd8:	0800d1d0 	.word	0x0800d1d0
+ 800bdd8:	0800d1e8 	.word	0x0800d1e8
 
 0800bddc <Get_SerialNum>:
   * @brief  Create the serial number string descriptor
@@ -33834,14 +33834,14 @@ void msg_handler(uint8_t type, uint8_t id, uint8_t *msg, uint16_t length) {
  800c4fc:	88bb      	ldrh	r3, [r7, #4]
  800c4fe:	4619      	mov	r1, r3
  800c500:	6838      	ldr	r0, [r7, #0]
- 800c502:	f000 f944 	bl	800c78e <msg_write_discrete_led>
+ 800c502:	f000 f946 	bl	800c792 <msg_write_discrete_led>
 			break;
  800c506:	e005      	b.n	800c514 <msg_handler+0x4c>
 			msg_write_status_led(msg, length);
  800c508:	88bb      	ldrh	r3, [r7, #4]
  800c50a:	4619      	mov	r1, r3
  800c50c:	6838      	ldr	r0, [r7, #0]
- 800c50e:	f000 f993 	bl	800c838 <msg_write_status_led>
+ 800c50e:	f000 f995 	bl	800c83c <msg_write_status_led>
 			break;
  800c512:	bf00      	nop
 		break;
@@ -33853,7 +33853,7 @@ void msg_handler(uint8_t type, uint8_t id, uint8_t *msg, uint16_t length) {
  800c516:	88bb      	ldrh	r3, [r7, #4]
  800c518:	4619      	mov	r1, r3
  800c51a:	6838      	ldr	r0, [r7, #0]
- 800c51c:	f000 f880 	bl	800c620 <msg_request_echo>
+ 800c51c:	f000 f883 	bl	800c626 <msg_request_echo>
 		break;
  800c520:	bf00      	nop
 	}
@@ -33913,7 +33913,7 @@ void send_msg(uint8_t type, uint8_t id, uint8_t *data, uint16_t length) {
  800c56a:	461a      	mov	r2, r3
  800c56c:	6839      	ldr	r1, [r7, #0]
  800c56e:	480e      	ldr	r0, [pc, #56]	; (800c5a8 <send_msg+0x7c>)
- 800c570:	f000 fd0c 	bl	800cf8c <memcpy>
+ 800c570:	f000 fd18 	bl	800cfa4 <memcpy>
 	usb_tx_buf[6 + length] = FOOTER_0;
  800c574:	88bb      	ldrh	r3, [r7, #4]
  800c576:	3306      	adds	r3, #6
@@ -33927,7 +33927,7 @@ void send_msg(uint8_t type, uint8_t id, uint8_t *data, uint16_t length) {
  800c582:	b29b      	uxth	r3, r3
  800c584:	4619      	mov	r1, r3
  800c586:	4807      	ldr	r0, [pc, #28]	; (800c5a4 <send_msg+0x78>)
- 800c588:	f000 f8ea 	bl	800c760 <usb_send_data>
+ 800c588:	f000 f8ec 	bl	800c764 <usb_send_data>
  800c58c:	4603      	mov	r3, r0
  800c58e:	73fb      	strb	r3, [r7, #15]
 	if (!ret) {
@@ -33936,7 +33936,7 @@ void send_msg(uint8_t type, uint8_t id, uint8_t *data, uint16_t length) {
  800c594:	d102      	bne.n	800c59c <send_msg+0x70>
 		error_handler(ERROR_ID_USB_TRANSMIT);
  800c596:	2001      	movs	r0, #1
- 800c598:	f000 f9ac 	bl	800c8f4 <error_handler>
+ 800c598:	f000 f9ae 	bl	800c8f8 <error_handler>
 	}
 }
  800c59c:	bf00      	nop
@@ -33986,1820 +33986,1824 @@ void float_to_byte(uint8_t *buf, float val) {
  800c5e4:	b2da      	uxtb	r2, r3
  800c5e6:	687b      	ldr	r3, [r7, #4]
  800c5e8:	701a      	strb	r2, [r3, #0]
-	*(buf++) = (temp >> 8) & 0x00FF;
+	*(++buf) = (temp >> 8) & 0x00FF;
  800c5ea:	68fb      	ldr	r3, [r7, #12]
- 800c5ec:	0a19      	lsrs	r1, r3, #8
+ 800c5ec:	0a1a      	lsrs	r2, r3, #8
  800c5ee:	687b      	ldr	r3, [r7, #4]
- 800c5f0:	1c5a      	adds	r2, r3, #1
- 800c5f2:	607a      	str	r2, [r7, #4]
- 800c5f4:	b2ca      	uxtb	r2, r1
- 800c5f6:	701a      	strb	r2, [r3, #0]
-	*(buf++) = (temp >> 16) & 0x00FF;
- 800c5f8:	68fb      	ldr	r3, [r7, #12]
- 800c5fa:	0c19      	lsrs	r1, r3, #16
- 800c5fc:	687b      	ldr	r3, [r7, #4]
- 800c5fe:	1c5a      	adds	r2, r3, #1
- 800c600:	607a      	str	r2, [r7, #4]
- 800c602:	b2ca      	uxtb	r2, r1
- 800c604:	701a      	strb	r2, [r3, #0]
-	*(buf++) = (temp >> 24);
- 800c606:	68fb      	ldr	r3, [r7, #12]
- 800c608:	0e19      	lsrs	r1, r3, #24
- 800c60a:	687b      	ldr	r3, [r7, #4]
- 800c60c:	1c5a      	adds	r2, r3, #1
- 800c60e:	607a      	str	r2, [r7, #4]
- 800c610:	b2ca      	uxtb	r2, r1
- 800c612:	701a      	strb	r2, [r3, #0]
+ 800c5f0:	3301      	adds	r3, #1
+ 800c5f2:	607b      	str	r3, [r7, #4]
+ 800c5f4:	b2d2      	uxtb	r2, r2
+ 800c5f6:	687b      	ldr	r3, [r7, #4]
+ 800c5f8:	701a      	strb	r2, [r3, #0]
+	*(++buf) = (temp >> 16) & 0x00FF;
+ 800c5fa:	68fb      	ldr	r3, [r7, #12]
+ 800c5fc:	0c1a      	lsrs	r2, r3, #16
+ 800c5fe:	687b      	ldr	r3, [r7, #4]
+ 800c600:	3301      	adds	r3, #1
+ 800c602:	607b      	str	r3, [r7, #4]
+ 800c604:	b2d2      	uxtb	r2, r2
+ 800c606:	687b      	ldr	r3, [r7, #4]
+ 800c608:	701a      	strb	r2, [r3, #0]
+	*(++buf) = (temp >> 24);
+ 800c60a:	68fb      	ldr	r3, [r7, #12]
+ 800c60c:	0e1a      	lsrs	r2, r3, #24
+ 800c60e:	687b      	ldr	r3, [r7, #4]
+ 800c610:	3301      	adds	r3, #1
+ 800c612:	607b      	str	r3, [r7, #4]
+ 800c614:	b2d2      	uxtb	r2, r2
+ 800c616:	687b      	ldr	r3, [r7, #4]
+ 800c618:	701a      	strb	r2, [r3, #0]
 }
- 800c614:	bf00      	nop
- 800c616:	3714      	adds	r7, #20
- 800c618:	46bd      	mov	sp, r7
- 800c61a:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800c61e:	4770      	bx	lr
+ 800c61a:	bf00      	nop
+ 800c61c:	3714      	adds	r7, #20
+ 800c61e:	46bd      	mov	sp, r7
+ 800c620:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800c624:	4770      	bx	lr
 
-0800c620 <msg_request_echo>:
+0800c626 <msg_request_echo>:
  *      Author: Dustin Lehmann
  */
 
 #include "request_messages.h"
 
 void msg_request_echo(uint8_t *msg, uint16_t length) {
- 800c620:	b580      	push	{r7, lr}
- 800c622:	b082      	sub	sp, #8
- 800c624:	af00      	add	r7, sp, #0
- 800c626:	6078      	str	r0, [r7, #4]
- 800c628:	460b      	mov	r3, r1
- 800c62a:	807b      	strh	r3, [r7, #2]
+ 800c626:	b580      	push	{r7, lr}
+ 800c628:	b082      	sub	sp, #8
+ 800c62a:	af00      	add	r7, sp, #0
+ 800c62c:	6078      	str	r0, [r7, #4]
+ 800c62e:	460b      	mov	r3, r1
+ 800c630:	807b      	strh	r3, [r7, #2]
 	msg_request_echo_answer(msg, length);
- 800c62c:	887b      	ldrh	r3, [r7, #2]
- 800c62e:	4619      	mov	r1, r3
- 800c630:	6878      	ldr	r0, [r7, #4]
- 800c632:	f000 f804 	bl	800c63e <msg_request_echo_answer>
+ 800c632:	887b      	ldrh	r3, [r7, #2]
+ 800c634:	4619      	mov	r1, r3
+ 800c636:	6878      	ldr	r0, [r7, #4]
+ 800c638:	f000 f804 	bl	800c644 <msg_request_echo_answer>
 }
- 800c636:	bf00      	nop
- 800c638:	3708      	adds	r7, #8
- 800c63a:	46bd      	mov	sp, r7
- 800c63c:	bd80      	pop	{r7, pc}
+ 800c63c:	bf00      	nop
+ 800c63e:	3708      	adds	r7, #8
+ 800c640:	46bd      	mov	sp, r7
+ 800c642:	bd80      	pop	{r7, pc}
 
-0800c63e <msg_request_echo_answer>:
+0800c644 <msg_request_echo_answer>:
 void msg_request_echo_answer(uint8_t *msg, uint16_t length) {
- 800c63e:	b580      	push	{r7, lr}
- 800c640:	b082      	sub	sp, #8
- 800c642:	af00      	add	r7, sp, #0
- 800c644:	6078      	str	r0, [r7, #4]
- 800c646:	460b      	mov	r3, r1
- 800c648:	807b      	strh	r3, [r7, #2]
+ 800c644:	b580      	push	{r7, lr}
+ 800c646:	b082      	sub	sp, #8
+ 800c648:	af00      	add	r7, sp, #0
+ 800c64a:	6078      	str	r0, [r7, #4]
+ 800c64c:	460b      	mov	r3, r1
+ 800c64e:	807b      	strh	r3, [r7, #2]
 	send_msg(MSG_TYPE_RESPONSE, MSG_REQUEST_ECHO_ANSWER_ID, msg, length);
- 800c64a:	887b      	ldrh	r3, [r7, #2]
- 800c64c:	687a      	ldr	r2, [r7, #4]
- 800c64e:	2101      	movs	r1, #1
- 800c650:	2006      	movs	r0, #6
- 800c652:	f7ff ff6b 	bl	800c52c <send_msg>
+ 800c650:	887b      	ldrh	r3, [r7, #2]
+ 800c652:	687a      	ldr	r2, [r7, #4]
+ 800c654:	2101      	movs	r1, #1
+ 800c656:	2006      	movs	r0, #6
+ 800c658:	f7ff ff68 	bl	800c52c <send_msg>
 }
- 800c656:	bf00      	nop
- 800c658:	3708      	adds	r7, #8
- 800c65a:	46bd      	mov	sp, r7
- 800c65c:	bd80      	pop	{r7, pc}
+ 800c65c:	bf00      	nop
+ 800c65e:	3708      	adds	r7, #8
+ 800c660:	46bd      	mov	sp, r7
+ 800c662:	bd80      	pop	{r7, pc}
 
-0800c65e <msg_stream_distance>:
+0800c664 <msg_stream_distance>:
  *      Author: lehmann_workstation
  */
 
 #include "stream_messages.h"
 
 void msg_stream_distance(uint8_t* buffer, distance_sensor_t* distance_sensor){
- 800c65e:	b580      	push	{r7, lr}
- 800c660:	b082      	sub	sp, #8
- 800c662:	af00      	add	r7, sp, #0
- 800c664:	6078      	str	r0, [r7, #4]
- 800c666:	6039      	str	r1, [r7, #0]
+ 800c664:	b580      	push	{r7, lr}
+ 800c666:	b082      	sub	sp, #8
+ 800c668:	af00      	add	r7, sp, #0
+ 800c66a:	6078      	str	r0, [r7, #4]
+ 800c66c:	6039      	str	r1, [r7, #0]
 	buffer[0] = 0x00; // tick[0]
- 800c668:	687b      	ldr	r3, [r7, #4]
- 800c66a:	2200      	movs	r2, #0
- 800c66c:	701a      	strb	r2, [r3, #0]
-	buffer[1] = 0x00; // tick[1]
  800c66e:	687b      	ldr	r3, [r7, #4]
- 800c670:	3301      	adds	r3, #1
- 800c672:	2200      	movs	r2, #0
- 800c674:	701a      	strb	r2, [r3, #0]
+ 800c670:	2200      	movs	r2, #0
+ 800c672:	701a      	strb	r2, [r3, #0]
+	buffer[1] = 0x00; // tick[1]
+ 800c674:	687b      	ldr	r3, [r7, #4]
+ 800c676:	3301      	adds	r3, #1
+ 800c678:	2200      	movs	r2, #0
+ 800c67a:	701a      	strb	r2, [r3, #0]
 	buffer[2] = 0x00; // tick[2]
- 800c676:	687b      	ldr	r3, [r7, #4]
- 800c678:	3302      	adds	r3, #2
- 800c67a:	2200      	movs	r2, #0
- 800c67c:	701a      	strb	r2, [r3, #0]
+ 800c67c:	687b      	ldr	r3, [r7, #4]
+ 800c67e:	3302      	adds	r3, #2
+ 800c680:	2200      	movs	r2, #0
+ 800c682:	701a      	strb	r2, [r3, #0]
 	buffer[3] = 0x00; // tick[3]
- 800c67e:	687b      	ldr	r3, [r7, #4]
- 800c680:	3303      	adds	r3, #3
- 800c682:	2200      	movs	r2, #0
- 800c684:	701a      	strb	r2, [r3, #0]
+ 800c684:	687b      	ldr	r3, [r7, #4]
+ 800c686:	3303      	adds	r3, #3
+ 800c688:	2200      	movs	r2, #0
+ 800c68a:	701a      	strb	r2, [r3, #0]
 
 	buffer[4] = distance_sensor ->id;
- 800c686:	687b      	ldr	r3, [r7, #4]
- 800c688:	3304      	adds	r3, #4
- 800c68a:	683a      	ldr	r2, [r7, #0]
- 800c68c:	7f12      	ldrb	r2, [r2, #28]
- 800c68e:	701a      	strb	r2, [r3, #0]
+ 800c68c:	687b      	ldr	r3, [r7, #4]
+ 800c68e:	3304      	adds	r3, #4
+ 800c690:	683a      	ldr	r2, [r7, #0]
+ 800c692:	7f12      	ldrb	r2, [r2, #28]
+ 800c694:	701a      	strb	r2, [r3, #0]
 	buffer[5] = distance_sensor ->overflow;
- 800c690:	687b      	ldr	r3, [r7, #4]
- 800c692:	3305      	adds	r3, #5
- 800c694:	683a      	ldr	r2, [r7, #0]
- 800c696:	7d12      	ldrb	r2, [r2, #20]
- 800c698:	701a      	strb	r2, [r3, #0]
+ 800c696:	687b      	ldr	r3, [r7, #4]
+ 800c698:	3305      	adds	r3, #5
+ 800c69a:	683a      	ldr	r2, [r7, #0]
+ 800c69c:	7d12      	ldrb	r2, [r2, #20]
+ 800c69e:	701a      	strb	r2, [r3, #0]
 	float_to_byte(&buffer[6], distance_sensor->distance);
- 800c69a:	687b      	ldr	r3, [r7, #4]
- 800c69c:	1d9a      	adds	r2, r3, #6
- 800c69e:	683b      	ldr	r3, [r7, #0]
- 800c6a0:	edd3 7a04 	vldr	s15, [r3, #16]
- 800c6a4:	eeb0 0a67 	vmov.f32	s0, s15
- 800c6a8:	4610      	mov	r0, r2
- 800c6aa:	f7ff ff91 	bl	800c5d0 <float_to_byte>
+ 800c6a0:	687b      	ldr	r3, [r7, #4]
+ 800c6a2:	1d9a      	adds	r2, r3, #6
+ 800c6a4:	683b      	ldr	r3, [r7, #0]
+ 800c6a6:	edd3 7a04 	vldr	s15, [r3, #16]
+ 800c6aa:	eeb0 0a67 	vmov.f32	s0, s15
+ 800c6ae:	4610      	mov	r0, r2
+ 800c6b0:	f7ff ff8e 	bl	800c5d0 <float_to_byte>
 
 	send_msg(MSG_TYPE_STREAMING, MSG_STREAM_DISTANCE_ID, buffer, 10);
- 800c6ae:	230a      	movs	r3, #10
- 800c6b0:	687a      	ldr	r2, [r7, #4]
- 800c6b2:	2103      	movs	r1, #3
- 800c6b4:	2001      	movs	r0, #1
- 800c6b6:	f7ff ff39 	bl	800c52c <send_msg>
+ 800c6b4:	230a      	movs	r3, #10
+ 800c6b6:	687a      	ldr	r2, [r7, #4]
+ 800c6b8:	2103      	movs	r1, #3
+ 800c6ba:	2001      	movs	r0, #1
+ 800c6bc:	f7ff ff36 	bl	800c52c <send_msg>
 }
- 800c6ba:	bf00      	nop
- 800c6bc:	3708      	adds	r7, #8
- 800c6be:	46bd      	mov	sp, r7
- 800c6c0:	bd80      	pop	{r7, pc}
-	...
+ 800c6c0:	bf00      	nop
+ 800c6c2:	3708      	adds	r7, #8
+ 800c6c4:	46bd      	mov	sp, r7
+ 800c6c6:	bd80      	pop	{r7, pc}
 
-0800c6c4 <usb_rx_handler>:
+0800c6c8 <usb_rx_handler>:
 
 void usb_init(usb_cdc_interface_t* interface, void* rx_callback){
 	interface->rx_callback = rx_callback;
 }
 
 void usb_rx_handler(uint8_t* data, uint32_t len){
- 800c6c4:	b580      	push	{r7, lr}
- 800c6c6:	b084      	sub	sp, #16
- 800c6c8:	af00      	add	r7, sp, #0
- 800c6ca:	6078      	str	r0, [r7, #4]
- 800c6cc:	6039      	str	r1, [r7, #0]
+ 800c6c8:	b580      	push	{r7, lr}
+ 800c6ca:	b084      	sub	sp, #16
+ 800c6cc:	af00      	add	r7, sp, #0
+ 800c6ce:	6078      	str	r0, [r7, #4]
+ 800c6d0:	6039      	str	r1, [r7, #0]
 	if (len<2){
- 800c6ce:	683b      	ldr	r3, [r7, #0]
- 800c6d0:	2b01      	cmp	r3, #1
- 800c6d2:	d805      	bhi.n	800c6e0 <usb_rx_handler+0x1c>
+ 800c6d2:	683b      	ldr	r3, [r7, #0]
+ 800c6d4:	2b01      	cmp	r3, #1
+ 800c6d6:	d805      	bhi.n	800c6e4 <usb_rx_handler+0x1c>
 		error_msg(ERROR_MSG_INVALID, NULL, 0);
- 800c6d4:	2200      	movs	r2, #0
- 800c6d6:	2100      	movs	r1, #0
- 800c6d8:	2001      	movs	r0, #1
- 800c6da:	f7ff ff67 	bl	800c5ac <error_msg>
+ 800c6d8:	2200      	movs	r2, #0
+ 800c6da:	2100      	movs	r1, #0
+ 800c6dc:	2001      	movs	r0, #1
+ 800c6de:	f7ff ff65 	bl	800c5ac <error_msg>
 		return;
- 800c6de:	e03a      	b.n	800c756 <usb_rx_handler+0x92>
+ 800c6e2:	e03a      	b.n	800c75a <usb_rx_handler+0x92>
 	}
 	// Check if the first two bytes are the correct header
 	if (!(data[0] == HEADER_0 && data[1]==HEADER_1)){
- 800c6e0:	687b      	ldr	r3, [r7, #4]
- 800c6e2:	781b      	ldrb	r3, [r3, #0]
- 800c6e4:	2baa      	cmp	r3, #170	; 0xaa
- 800c6e6:	d104      	bne.n	800c6f2 <usb_rx_handler+0x2e>
- 800c6e8:	687b      	ldr	r3, [r7, #4]
- 800c6ea:	3301      	adds	r3, #1
- 800c6ec:	781b      	ldrb	r3, [r3, #0]
- 800c6ee:	2bbb      	cmp	r3, #187	; 0xbb
- 800c6f0:	d005      	beq.n	800c6fe <usb_rx_handler+0x3a>
+ 800c6e4:	687b      	ldr	r3, [r7, #4]
+ 800c6e6:	781b      	ldrb	r3, [r3, #0]
+ 800c6e8:	2baa      	cmp	r3, #170	; 0xaa
+ 800c6ea:	d104      	bne.n	800c6f6 <usb_rx_handler+0x2e>
+ 800c6ec:	687b      	ldr	r3, [r7, #4]
+ 800c6ee:	3301      	adds	r3, #1
+ 800c6f0:	781b      	ldrb	r3, [r3, #0]
+ 800c6f2:	2bbb      	cmp	r3, #187	; 0xbb
+ 800c6f4:	d005      	beq.n	800c702 <usb_rx_handler+0x3a>
 		error_msg(ERROR_MSG_INVALID, NULL, 0);
- 800c6f2:	2200      	movs	r2, #0
- 800c6f4:	2100      	movs	r1, #0
- 800c6f6:	2001      	movs	r0, #1
- 800c6f8:	f7ff ff58 	bl	800c5ac <error_msg>
+ 800c6f6:	2200      	movs	r2, #0
+ 800c6f8:	2100      	movs	r1, #0
+ 800c6fa:	2001      	movs	r0, #1
+ 800c6fc:	f7ff ff56 	bl	800c5ac <error_msg>
 		return; // TODO Error Handling
- 800c6fc:	e02b      	b.n	800c756 <usb_rx_handler+0x92>
+ 800c700:	e02b      	b.n	800c75a <usb_rx_handler+0x92>
 	}
 
 	// Check if the last byte is the correct footer
 	if (!(data[len-1] == FOOTER_0)){
- 800c6fe:	683b      	ldr	r3, [r7, #0]
- 800c700:	3b01      	subs	r3, #1
- 800c702:	687a      	ldr	r2, [r7, #4]
- 800c704:	4413      	add	r3, r2
- 800c706:	781b      	ldrb	r3, [r3, #0]
- 800c708:	2bcc      	cmp	r3, #204	; 0xcc
- 800c70a:	d11f      	bne.n	800c74c <usb_rx_handler+0x88>
+ 800c702:	683b      	ldr	r3, [r7, #0]
+ 800c704:	3b01      	subs	r3, #1
+ 800c706:	687a      	ldr	r2, [r7, #4]
+ 800c708:	4413      	add	r3, r2
+ 800c70a:	781b      	ldrb	r3, [r3, #0]
+ 800c70c:	2bcc      	cmp	r3, #204	; 0xcc
+ 800c70e:	d11f      	bne.n	800c750 <usb_rx_handler+0x88>
 		return; // TODO Error Handling
 	}
 
 	// check the minimum length
 	if(len<8){
- 800c70c:	683b      	ldr	r3, [r7, #0]
- 800c70e:	2b07      	cmp	r3, #7
- 800c710:	d91e      	bls.n	800c750 <usb_rx_handler+0x8c>
+ 800c710:	683b      	ldr	r3, [r7, #0]
+ 800c712:	2b07      	cmp	r3, #7
+ 800c714:	d91e      	bls.n	800c754 <usb_rx_handler+0x8c>
 		return; // TODO Error Handling
 	}
 
 	// extract the meta data
 	uint8_t type = data[2];
- 800c712:	687b      	ldr	r3, [r7, #4]
- 800c714:	789b      	ldrb	r3, [r3, #2]
- 800c716:	73fb      	strb	r3, [r7, #15]
+ 800c716:	687b      	ldr	r3, [r7, #4]
+ 800c718:	789b      	ldrb	r3, [r3, #2]
+ 800c71a:	73fb      	strb	r3, [r7, #15]
 	uint8_t id = data[3];
- 800c718:	687b      	ldr	r3, [r7, #4]
- 800c71a:	78db      	ldrb	r3, [r3, #3]
- 800c71c:	73bb      	strb	r3, [r7, #14]
+ 800c71c:	687b      	ldr	r3, [r7, #4]
+ 800c71e:	78db      	ldrb	r3, [r3, #3]
+ 800c720:	73bb      	strb	r3, [r7, #14]
 	uint8_t data_len = data[4];
- 800c71e:	687b      	ldr	r3, [r7, #4]
- 800c720:	791b      	ldrb	r3, [r3, #4]
- 800c722:	737b      	strb	r3, [r7, #13]
+ 800c722:	687b      	ldr	r3, [r7, #4]
+ 800c724:	791b      	ldrb	r3, [r3, #4]
+ 800c726:	737b      	strb	r3, [r7, #13]
 	if (MSG_CRC8_ENABLE){
 		uint8_t crc8 = data[5];
 	}
 
 	// check if the data length is correct
 	if (!((len-7) == data_len)){
- 800c724:	683b      	ldr	r3, [r7, #0]
- 800c726:	1fda      	subs	r2, r3, #7
- 800c728:	7b7b      	ldrb	r3, [r7, #13]
- 800c72a:	429a      	cmp	r2, r3
- 800c72c:	d112      	bne.n	800c754 <usb_rx_handler+0x90>
+ 800c728:	683b      	ldr	r3, [r7, #0]
+ 800c72a:	1fda      	subs	r2, r3, #7
+ 800c72c:	7b7b      	ldrb	r3, [r7, #13]
+ 800c72e:	429a      	cmp	r2, r3
+ 800c730:	d112      	bne.n	800c758 <usb_rx_handler+0x90>
 		return; // TODO Error Handling
 	}
 
 	// Copy the data to the msg_in_buffer
 	memcpy(msg_in_buf,&data[6], data_len);
- 800c72e:	687b      	ldr	r3, [r7, #4]
- 800c730:	3306      	adds	r3, #6
- 800c732:	7b7a      	ldrb	r2, [r7, #13]
- 800c734:	4619      	mov	r1, r3
- 800c736:	4809      	ldr	r0, [pc, #36]	; (800c75c <usb_rx_handler+0x98>)
- 800c738:	f000 fc28 	bl	800cf8c <memcpy>
+ 800c732:	687b      	ldr	r3, [r7, #4]
+ 800c734:	3306      	adds	r3, #6
+ 800c736:	7b7a      	ldrb	r2, [r7, #13]
+ 800c738:	4619      	mov	r1, r3
+ 800c73a:	4809      	ldr	r0, [pc, #36]	; (800c760 <usb_rx_handler+0x98>)
+ 800c73c:	f000 fc32 	bl	800cfa4 <memcpy>
 
 	// Invoke the message handler to execute the corresponding functions
 	msg_handler(type, id, msg_in_buf, data_len);
- 800c73c:	7b7b      	ldrb	r3, [r7, #13]
- 800c73e:	b29b      	uxth	r3, r3
- 800c740:	7bb9      	ldrb	r1, [r7, #14]
- 800c742:	7bf8      	ldrb	r0, [r7, #15]
- 800c744:	4a05      	ldr	r2, [pc, #20]	; (800c75c <usb_rx_handler+0x98>)
- 800c746:	f7ff febf 	bl	800c4c8 <msg_handler>
- 800c74a:	e004      	b.n	800c756 <usb_rx_handler+0x92>
-		return; // TODO Error Handling
- 800c74c:	bf00      	nop
- 800c74e:	e002      	b.n	800c756 <usb_rx_handler+0x92>
+ 800c740:	7b7b      	ldrb	r3, [r7, #13]
+ 800c742:	b29b      	uxth	r3, r3
+ 800c744:	7bb9      	ldrb	r1, [r7, #14]
+ 800c746:	7bf8      	ldrb	r0, [r7, #15]
+ 800c748:	4a05      	ldr	r2, [pc, #20]	; (800c760 <usb_rx_handler+0x98>)
+ 800c74a:	f7ff febd 	bl	800c4c8 <msg_handler>
+ 800c74e:	e004      	b.n	800c75a <usb_rx_handler+0x92>
 		return; // TODO Error Handling
  800c750:	bf00      	nop
- 800c752:	e000      	b.n	800c756 <usb_rx_handler+0x92>
+ 800c752:	e002      	b.n	800c75a <usb_rx_handler+0x92>
 		return; // TODO Error Handling
  800c754:	bf00      	nop
+ 800c756:	e000      	b.n	800c75a <usb_rx_handler+0x92>
+		return; // TODO Error Handling
+ 800c758:	bf00      	nop
 }
- 800c756:	3710      	adds	r7, #16
- 800c758:	46bd      	mov	sp, r7
- 800c75a:	bd80      	pop	{r7, pc}
- 800c75c:	200060b4 	.word	0x200060b4
+ 800c75a:	3710      	adds	r7, #16
+ 800c75c:	46bd      	mov	sp, r7
+ 800c75e:	bd80      	pop	{r7, pc}
+ 800c760:	200060b4 	.word	0x200060b4
 
-0800c760 <usb_send_data>:
+0800c764 <usb_send_data>:
 
 
 uint8_t usb_send_data(uint8_t* data, uint16_t len){
- 800c760:	b580      	push	{r7, lr}
- 800c762:	b084      	sub	sp, #16
- 800c764:	af00      	add	r7, sp, #0
- 800c766:	6078      	str	r0, [r7, #4]
- 800c768:	460b      	mov	r3, r1
- 800c76a:	807b      	strh	r3, [r7, #2]
+ 800c764:	b580      	push	{r7, lr}
+ 800c766:	b084      	sub	sp, #16
+ 800c768:	af00      	add	r7, sp, #0
+ 800c76a:	6078      	str	r0, [r7, #4]
+ 800c76c:	460b      	mov	r3, r1
+ 800c76e:	807b      	strh	r3, [r7, #2]
 	uint8_t ret = CDC_Transmit_FS(data, len);
- 800c76c:	887b      	ldrh	r3, [r7, #2]
- 800c76e:	4619      	mov	r1, r3
- 800c770:	6878      	ldr	r0, [r7, #4]
- 800c772:	f7ff fa57 	bl	800bc24 <CDC_Transmit_FS>
- 800c776:	4603      	mov	r3, r0
- 800c778:	73fb      	strb	r3, [r7, #15]
+ 800c770:	887b      	ldrh	r3, [r7, #2]
+ 800c772:	4619      	mov	r1, r3
+ 800c774:	6878      	ldr	r0, [r7, #4]
+ 800c776:	f7ff fa55 	bl	800bc24 <CDC_Transmit_FS>
+ 800c77a:	4603      	mov	r3, r0
+ 800c77c:	73fb      	strb	r3, [r7, #15]
 	if (ret == USBD_OK){
- 800c77a:	7bfb      	ldrb	r3, [r7, #15]
- 800c77c:	2b00      	cmp	r3, #0
- 800c77e:	d101      	bne.n	800c784 <usb_send_data+0x24>
+ 800c77e:	7bfb      	ldrb	r3, [r7, #15]
+ 800c780:	2b00      	cmp	r3, #0
+ 800c782:	d101      	bne.n	800c788 <usb_send_data+0x24>
 		return USBD_OK;
- 800c780:	2300      	movs	r3, #0
- 800c782:	e000      	b.n	800c786 <usb_send_data+0x26>
+ 800c784:	2300      	movs	r3, #0
+ 800c786:	e000      	b.n	800c78a <usb_send_data+0x26>
 	} else {
 		return 1;
- 800c784:	2301      	movs	r3, #1
+ 800c788:	2301      	movs	r3, #1
 	}
 }
- 800c786:	4618      	mov	r0, r3
- 800c788:	3710      	adds	r7, #16
- 800c78a:	46bd      	mov	sp, r7
- 800c78c:	bd80      	pop	{r7, pc}
+ 800c78a:	4618      	mov	r0, r3
+ 800c78c:	3710      	adds	r7, #16
+ 800c78e:	46bd      	mov	sp, r7
+ 800c790:	bd80      	pop	{r7, pc}
 
-0800c78e <msg_write_discrete_led>:
+0800c792 <msg_write_discrete_led>:
  */
 
 #include <stdint.h>
 #include "write_messages.h"
 
 void msg_write_discrete_led(uint8_t *msg, uint16_t length) {
- 800c78e:	b580      	push	{r7, lr}
- 800c790:	b082      	sub	sp, #8
- 800c792:	af00      	add	r7, sp, #0
- 800c794:	6078      	str	r0, [r7, #4]
- 800c796:	460b      	mov	r3, r1
- 800c798:	807b      	strh	r3, [r7, #2]
+ 800c792:	b580      	push	{r7, lr}
+ 800c794:	b082      	sub	sp, #8
+ 800c796:	af00      	add	r7, sp, #0
+ 800c798:	6078      	str	r0, [r7, #4]
+ 800c79a:	460b      	mov	r3, r1
+ 800c79c:	807b      	strh	r3, [r7, #2]
 	if (!(length == MSG_WRITE_DISCRETE_LED_LENGTH)) {
- 800c79a:	887b      	ldrh	r3, [r7, #2]
- 800c79c:	2b03      	cmp	r3, #3
- 800c79e:	d147      	bne.n	800c830 <msg_write_discrete_led+0xa2>
+ 800c79e:	887b      	ldrh	r3, [r7, #2]
+ 800c7a0:	2b03      	cmp	r3, #3
+ 800c7a2:	d147      	bne.n	800c834 <msg_write_discrete_led+0xa2>
 		return; //TODO ERROR HANDLING
 	}
 	if (msg[0] == 0 || msg[0] == 1) {
- 800c7a0:	687b      	ldr	r3, [r7, #4]
- 800c7a2:	781b      	ldrb	r3, [r3, #0]
- 800c7a4:	2b00      	cmp	r3, #0
- 800c7a6:	d003      	beq.n	800c7b0 <msg_write_discrete_led+0x22>
- 800c7a8:	687b      	ldr	r3, [r7, #4]
- 800c7aa:	781b      	ldrb	r3, [r3, #0]
- 800c7ac:	2b01      	cmp	r3, #1
- 800c7ae:	d105      	bne.n	800c7bc <msg_write_discrete_led+0x2e>
+ 800c7a4:	687b      	ldr	r3, [r7, #4]
+ 800c7a6:	781b      	ldrb	r3, [r3, #0]
+ 800c7a8:	2b00      	cmp	r3, #0
+ 800c7aa:	d003      	beq.n	800c7b4 <msg_write_discrete_led+0x22>
+ 800c7ac:	687b      	ldr	r3, [r7, #4]
+ 800c7ae:	781b      	ldrb	r3, [r3, #0]
+ 800c7b0:	2b01      	cmp	r3, #1
+ 800c7b2:	d105      	bne.n	800c7c0 <msg_write_discrete_led+0x2e>
 		set_led(LED_GREEN, msg[0]);
- 800c7b0:	687b      	ldr	r3, [r7, #4]
- 800c7b2:	781b      	ldrb	r3, [r3, #0]
- 800c7b4:	4619      	mov	r1, r3
- 800c7b6:	2001      	movs	r0, #1
- 800c7b8:	f000 f8a8 	bl	800c90c <set_led>
+ 800c7b4:	687b      	ldr	r3, [r7, #4]
+ 800c7b6:	781b      	ldrb	r3, [r3, #0]
+ 800c7b8:	4619      	mov	r1, r3
+ 800c7ba:	2001      	movs	r0, #1
+ 800c7bc:	f000 f8a8 	bl	800c910 <set_led>
 	}
 	if (msg[1] == 0 || msg[1] == 1) {
- 800c7bc:	687b      	ldr	r3, [r7, #4]
- 800c7be:	3301      	adds	r3, #1
- 800c7c0:	781b      	ldrb	r3, [r3, #0]
- 800c7c2:	2b00      	cmp	r3, #0
- 800c7c4:	d004      	beq.n	800c7d0 <msg_write_discrete_led+0x42>
- 800c7c6:	687b      	ldr	r3, [r7, #4]
- 800c7c8:	3301      	adds	r3, #1
- 800c7ca:	781b      	ldrb	r3, [r3, #0]
- 800c7cc:	2b01      	cmp	r3, #1
- 800c7ce:	d106      	bne.n	800c7de <msg_write_discrete_led+0x50>
+ 800c7c0:	687b      	ldr	r3, [r7, #4]
+ 800c7c2:	3301      	adds	r3, #1
+ 800c7c4:	781b      	ldrb	r3, [r3, #0]
+ 800c7c6:	2b00      	cmp	r3, #0
+ 800c7c8:	d004      	beq.n	800c7d4 <msg_write_discrete_led+0x42>
+ 800c7ca:	687b      	ldr	r3, [r7, #4]
+ 800c7cc:	3301      	adds	r3, #1
+ 800c7ce:	781b      	ldrb	r3, [r3, #0]
+ 800c7d0:	2b01      	cmp	r3, #1
+ 800c7d2:	d106      	bne.n	800c7e2 <msg_write_discrete_led+0x50>
 		set_led(LED_BLUE, msg[1]);
- 800c7d0:	687b      	ldr	r3, [r7, #4]
- 800c7d2:	3301      	adds	r3, #1
- 800c7d4:	781b      	ldrb	r3, [r3, #0]
- 800c7d6:	4619      	mov	r1, r3
- 800c7d8:	2002      	movs	r0, #2
- 800c7da:	f000 f897 	bl	800c90c <set_led>
+ 800c7d4:	687b      	ldr	r3, [r7, #4]
+ 800c7d6:	3301      	adds	r3, #1
+ 800c7d8:	781b      	ldrb	r3, [r3, #0]
+ 800c7da:	4619      	mov	r1, r3
+ 800c7dc:	2002      	movs	r0, #2
+ 800c7de:	f000 f897 	bl	800c910 <set_led>
 	}
 	if (msg[2] == 0 || msg[2] == 1) {
- 800c7de:	687b      	ldr	r3, [r7, #4]
- 800c7e0:	3302      	adds	r3, #2
- 800c7e2:	781b      	ldrb	r3, [r3, #0]
- 800c7e4:	2b00      	cmp	r3, #0
- 800c7e6:	d004      	beq.n	800c7f2 <msg_write_discrete_led+0x64>
- 800c7e8:	687b      	ldr	r3, [r7, #4]
- 800c7ea:	3302      	adds	r3, #2
- 800c7ec:	781b      	ldrb	r3, [r3, #0]
- 800c7ee:	2b01      	cmp	r3, #1
- 800c7f0:	d106      	bne.n	800c800 <msg_write_discrete_led+0x72>
+ 800c7e2:	687b      	ldr	r3, [r7, #4]
+ 800c7e4:	3302      	adds	r3, #2
+ 800c7e6:	781b      	ldrb	r3, [r3, #0]
+ 800c7e8:	2b00      	cmp	r3, #0
+ 800c7ea:	d004      	beq.n	800c7f6 <msg_write_discrete_led+0x64>
+ 800c7ec:	687b      	ldr	r3, [r7, #4]
+ 800c7ee:	3302      	adds	r3, #2
+ 800c7f0:	781b      	ldrb	r3, [r3, #0]
+ 800c7f2:	2b01      	cmp	r3, #1
+ 800c7f4:	d106      	bne.n	800c804 <msg_write_discrete_led+0x72>
 		set_led(LED_ORANGE, msg[2]);
- 800c7f2:	687b      	ldr	r3, [r7, #4]
- 800c7f4:	3302      	adds	r3, #2
- 800c7f6:	781b      	ldrb	r3, [r3, #0]
- 800c7f8:	4619      	mov	r1, r3
- 800c7fa:	2003      	movs	r0, #3
- 800c7fc:	f000 f886 	bl	800c90c <set_led>
+ 800c7f6:	687b      	ldr	r3, [r7, #4]
+ 800c7f8:	3302      	adds	r3, #2
+ 800c7fa:	781b      	ldrb	r3, [r3, #0]
+ 800c7fc:	4619      	mov	r1, r3
+ 800c7fe:	2003      	movs	r0, #3
+ 800c800:	f000 f886 	bl	800c910 <set_led>
 	}
 
 	if (msg[0] == 2) {
- 800c800:	687b      	ldr	r3, [r7, #4]
- 800c802:	781b      	ldrb	r3, [r3, #0]
- 800c804:	2b02      	cmp	r3, #2
- 800c806:	d102      	bne.n	800c80e <msg_write_discrete_led+0x80>
+ 800c804:	687b      	ldr	r3, [r7, #4]
+ 800c806:	781b      	ldrb	r3, [r3, #0]
+ 800c808:	2b02      	cmp	r3, #2
+ 800c80a:	d102      	bne.n	800c812 <msg_write_discrete_led+0x80>
 		toggle_led(LED_GREEN);
- 800c808:	2001      	movs	r0, #1
- 800c80a:	f000 f8b1 	bl	800c970 <toggle_led>
+ 800c80c:	2001      	movs	r0, #1
+ 800c80e:	f000 f8b1 	bl	800c974 <toggle_led>
 	}
 	if (msg[1] == 2) {
- 800c80e:	687b      	ldr	r3, [r7, #4]
- 800c810:	3301      	adds	r3, #1
- 800c812:	781b      	ldrb	r3, [r3, #0]
- 800c814:	2b02      	cmp	r3, #2
- 800c816:	d102      	bne.n	800c81e <msg_write_discrete_led+0x90>
+ 800c812:	687b      	ldr	r3, [r7, #4]
+ 800c814:	3301      	adds	r3, #1
+ 800c816:	781b      	ldrb	r3, [r3, #0]
+ 800c818:	2b02      	cmp	r3, #2
+ 800c81a:	d102      	bne.n	800c822 <msg_write_discrete_led+0x90>
 		toggle_led(LED_BLUE);
- 800c818:	2002      	movs	r0, #2
- 800c81a:	f000 f8a9 	bl	800c970 <toggle_led>
+ 800c81c:	2002      	movs	r0, #2
+ 800c81e:	f000 f8a9 	bl	800c974 <toggle_led>
 	}
 	if (msg[2] == 2) {
- 800c81e:	687b      	ldr	r3, [r7, #4]
- 800c820:	3302      	adds	r3, #2
- 800c822:	781b      	ldrb	r3, [r3, #0]
- 800c824:	2b02      	cmp	r3, #2
- 800c826:	d104      	bne.n	800c832 <msg_write_discrete_led+0xa4>
+ 800c822:	687b      	ldr	r3, [r7, #4]
+ 800c824:	3302      	adds	r3, #2
+ 800c826:	781b      	ldrb	r3, [r3, #0]
+ 800c828:	2b02      	cmp	r3, #2
+ 800c82a:	d104      	bne.n	800c836 <msg_write_discrete_led+0xa4>
 		toggle_led(LED_ORANGE);
- 800c828:	2003      	movs	r0, #3
- 800c82a:	f000 f8a1 	bl	800c970 <toggle_led>
- 800c82e:	e000      	b.n	800c832 <msg_write_discrete_led+0xa4>
+ 800c82c:	2003      	movs	r0, #3
+ 800c82e:	f000 f8a1 	bl	800c974 <toggle_led>
+ 800c832:	e000      	b.n	800c836 <msg_write_discrete_led+0xa4>
 		return; //TODO ERROR HANDLING
- 800c830:	bf00      	nop
+ 800c834:	bf00      	nop
 	}
 }
- 800c832:	3708      	adds	r7, #8
- 800c834:	46bd      	mov	sp, r7
- 800c836:	bd80      	pop	{r7, pc}
+ 800c836:	3708      	adds	r7, #8
+ 800c838:	46bd      	mov	sp, r7
+ 800c83a:	bd80      	pop	{r7, pc}
 
-0800c838 <msg_write_status_led>:
+0800c83c <msg_write_status_led>:
 
 
 void msg_write_status_led(uint8_t* msg, uint16_t length){
- 800c838:	b580      	push	{r7, lr}
- 800c83a:	b082      	sub	sp, #8
- 800c83c:	af00      	add	r7, sp, #0
- 800c83e:	6078      	str	r0, [r7, #4]
- 800c840:	460b      	mov	r3, r1
- 800c842:	807b      	strh	r3, [r7, #2]
+ 800c83c:	b580      	push	{r7, lr}
+ 800c83e:	b082      	sub	sp, #8
+ 800c840:	af00      	add	r7, sp, #0
+ 800c842:	6078      	str	r0, [r7, #4]
+ 800c844:	460b      	mov	r3, r1
+ 800c846:	807b      	strh	r3, [r7, #2]
 	if (!(length == MSG_WRITE_STATUS_LED_LENGTH)) {
- 800c844:	887b      	ldrh	r3, [r7, #2]
- 800c846:	2b03      	cmp	r3, #3
- 800c848:	d10f      	bne.n	800c86a <msg_write_status_led+0x32>
+ 800c848:	887b      	ldrh	r3, [r7, #2]
+ 800c84a:	2b03      	cmp	r3, #3
+ 800c84c:	d10f      	bne.n	800c86e <msg_write_status_led+0x32>
 		return; //TODO ERROR HANDLING
 	}
 	ws2812_set(0, msg[0], msg[1], msg[2]);
- 800c84a:	687b      	ldr	r3, [r7, #4]
- 800c84c:	781b      	ldrb	r3, [r3, #0]
- 800c84e:	4619      	mov	r1, r3
- 800c850:	687b      	ldr	r3, [r7, #4]
- 800c852:	3301      	adds	r3, #1
- 800c854:	781b      	ldrb	r3, [r3, #0]
- 800c856:	461a      	mov	r2, r3
- 800c858:	687b      	ldr	r3, [r7, #4]
- 800c85a:	3302      	adds	r3, #2
- 800c85c:	781b      	ldrb	r3, [r3, #0]
- 800c85e:	2000      	movs	r0, #0
- 800c860:	f000 f940 	bl	800cae4 <ws2812_set>
+ 800c84e:	687b      	ldr	r3, [r7, #4]
+ 800c850:	781b      	ldrb	r3, [r3, #0]
+ 800c852:	4619      	mov	r1, r3
+ 800c854:	687b      	ldr	r3, [r7, #4]
+ 800c856:	3301      	adds	r3, #1
+ 800c858:	781b      	ldrb	r3, [r3, #0]
+ 800c85a:	461a      	mov	r2, r3
+ 800c85c:	687b      	ldr	r3, [r7, #4]
+ 800c85e:	3302      	adds	r3, #2
+ 800c860:	781b      	ldrb	r3, [r3, #0]
+ 800c862:	2000      	movs	r0, #0
+ 800c864:	f000 f940 	bl	800cae8 <ws2812_set>
 	ws2812_send();
- 800c864:	f000 f96c 	bl	800cb40 <ws2812_send>
- 800c868:	e000      	b.n	800c86c <msg_write_status_led+0x34>
+ 800c868:	f000 f96c 	bl	800cb44 <ws2812_send>
+ 800c86c:	e000      	b.n	800c870 <msg_write_status_led+0x34>
 		return; //TODO ERROR HANDLING
- 800c86a:	bf00      	nop
+ 800c86e:	bf00      	nop
 }
- 800c86c:	3708      	adds	r7, #8
- 800c86e:	46bd      	mov	sp, r7
- 800c870:	bd80      	pop	{r7, pc}
+ 800c870:	3708      	adds	r7, #8
+ 800c872:	46bd      	mov	sp, r7
+ 800c874:	bd80      	pop	{r7, pc}
 	...
 
-0800c874 <firmware_init>:
+0800c878 <firmware_init>:
 distance_sensor_handler_t distance_sensor_handler;
 distance_sensor_t distance_sensor_1;
 distance_sensor_t distance_sensor_2;
 
 
 void firmware_init() {
- 800c874:	b580      	push	{r7, lr}
- 800c876:	af00      	add	r7, sp, #0
+ 800c878:	b580      	push	{r7, lr}
+ 800c87a:	af00      	add	r7, sp, #0
 
 	// Set the status LED to IDLE
 	set_status_led(LED_STATUS_IDLE);
- 800c878:	2003      	movs	r0, #3
- 800c87a:	f000 f8b7 	bl	800c9ec <set_status_led>
+ 800c87c:	2003      	movs	r0, #3
+ 800c87e:	f000 f8b7 	bl	800c9f0 <set_status_led>
 	// Initialize the USB Device
 	MX_USB_DEVICE_Init();
- 800c87e:	f7ff f90d 	bl	800ba9c <MX_USB_DEVICE_Init>
+ 800c882:	f7ff f90b 	bl	800ba9c <MX_USB_DEVICE_Init>
 
 	// Set the status LED to OK
 	set_status_led(LED_STATUS_OK);
- 800c882:	2001      	movs	r0, #1
- 800c884:	f000 f8b2 	bl	800c9ec <set_status_led>
+ 800c886:	2001      	movs	r0, #1
+ 800c888:	f000 f8b2 	bl	800c9f0 <set_status_led>
 
 	// Define one distance sensor
 	init_distance_sensor_handler(&distance_sensor_handler,
- 800c888:	4b15      	ldr	r3, [pc, #84]	; (800c8e0 <firmware_init+0x6c>)
- 800c88a:	681b      	ldr	r3, [r3, #0]
- 800c88c:	2200      	movs	r2, #0
- 800c88e:	4619      	mov	r1, r3
- 800c890:	4814      	ldr	r0, [pc, #80]	; (800c8e4 <firmware_init+0x70>)
- 800c892:	f000 f9c5 	bl	800cc20 <init_distance_sensor_handler>
+ 800c88c:	4b15      	ldr	r3, [pc, #84]	; (800c8e4 <firmware_init+0x6c>)
+ 800c88e:	681b      	ldr	r3, [r3, #0]
+ 800c890:	2200      	movs	r2, #0
+ 800c892:	4619      	mov	r1, r3
+ 800c894:	4814      	ldr	r0, [pc, #80]	; (800c8e8 <firmware_init+0x70>)
+ 800c896:	f000 f9c5 	bl	800cc24 <init_distance_sensor_handler>
 			distance_sensor_timer, NULL);
 
 	//sensor 1
 	distance_sensor_1.echo_port = GPIOB;
- 800c896:	4b14      	ldr	r3, [pc, #80]	; (800c8e8 <firmware_init+0x74>)
- 800c898:	4a14      	ldr	r2, [pc, #80]	; (800c8ec <firmware_init+0x78>)
- 800c89a:	601a      	str	r2, [r3, #0]
+ 800c89a:	4b14      	ldr	r3, [pc, #80]	; (800c8ec <firmware_init+0x74>)
+ 800c89c:	4a14      	ldr	r2, [pc, #80]	; (800c8f0 <firmware_init+0x78>)
+ 800c89e:	601a      	str	r2, [r3, #0]
 	distance_sensor_1.echo_pin = GPIO_PIN_14;
- 800c89c:	4b12      	ldr	r3, [pc, #72]	; (800c8e8 <firmware_init+0x74>)
- 800c89e:	f44f 4280 	mov.w	r2, #16384	; 0x4000
- 800c8a2:	809a      	strh	r2, [r3, #4]
+ 800c8a0:	4b12      	ldr	r3, [pc, #72]	; (800c8ec <firmware_init+0x74>)
+ 800c8a2:	f44f 4280 	mov.w	r2, #16384	; 0x4000
+ 800c8a6:	809a      	strh	r2, [r3, #4]
 	distance_sensor_1.trig_port = GPIOB;
- 800c8a4:	4b10      	ldr	r3, [pc, #64]	; (800c8e8 <firmware_init+0x74>)
- 800c8a6:	4a11      	ldr	r2, [pc, #68]	; (800c8ec <firmware_init+0x78>)
- 800c8a8:	609a      	str	r2, [r3, #8]
+ 800c8a8:	4b10      	ldr	r3, [pc, #64]	; (800c8ec <firmware_init+0x74>)
+ 800c8aa:	4a11      	ldr	r2, [pc, #68]	; (800c8f0 <firmware_init+0x78>)
+ 800c8ac:	609a      	str	r2, [r3, #8]
 	distance_sensor_1.trig_pin = GPIO_PIN_13;
- 800c8aa:	4b0f      	ldr	r3, [pc, #60]	; (800c8e8 <firmware_init+0x74>)
- 800c8ac:	f44f 5200 	mov.w	r2, #8192	; 0x2000
- 800c8b0:	819a      	strh	r2, [r3, #12]
+ 800c8ae:	4b0f      	ldr	r3, [pc, #60]	; (800c8ec <firmware_init+0x74>)
+ 800c8b0:	f44f 5200 	mov.w	r2, #8192	; 0x2000
+ 800c8b4:	819a      	strh	r2, [r3, #12]
 
 	//sensor 2
 	distance_sensor_2.echo_port = GPIOB;
- 800c8b2:	4b0f      	ldr	r3, [pc, #60]	; (800c8f0 <firmware_init+0x7c>)
- 800c8b4:	4a0d      	ldr	r2, [pc, #52]	; (800c8ec <firmware_init+0x78>)
- 800c8b6:	601a      	str	r2, [r3, #0]
+ 800c8b6:	4b0f      	ldr	r3, [pc, #60]	; (800c8f4 <firmware_init+0x7c>)
+ 800c8b8:	4a0d      	ldr	r2, [pc, #52]	; (800c8f0 <firmware_init+0x78>)
+ 800c8ba:	601a      	str	r2, [r3, #0]
 	distance_sensor_2.echo_pin = GPIO_PIN_1;
- 800c8b8:	4b0d      	ldr	r3, [pc, #52]	; (800c8f0 <firmware_init+0x7c>)
- 800c8ba:	2202      	movs	r2, #2
- 800c8bc:	809a      	strh	r2, [r3, #4]
+ 800c8bc:	4b0d      	ldr	r3, [pc, #52]	; (800c8f4 <firmware_init+0x7c>)
+ 800c8be:	2202      	movs	r2, #2
+ 800c8c0:	809a      	strh	r2, [r3, #4]
 	distance_sensor_2.trig_port = GPIOB;
- 800c8be:	4b0c      	ldr	r3, [pc, #48]	; (800c8f0 <firmware_init+0x7c>)
- 800c8c0:	4a0a      	ldr	r2, [pc, #40]	; (800c8ec <firmware_init+0x78>)
- 800c8c2:	609a      	str	r2, [r3, #8]
+ 800c8c2:	4b0c      	ldr	r3, [pc, #48]	; (800c8f4 <firmware_init+0x7c>)
+ 800c8c4:	4a0a      	ldr	r2, [pc, #40]	; (800c8f0 <firmware_init+0x78>)
+ 800c8c6:	609a      	str	r2, [r3, #8]
 	distance_sensor_2.trig_pin = GPIO_PIN_0;
- 800c8c4:	4b0a      	ldr	r3, [pc, #40]	; (800c8f0 <firmware_init+0x7c>)
- 800c8c6:	2201      	movs	r2, #1
- 800c8c8:	819a      	strh	r2, [r3, #12]
+ 800c8c8:	4b0a      	ldr	r3, [pc, #40]	; (800c8f4 <firmware_init+0x7c>)
+ 800c8ca:	2201      	movs	r2, #1
+ 800c8cc:	819a      	strh	r2, [r3, #12]
 
 	//register sensors
 	register_distance_sensor(&distance_sensor_handler, &distance_sensor_1);
- 800c8ca:	4907      	ldr	r1, [pc, #28]	; (800c8e8 <firmware_init+0x74>)
- 800c8cc:	4805      	ldr	r0, [pc, #20]	; (800c8e4 <firmware_init+0x70>)
- 800c8ce:	f000 f9c9 	bl	800cc64 <register_distance_sensor>
+ 800c8ce:	4907      	ldr	r1, [pc, #28]	; (800c8ec <firmware_init+0x74>)
+ 800c8d0:	4805      	ldr	r0, [pc, #20]	; (800c8e8 <firmware_init+0x70>)
+ 800c8d2:	f000 f9c9 	bl	800cc68 <register_distance_sensor>
 	register_distance_sensor(&distance_sensor_handler, &distance_sensor_2);
- 800c8d2:	4907      	ldr	r1, [pc, #28]	; (800c8f0 <firmware_init+0x7c>)
- 800c8d4:	4803      	ldr	r0, [pc, #12]	; (800c8e4 <firmware_init+0x70>)
- 800c8d6:	f000 f9c5 	bl	800cc64 <register_distance_sensor>
+ 800c8d6:	4907      	ldr	r1, [pc, #28]	; (800c8f4 <firmware_init+0x7c>)
+ 800c8d8:	4803      	ldr	r0, [pc, #12]	; (800c8e8 <firmware_init+0x70>)
+ 800c8da:	f000 f9c5 	bl	800cc68 <register_distance_sensor>
 
 }
- 800c8da:	bf00      	nop
- 800c8dc:	bd80      	pop	{r7, pc}
  800c8de:	bf00      	nop
- 800c8e0:	200062b4 	.word	0x200062b4
- 800c8e4:	200062b8 	.word	0x200062b8
- 800c8e8:	200062cc 	.word	0x200062cc
- 800c8ec:	40020400 	.word	0x40020400
- 800c8f0:	200062ec 	.word	0x200062ec
+ 800c8e0:	bd80      	pop	{r7, pc}
+ 800c8e2:	bf00      	nop
+ 800c8e4:	200062b4 	.word	0x200062b4
+ 800c8e8:	200062b8 	.word	0x200062b8
+ 800c8ec:	200062cc 	.word	0x200062cc
+ 800c8f0:	40020400 	.word	0x40020400
+ 800c8f4:	200062ec 	.word	0x200062ec
 
-0800c8f4 <error_handler>:
+0800c8f8 <error_handler>:
 
 void error_handler(uint8_t error_id) {
- 800c8f4:	b580      	push	{r7, lr}
- 800c8f6:	b082      	sub	sp, #8
- 800c8f8:	af00      	add	r7, sp, #0
- 800c8fa:	4603      	mov	r3, r0
- 800c8fc:	71fb      	strb	r3, [r7, #7]
+ 800c8f8:	b580      	push	{r7, lr}
+ 800c8fa:	b082      	sub	sp, #8
+ 800c8fc:	af00      	add	r7, sp, #0
+ 800c8fe:	4603      	mov	r3, r0
+ 800c900:	71fb      	strb	r3, [r7, #7]
 	set_status_led(LED_STATUS_ERROR);
- 800c8fe:	2002      	movs	r0, #2
- 800c900:	f000 f874 	bl	800c9ec <set_status_led>
+ 800c902:	2002      	movs	r0, #2
+ 800c904:	f000 f874 	bl	800c9f0 <set_status_led>
 }
- 800c904:	bf00      	nop
- 800c906:	3708      	adds	r7, #8
- 800c908:	46bd      	mov	sp, r7
- 800c90a:	bd80      	pop	{r7, pc}
+ 800c908:	bf00      	nop
+ 800c90a:	3708      	adds	r7, #8
+ 800c90c:	46bd      	mov	sp, r7
+ 800c90e:	bd80      	pop	{r7, pc}
 
-0800c90c <set_led>:
+0800c910 <set_led>:
  *      Author: Dustin Lehmann
  */
 
 #include "led.h"
 
 void set_led(uint8_t led_num, uint8_t state) {
- 800c90c:	b580      	push	{r7, lr}
- 800c90e:	b082      	sub	sp, #8
- 800c910:	af00      	add	r7, sp, #0
- 800c912:	4603      	mov	r3, r0
- 800c914:	460a      	mov	r2, r1
- 800c916:	71fb      	strb	r3, [r7, #7]
- 800c918:	4613      	mov	r3, r2
- 800c91a:	71bb      	strb	r3, [r7, #6]
+ 800c910:	b580      	push	{r7, lr}
+ 800c912:	b082      	sub	sp, #8
+ 800c914:	af00      	add	r7, sp, #0
+ 800c916:	4603      	mov	r3, r0
+ 800c918:	460a      	mov	r2, r1
+ 800c91a:	71fb      	strb	r3, [r7, #7]
+ 800c91c:	4613      	mov	r3, r2
+ 800c91e:	71bb      	strb	r3, [r7, #6]
 	switch (led_num) {
- 800c91c:	79fb      	ldrb	r3, [r7, #7]
- 800c91e:	2b03      	cmp	r3, #3
- 800c920:	d016      	beq.n	800c950 <set_led+0x44>
+ 800c920:	79fb      	ldrb	r3, [r7, #7]
  800c922:	2b03      	cmp	r3, #3
- 800c924:	dc1c      	bgt.n	800c960 <set_led+0x54>
- 800c926:	2b01      	cmp	r3, #1
- 800c928:	d002      	beq.n	800c930 <set_led+0x24>
- 800c92a:	2b02      	cmp	r3, #2
- 800c92c:	d008      	beq.n	800c940 <set_led+0x34>
+ 800c924:	d016      	beq.n	800c954 <set_led+0x44>
+ 800c926:	2b03      	cmp	r3, #3
+ 800c928:	dc1c      	bgt.n	800c964 <set_led+0x54>
+ 800c92a:	2b01      	cmp	r3, #1
+ 800c92c:	d002      	beq.n	800c934 <set_led+0x24>
+ 800c92e:	2b02      	cmp	r3, #2
+ 800c930:	d008      	beq.n	800c944 <set_led+0x34>
 		break;
 	case LED_ORANGE:
 		HAL_GPIO_WritePin(LED_ORANGE_PORT, LED_ORANGE_PIN, state);
 		break;
 	}
 }
- 800c92e:	e017      	b.n	800c960 <set_led+0x54>
+ 800c932:	e017      	b.n	800c964 <set_led+0x54>
 		HAL_GPIO_WritePin(LED_GREEN_PORT, LED_GREEN_PIN, state);
- 800c930:	79bb      	ldrb	r3, [r7, #6]
- 800c932:	461a      	mov	r2, r3
- 800c934:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 800c938:	480b      	ldr	r0, [pc, #44]	; (800c968 <set_led+0x5c>)
- 800c93a:	f7f5 fcb3 	bl	80022a4 <HAL_GPIO_WritePin>
+ 800c934:	79bb      	ldrb	r3, [r7, #6]
+ 800c936:	461a      	mov	r2, r3
+ 800c938:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 800c93c:	480b      	ldr	r0, [pc, #44]	; (800c96c <set_led+0x5c>)
+ 800c93e:	f7f5 fcb1 	bl	80022a4 <HAL_GPIO_WritePin>
 		break;
- 800c93e:	e00f      	b.n	800c960 <set_led+0x54>
+ 800c942:	e00f      	b.n	800c964 <set_led+0x54>
 		HAL_GPIO_WritePin(LED_BLUE_PORT, LED_BLUE_PIN, state);
- 800c940:	79bb      	ldrb	r3, [r7, #6]
- 800c942:	461a      	mov	r2, r3
- 800c944:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800c948:	4808      	ldr	r0, [pc, #32]	; (800c96c <set_led+0x60>)
- 800c94a:	f7f5 fcab 	bl	80022a4 <HAL_GPIO_WritePin>
+ 800c944:	79bb      	ldrb	r3, [r7, #6]
+ 800c946:	461a      	mov	r2, r3
+ 800c948:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 800c94c:	4808      	ldr	r0, [pc, #32]	; (800c970 <set_led+0x60>)
+ 800c94e:	f7f5 fca9 	bl	80022a4 <HAL_GPIO_WritePin>
 		break;
- 800c94e:	e007      	b.n	800c960 <set_led+0x54>
+ 800c952:	e007      	b.n	800c964 <set_led+0x54>
 		HAL_GPIO_WritePin(LED_ORANGE_PORT, LED_ORANGE_PIN, state);
- 800c950:	79bb      	ldrb	r3, [r7, #6]
- 800c952:	461a      	mov	r2, r3
- 800c954:	f44f 7100 	mov.w	r1, #512	; 0x200
- 800c958:	4803      	ldr	r0, [pc, #12]	; (800c968 <set_led+0x5c>)
- 800c95a:	f7f5 fca3 	bl	80022a4 <HAL_GPIO_WritePin>
+ 800c954:	79bb      	ldrb	r3, [r7, #6]
+ 800c956:	461a      	mov	r2, r3
+ 800c958:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 800c95c:	4803      	ldr	r0, [pc, #12]	; (800c96c <set_led+0x5c>)
+ 800c95e:	f7f5 fca1 	bl	80022a4 <HAL_GPIO_WritePin>
 		break;
- 800c95e:	bf00      	nop
+ 800c962:	bf00      	nop
 }
- 800c960:	bf00      	nop
- 800c962:	3708      	adds	r7, #8
- 800c964:	46bd      	mov	sp, r7
- 800c966:	bd80      	pop	{r7, pc}
- 800c968:	40020800 	.word	0x40020800
- 800c96c:	40020000 	.word	0x40020000
+ 800c964:	bf00      	nop
+ 800c966:	3708      	adds	r7, #8
+ 800c968:	46bd      	mov	sp, r7
+ 800c96a:	bd80      	pop	{r7, pc}
+ 800c96c:	40020800 	.word	0x40020800
+ 800c970:	40020000 	.word	0x40020000
 
-0800c970 <toggle_led>:
+0800c974 <toggle_led>:
 
 void toggle_led(uint8_t led_num) {
- 800c970:	b580      	push	{r7, lr}
- 800c972:	b082      	sub	sp, #8
- 800c974:	af00      	add	r7, sp, #0
- 800c976:	4603      	mov	r3, r0
- 800c978:	71fb      	strb	r3, [r7, #7]
+ 800c974:	b580      	push	{r7, lr}
+ 800c976:	b082      	sub	sp, #8
+ 800c978:	af00      	add	r7, sp, #0
+ 800c97a:	4603      	mov	r3, r0
+ 800c97c:	71fb      	strb	r3, [r7, #7]
 	switch (led_num) {
- 800c97a:	79fb      	ldrb	r3, [r7, #7]
- 800c97c:	2b03      	cmp	r3, #3
- 800c97e:	d012      	beq.n	800c9a6 <toggle_led+0x36>
+ 800c97e:	79fb      	ldrb	r3, [r7, #7]
  800c980:	2b03      	cmp	r3, #3
- 800c982:	dc16      	bgt.n	800c9b2 <toggle_led+0x42>
- 800c984:	2b01      	cmp	r3, #1
- 800c986:	d002      	beq.n	800c98e <toggle_led+0x1e>
- 800c988:	2b02      	cmp	r3, #2
- 800c98a:	d006      	beq.n	800c99a <toggle_led+0x2a>
+ 800c982:	d012      	beq.n	800c9aa <toggle_led+0x36>
+ 800c984:	2b03      	cmp	r3, #3
+ 800c986:	dc16      	bgt.n	800c9b6 <toggle_led+0x42>
+ 800c988:	2b01      	cmp	r3, #1
+ 800c98a:	d002      	beq.n	800c992 <toggle_led+0x1e>
+ 800c98c:	2b02      	cmp	r3, #2
+ 800c98e:	d006      	beq.n	800c99e <toggle_led+0x2a>
 		break;
 	case LED_ORANGE:
 		HAL_GPIO_TogglePin(LED_ORANGE_PORT, LED_ORANGE_PIN);
 		break;
 	}
 }
- 800c98c:	e011      	b.n	800c9b2 <toggle_led+0x42>
+ 800c990:	e011      	b.n	800c9b6 <toggle_led+0x42>
 		HAL_GPIO_TogglePin(LED_GREEN_PORT, LED_GREEN_PIN);
- 800c98e:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 800c992:	480a      	ldr	r0, [pc, #40]	; (800c9bc <toggle_led+0x4c>)
- 800c994:	f7f5 fc9f 	bl	80022d6 <HAL_GPIO_TogglePin>
+ 800c992:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 800c996:	480a      	ldr	r0, [pc, #40]	; (800c9c0 <toggle_led+0x4c>)
+ 800c998:	f7f5 fc9d 	bl	80022d6 <HAL_GPIO_TogglePin>
 		break;
- 800c998:	e00b      	b.n	800c9b2 <toggle_led+0x42>
+ 800c99c:	e00b      	b.n	800c9b6 <toggle_led+0x42>
 		HAL_GPIO_TogglePin(LED_BLUE_PORT, LED_BLUE_PIN);
- 800c99a:	f44f 7180 	mov.w	r1, #256	; 0x100
- 800c99e:	4808      	ldr	r0, [pc, #32]	; (800c9c0 <toggle_led+0x50>)
- 800c9a0:	f7f5 fc99 	bl	80022d6 <HAL_GPIO_TogglePin>
+ 800c99e:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 800c9a2:	4808      	ldr	r0, [pc, #32]	; (800c9c4 <toggle_led+0x50>)
+ 800c9a4:	f7f5 fc97 	bl	80022d6 <HAL_GPIO_TogglePin>
 		break;
- 800c9a4:	e005      	b.n	800c9b2 <toggle_led+0x42>
+ 800c9a8:	e005      	b.n	800c9b6 <toggle_led+0x42>
 		HAL_GPIO_TogglePin(LED_ORANGE_PORT, LED_ORANGE_PIN);
- 800c9a6:	f44f 7100 	mov.w	r1, #512	; 0x200
- 800c9aa:	4804      	ldr	r0, [pc, #16]	; (800c9bc <toggle_led+0x4c>)
- 800c9ac:	f7f5 fc93 	bl	80022d6 <HAL_GPIO_TogglePin>
+ 800c9aa:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 800c9ae:	4804      	ldr	r0, [pc, #16]	; (800c9c0 <toggle_led+0x4c>)
+ 800c9b0:	f7f5 fc91 	bl	80022d6 <HAL_GPIO_TogglePin>
 		break;
- 800c9b0:	bf00      	nop
+ 800c9b4:	bf00      	nop
 }
- 800c9b2:	bf00      	nop
- 800c9b4:	3708      	adds	r7, #8
- 800c9b6:	46bd      	mov	sp, r7
- 800c9b8:	bd80      	pop	{r7, pc}
- 800c9ba:	bf00      	nop
- 800c9bc:	40020800 	.word	0x40020800
- 800c9c0:	40020000 	.word	0x40020000
+ 800c9b6:	bf00      	nop
+ 800c9b8:	3708      	adds	r7, #8
+ 800c9ba:	46bd      	mov	sp, r7
+ 800c9bc:	bd80      	pop	{r7, pc}
+ 800c9be:	bf00      	nop
+ 800c9c0:	40020800 	.word	0x40020800
+ 800c9c4:	40020000 	.word	0x40020000
 
-0800c9c4 <set_status_led_color>:
+0800c9c8 <set_status_led_color>:
 
 void set_status_led_color(uint8_t red, uint8_t green, uint8_t blue) {
- 800c9c4:	b580      	push	{r7, lr}
- 800c9c6:	b082      	sub	sp, #8
- 800c9c8:	af00      	add	r7, sp, #0
- 800c9ca:	4603      	mov	r3, r0
- 800c9cc:	71fb      	strb	r3, [r7, #7]
- 800c9ce:	460b      	mov	r3, r1
- 800c9d0:	71bb      	strb	r3, [r7, #6]
- 800c9d2:	4613      	mov	r3, r2
- 800c9d4:	717b      	strb	r3, [r7, #5]
+ 800c9c8:	b580      	push	{r7, lr}
+ 800c9ca:	b082      	sub	sp, #8
+ 800c9cc:	af00      	add	r7, sp, #0
+ 800c9ce:	4603      	mov	r3, r0
+ 800c9d0:	71fb      	strb	r3, [r7, #7]
+ 800c9d2:	460b      	mov	r3, r1
+ 800c9d4:	71bb      	strb	r3, [r7, #6]
+ 800c9d6:	4613      	mov	r3, r2
+ 800c9d8:	717b      	strb	r3, [r7, #5]
 	ws2812_set(0, red, green, blue);
- 800c9d6:	79f9      	ldrb	r1, [r7, #7]
- 800c9d8:	79ba      	ldrb	r2, [r7, #6]
- 800c9da:	797b      	ldrb	r3, [r7, #5]
- 800c9dc:	2000      	movs	r0, #0
- 800c9de:	f000 f881 	bl	800cae4 <ws2812_set>
+ 800c9da:	79f9      	ldrb	r1, [r7, #7]
+ 800c9dc:	79ba      	ldrb	r2, [r7, #6]
+ 800c9de:	797b      	ldrb	r3, [r7, #5]
+ 800c9e0:	2000      	movs	r0, #0
+ 800c9e2:	f000 f881 	bl	800cae8 <ws2812_set>
 }
- 800c9e2:	bf00      	nop
- 800c9e4:	3708      	adds	r7, #8
- 800c9e6:	46bd      	mov	sp, r7
- 800c9e8:	bd80      	pop	{r7, pc}
+ 800c9e6:	bf00      	nop
+ 800c9e8:	3708      	adds	r7, #8
+ 800c9ea:	46bd      	mov	sp, r7
+ 800c9ec:	bd80      	pop	{r7, pc}
 	...
 
-0800c9ec <set_status_led>:
+0800c9f0 <set_status_led>:
 void set_status_led(uint8_t state) {
- 800c9ec:	b580      	push	{r7, lr}
- 800c9ee:	b082      	sub	sp, #8
- 800c9f0:	af00      	add	r7, sp, #0
- 800c9f2:	4603      	mov	r3, r0
- 800c9f4:	71fb      	strb	r3, [r7, #7]
+ 800c9f0:	b580      	push	{r7, lr}
+ 800c9f2:	b082      	sub	sp, #8
+ 800c9f4:	af00      	add	r7, sp, #0
+ 800c9f6:	4603      	mov	r3, r0
+ 800c9f8:	71fb      	strb	r3, [r7, #7]
 	switch (state) {
- 800c9f6:	79fb      	ldrb	r3, [r7, #7]
- 800c9f8:	2b03      	cmp	r3, #3
- 800c9fa:	d823      	bhi.n	800ca44 <set_status_led+0x58>
- 800c9fc:	a201      	add	r2, pc, #4	; (adr r2, 800ca04 <set_status_led+0x18>)
- 800c9fe:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 800ca02:	bf00      	nop
- 800ca04:	0800ca21 	.word	0x0800ca21
- 800ca08:	0800ca2d 	.word	0x0800ca2d
- 800ca0c:	0800ca15 	.word	0x0800ca15
- 800ca10:	0800ca39 	.word	0x0800ca39
+ 800c9fa:	79fb      	ldrb	r3, [r7, #7]
+ 800c9fc:	2b03      	cmp	r3, #3
+ 800c9fe:	d823      	bhi.n	800ca48 <set_status_led+0x58>
+ 800ca00:	a201      	add	r2, pc, #4	; (adr r2, 800ca08 <set_status_led+0x18>)
+ 800ca02:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 800ca06:	bf00      	nop
+ 800ca08:	0800ca25 	.word	0x0800ca25
+ 800ca0c:	0800ca31 	.word	0x0800ca31
+ 800ca10:	0800ca19 	.word	0x0800ca19
+ 800ca14:	0800ca3d 	.word	0x0800ca3d
 	case LED_STATUS_ERROR:
 		set_status_led_color(60, 0, 0);
- 800ca14:	2200      	movs	r2, #0
- 800ca16:	2100      	movs	r1, #0
- 800ca18:	203c      	movs	r0, #60	; 0x3c
- 800ca1a:	f7ff ffd3 	bl	800c9c4 <set_status_led_color>
+ 800ca18:	2200      	movs	r2, #0
+ 800ca1a:	2100      	movs	r1, #0
+ 800ca1c:	203c      	movs	r0, #60	; 0x3c
+ 800ca1e:	f7ff ffd3 	bl	800c9c8 <set_status_led_color>
 		break;
- 800ca1e:	e011      	b.n	800ca44 <set_status_led+0x58>
+ 800ca22:	e011      	b.n	800ca48 <set_status_led+0x58>
 	case LED_STATUS_OFF:
 		set_status_led_color(0, 0, 0);
- 800ca20:	2200      	movs	r2, #0
- 800ca22:	2100      	movs	r1, #0
- 800ca24:	2000      	movs	r0, #0
- 800ca26:	f7ff ffcd 	bl	800c9c4 <set_status_led_color>
+ 800ca24:	2200      	movs	r2, #0
+ 800ca26:	2100      	movs	r1, #0
+ 800ca28:	2000      	movs	r0, #0
+ 800ca2a:	f7ff ffcd 	bl	800c9c8 <set_status_led_color>
 		break;
- 800ca2a:	e00b      	b.n	800ca44 <set_status_led+0x58>
+ 800ca2e:	e00b      	b.n	800ca48 <set_status_led+0x58>
 	case LED_STATUS_OK:
 		set_status_led_color(0, 60, 0);
- 800ca2c:	2200      	movs	r2, #0
- 800ca2e:	213c      	movs	r1, #60	; 0x3c
- 800ca30:	2000      	movs	r0, #0
- 800ca32:	f7ff ffc7 	bl	800c9c4 <set_status_led_color>
+ 800ca30:	2200      	movs	r2, #0
+ 800ca32:	213c      	movs	r1, #60	; 0x3c
+ 800ca34:	2000      	movs	r0, #0
+ 800ca36:	f7ff ffc7 	bl	800c9c8 <set_status_led_color>
 		break;
- 800ca36:	e005      	b.n	800ca44 <set_status_led+0x58>
+ 800ca3a:	e005      	b.n	800ca48 <set_status_led+0x58>
 	case LED_STATUS_IDLE:
 		set_status_led_color(0, 0, 60);
- 800ca38:	223c      	movs	r2, #60	; 0x3c
- 800ca3a:	2100      	movs	r1, #0
- 800ca3c:	2000      	movs	r0, #0
- 800ca3e:	f7ff ffc1 	bl	800c9c4 <set_status_led_color>
+ 800ca3c:	223c      	movs	r2, #60	; 0x3c
+ 800ca3e:	2100      	movs	r1, #0
+ 800ca40:	2000      	movs	r0, #0
+ 800ca42:	f7ff ffc1 	bl	800c9c8 <set_status_led_color>
 		break;
- 800ca42:	bf00      	nop
+ 800ca46:	bf00      	nop
 	}
 	ws2812_send();
- 800ca44:	f000 f87c 	bl	800cb40 <ws2812_send>
+ 800ca48:	f000 f87c 	bl	800cb44 <ws2812_send>
 }
- 800ca48:	bf00      	nop
- 800ca4a:	3708      	adds	r7, #8
- 800ca4c:	46bd      	mov	sp, r7
- 800ca4e:	bd80      	pop	{r7, pc}
+ 800ca4c:	bf00      	nop
+ 800ca4e:	3708      	adds	r7, #8
+ 800ca50:	46bd      	mov	sp, r7
+ 800ca52:	bd80      	pop	{r7, pc}
 
-0800ca50 <HAL_TIM_PWM_PulseFinishedCallback>:
+0800ca54 <HAL_TIM_PWM_PulseFinishedCallback>:
 
 uint16_t pwmData[(24*MAX_LED)+50];
 
 
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
- 800ca50:	b580      	push	{r7, lr}
- 800ca52:	b082      	sub	sp, #8
- 800ca54:	af00      	add	r7, sp, #0
- 800ca56:	6078      	str	r0, [r7, #4]
+ 800ca54:	b580      	push	{r7, lr}
+ 800ca56:	b082      	sub	sp, #8
+ 800ca58:	af00      	add	r7, sp, #0
+ 800ca5a:	6078      	str	r0, [r7, #4]
 	HAL_TIM_PWM_Stop_DMA(ws2812_tim, WS2812_TIM_CHANNEL);
- 800ca58:	4b06      	ldr	r3, [pc, #24]	; (800ca74 <HAL_TIM_PWM_PulseFinishedCallback+0x24>)
- 800ca5a:	681b      	ldr	r3, [r3, #0]
- 800ca5c:	2104      	movs	r1, #4
- 800ca5e:	4618      	mov	r0, r3
- 800ca60:	f7f7 fe9e 	bl	80047a0 <HAL_TIM_PWM_Stop_DMA>
+ 800ca5c:	4b06      	ldr	r3, [pc, #24]	; (800ca78 <HAL_TIM_PWM_PulseFinishedCallback+0x24>)
+ 800ca5e:	681b      	ldr	r3, [r3, #0]
+ 800ca60:	2104      	movs	r1, #4
+ 800ca62:	4618      	mov	r0, r3
+ 800ca64:	f7f7 fe9c 	bl	80047a0 <HAL_TIM_PWM_Stop_DMA>
 	datasentflag=1;
- 800ca64:	4b04      	ldr	r3, [pc, #16]	; (800ca78 <HAL_TIM_PWM_PulseFinishedCallback+0x28>)
- 800ca66:	2201      	movs	r2, #1
- 800ca68:	701a      	strb	r2, [r3, #0]
+ 800ca68:	4b04      	ldr	r3, [pc, #16]	; (800ca7c <HAL_TIM_PWM_PulseFinishedCallback+0x28>)
+ 800ca6a:	2201      	movs	r2, #1
+ 800ca6c:	701a      	strb	r2, [r3, #0]
 }
- 800ca6a:	bf00      	nop
- 800ca6c:	3708      	adds	r7, #8
- 800ca6e:	46bd      	mov	sp, r7
- 800ca70:	bd80      	pop	{r7, pc}
- 800ca72:	bf00      	nop
- 800ca74:	20006310 	.word	0x20006310
- 800ca78:	2000630c 	.word	0x2000630c
+ 800ca6e:	bf00      	nop
+ 800ca70:	3708      	adds	r7, #8
+ 800ca72:	46bd      	mov	sp, r7
+ 800ca74:	bd80      	pop	{r7, pc}
+ 800ca76:	bf00      	nop
+ 800ca78:	20006310 	.word	0x20006310
+ 800ca7c:	2000630c 	.word	0x2000630c
 
-0800ca7c <ws2812_init>:
+0800ca80 <ws2812_init>:
 
 void ws2812_init(TIM_HandleTypeDef* tim){
- 800ca7c:	b480      	push	{r7}
- 800ca7e:	b085      	sub	sp, #20
- 800ca80:	af00      	add	r7, sp, #0
- 800ca82:	6078      	str	r0, [r7, #4]
+ 800ca80:	b480      	push	{r7}
+ 800ca82:	b085      	sub	sp, #20
+ 800ca84:	af00      	add	r7, sp, #0
+ 800ca86:	6078      	str	r0, [r7, #4]
 	ws2812_tim = tim;
- 800ca84:	4a15      	ldr	r2, [pc, #84]	; (800cadc <ws2812_init+0x60>)
- 800ca86:	687b      	ldr	r3, [r7, #4]
- 800ca88:	6013      	str	r3, [r2, #0]
+ 800ca88:	4a15      	ldr	r2, [pc, #84]	; (800cae0 <ws2812_init+0x60>)
+ 800ca8a:	687b      	ldr	r3, [r7, #4]
+ 800ca8c:	6013      	str	r3, [r2, #0]
 	for (int i=0;i<MAX_LED;i++){
- 800ca8a:	2300      	movs	r3, #0
- 800ca8c:	60fb      	str	r3, [r7, #12]
- 800ca8e:	e01a      	b.n	800cac6 <ws2812_init+0x4a>
+ 800ca8e:	2300      	movs	r3, #0
+ 800ca90:	60fb      	str	r3, [r7, #12]
+ 800ca92:	e01a      	b.n	800caca <ws2812_init+0x4a>
 		LED_Data[i][0] = i;
- 800ca90:	68fb      	ldr	r3, [r7, #12]
- 800ca92:	b2d9      	uxtb	r1, r3
- 800ca94:	4a12      	ldr	r2, [pc, #72]	; (800cae0 <ws2812_init+0x64>)
- 800ca96:	68fb      	ldr	r3, [r7, #12]
- 800ca98:	f802 1023 	strb.w	r1, [r2, r3, lsl #2]
+ 800ca94:	68fb      	ldr	r3, [r7, #12]
+ 800ca96:	b2d9      	uxtb	r1, r3
+ 800ca98:	4a12      	ldr	r2, [pc, #72]	; (800cae4 <ws2812_init+0x64>)
+ 800ca9a:	68fb      	ldr	r3, [r7, #12]
+ 800ca9c:	f802 1023 	strb.w	r1, [r2, r3, lsl #2]
 		LED_Data[i][1] = 0;
- 800ca9c:	4a10      	ldr	r2, [pc, #64]	; (800cae0 <ws2812_init+0x64>)
- 800ca9e:	68fb      	ldr	r3, [r7, #12]
- 800caa0:	009b      	lsls	r3, r3, #2
- 800caa2:	4413      	add	r3, r2
- 800caa4:	2200      	movs	r2, #0
- 800caa6:	705a      	strb	r2, [r3, #1]
+ 800caa0:	4a10      	ldr	r2, [pc, #64]	; (800cae4 <ws2812_init+0x64>)
+ 800caa2:	68fb      	ldr	r3, [r7, #12]
+ 800caa4:	009b      	lsls	r3, r3, #2
+ 800caa6:	4413      	add	r3, r2
+ 800caa8:	2200      	movs	r2, #0
+ 800caaa:	705a      	strb	r2, [r3, #1]
 		LED_Data[i][2] = 0;
- 800caa8:	4a0d      	ldr	r2, [pc, #52]	; (800cae0 <ws2812_init+0x64>)
- 800caaa:	68fb      	ldr	r3, [r7, #12]
- 800caac:	009b      	lsls	r3, r3, #2
- 800caae:	4413      	add	r3, r2
- 800cab0:	2200      	movs	r2, #0
- 800cab2:	709a      	strb	r2, [r3, #2]
+ 800caac:	4a0d      	ldr	r2, [pc, #52]	; (800cae4 <ws2812_init+0x64>)
+ 800caae:	68fb      	ldr	r3, [r7, #12]
+ 800cab0:	009b      	lsls	r3, r3, #2
+ 800cab2:	4413      	add	r3, r2
+ 800cab4:	2200      	movs	r2, #0
+ 800cab6:	709a      	strb	r2, [r3, #2]
 		LED_Data[i][3] = 0;
- 800cab4:	4a0a      	ldr	r2, [pc, #40]	; (800cae0 <ws2812_init+0x64>)
- 800cab6:	68fb      	ldr	r3, [r7, #12]
- 800cab8:	009b      	lsls	r3, r3, #2
- 800caba:	4413      	add	r3, r2
- 800cabc:	2200      	movs	r2, #0
- 800cabe:	70da      	strb	r2, [r3, #3]
+ 800cab8:	4a0a      	ldr	r2, [pc, #40]	; (800cae4 <ws2812_init+0x64>)
+ 800caba:	68fb      	ldr	r3, [r7, #12]
+ 800cabc:	009b      	lsls	r3, r3, #2
+ 800cabe:	4413      	add	r3, r2
+ 800cac0:	2200      	movs	r2, #0
+ 800cac2:	70da      	strb	r2, [r3, #3]
 	for (int i=0;i<MAX_LED;i++){
- 800cac0:	68fb      	ldr	r3, [r7, #12]
- 800cac2:	3301      	adds	r3, #1
- 800cac4:	60fb      	str	r3, [r7, #12]
- 800cac6:	68fb      	ldr	r3, [r7, #12]
- 800cac8:	2b0f      	cmp	r3, #15
- 800caca:	dde1      	ble.n	800ca90 <ws2812_init+0x14>
+ 800cac4:	68fb      	ldr	r3, [r7, #12]
+ 800cac6:	3301      	adds	r3, #1
+ 800cac8:	60fb      	str	r3, [r7, #12]
+ 800caca:	68fb      	ldr	r3, [r7, #12]
+ 800cacc:	2b0f      	cmp	r3, #15
+ 800cace:	dde1      	ble.n	800ca94 <ws2812_init+0x14>
 	}
 }
- 800cacc:	bf00      	nop
- 800cace:	bf00      	nop
- 800cad0:	3714      	adds	r7, #20
- 800cad2:	46bd      	mov	sp, r7
- 800cad4:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800cad8:	4770      	bx	lr
- 800cada:	bf00      	nop
- 800cadc:	20006310 	.word	0x20006310
- 800cae0:	20006314 	.word	0x20006314
+ 800cad0:	bf00      	nop
+ 800cad2:	bf00      	nop
+ 800cad4:	3714      	adds	r7, #20
+ 800cad6:	46bd      	mov	sp, r7
+ 800cad8:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800cadc:	4770      	bx	lr
+ 800cade:	bf00      	nop
+ 800cae0:	20006310 	.word	0x20006310
+ 800cae4:	20006314 	.word	0x20006314
 
-0800cae4 <ws2812_set>:
+0800cae8 <ws2812_set>:
 
 void ws2812_set(int LEDnum, int Red, int Green, int Blue)
 {
- 800cae4:	b480      	push	{r7}
- 800cae6:	b085      	sub	sp, #20
- 800cae8:	af00      	add	r7, sp, #0
- 800caea:	60f8      	str	r0, [r7, #12]
- 800caec:	60b9      	str	r1, [r7, #8]
- 800caee:	607a      	str	r2, [r7, #4]
- 800caf0:	603b      	str	r3, [r7, #0]
+ 800cae8:	b480      	push	{r7}
+ 800caea:	b085      	sub	sp, #20
+ 800caec:	af00      	add	r7, sp, #0
+ 800caee:	60f8      	str	r0, [r7, #12]
+ 800caf0:	60b9      	str	r1, [r7, #8]
+ 800caf2:	607a      	str	r2, [r7, #4]
+ 800caf4:	603b      	str	r3, [r7, #0]
 	LED_Data[LEDnum][0] = LEDnum;
- 800caf2:	68fb      	ldr	r3, [r7, #12]
- 800caf4:	b2d9      	uxtb	r1, r3
- 800caf6:	4a11      	ldr	r2, [pc, #68]	; (800cb3c <ws2812_set+0x58>)
- 800caf8:	68fb      	ldr	r3, [r7, #12]
- 800cafa:	f802 1023 	strb.w	r1, [r2, r3, lsl #2]
+ 800caf6:	68fb      	ldr	r3, [r7, #12]
+ 800caf8:	b2d9      	uxtb	r1, r3
+ 800cafa:	4a11      	ldr	r2, [pc, #68]	; (800cb40 <ws2812_set+0x58>)
+ 800cafc:	68fb      	ldr	r3, [r7, #12]
+ 800cafe:	f802 1023 	strb.w	r1, [r2, r3, lsl #2]
 	LED_Data[LEDnum][1] = Green;
- 800cafe:	687b      	ldr	r3, [r7, #4]
- 800cb00:	b2d9      	uxtb	r1, r3
- 800cb02:	4a0e      	ldr	r2, [pc, #56]	; (800cb3c <ws2812_set+0x58>)
- 800cb04:	68fb      	ldr	r3, [r7, #12]
- 800cb06:	009b      	lsls	r3, r3, #2
- 800cb08:	4413      	add	r3, r2
- 800cb0a:	460a      	mov	r2, r1
- 800cb0c:	705a      	strb	r2, [r3, #1]
+ 800cb02:	687b      	ldr	r3, [r7, #4]
+ 800cb04:	b2d9      	uxtb	r1, r3
+ 800cb06:	4a0e      	ldr	r2, [pc, #56]	; (800cb40 <ws2812_set+0x58>)
+ 800cb08:	68fb      	ldr	r3, [r7, #12]
+ 800cb0a:	009b      	lsls	r3, r3, #2
+ 800cb0c:	4413      	add	r3, r2
+ 800cb0e:	460a      	mov	r2, r1
+ 800cb10:	705a      	strb	r2, [r3, #1]
 	LED_Data[LEDnum][2] = Red;
- 800cb0e:	68bb      	ldr	r3, [r7, #8]
- 800cb10:	b2d9      	uxtb	r1, r3
- 800cb12:	4a0a      	ldr	r2, [pc, #40]	; (800cb3c <ws2812_set+0x58>)
- 800cb14:	68fb      	ldr	r3, [r7, #12]
- 800cb16:	009b      	lsls	r3, r3, #2
- 800cb18:	4413      	add	r3, r2
- 800cb1a:	460a      	mov	r2, r1
- 800cb1c:	709a      	strb	r2, [r3, #2]
+ 800cb12:	68bb      	ldr	r3, [r7, #8]
+ 800cb14:	b2d9      	uxtb	r1, r3
+ 800cb16:	4a0a      	ldr	r2, [pc, #40]	; (800cb40 <ws2812_set+0x58>)
+ 800cb18:	68fb      	ldr	r3, [r7, #12]
+ 800cb1a:	009b      	lsls	r3, r3, #2
+ 800cb1c:	4413      	add	r3, r2
+ 800cb1e:	460a      	mov	r2, r1
+ 800cb20:	709a      	strb	r2, [r3, #2]
 	LED_Data[LEDnum][3] = Blue;
- 800cb1e:	683b      	ldr	r3, [r7, #0]
- 800cb20:	b2d9      	uxtb	r1, r3
- 800cb22:	4a06      	ldr	r2, [pc, #24]	; (800cb3c <ws2812_set+0x58>)
- 800cb24:	68fb      	ldr	r3, [r7, #12]
- 800cb26:	009b      	lsls	r3, r3, #2
- 800cb28:	4413      	add	r3, r2
- 800cb2a:	460a      	mov	r2, r1
- 800cb2c:	70da      	strb	r2, [r3, #3]
+ 800cb22:	683b      	ldr	r3, [r7, #0]
+ 800cb24:	b2d9      	uxtb	r1, r3
+ 800cb26:	4a06      	ldr	r2, [pc, #24]	; (800cb40 <ws2812_set+0x58>)
+ 800cb28:	68fb      	ldr	r3, [r7, #12]
+ 800cb2a:	009b      	lsls	r3, r3, #2
+ 800cb2c:	4413      	add	r3, r2
+ 800cb2e:	460a      	mov	r2, r1
+ 800cb30:	70da      	strb	r2, [r3, #3]
 }
- 800cb2e:	bf00      	nop
- 800cb30:	3714      	adds	r7, #20
- 800cb32:	46bd      	mov	sp, r7
- 800cb34:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800cb38:	4770      	bx	lr
- 800cb3a:	bf00      	nop
- 800cb3c:	20006314 	.word	0x20006314
+ 800cb32:	bf00      	nop
+ 800cb34:	3714      	adds	r7, #20
+ 800cb36:	46bd      	mov	sp, r7
+ 800cb38:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800cb3c:	4770      	bx	lr
+ 800cb3e:	bf00      	nop
+ 800cb40:	20006314 	.word	0x20006314
 
-0800cb40 <ws2812_send>:
+0800cb44 <ws2812_send>:
 	}
 #endif
 }
 
 void ws2812_send(void)
 {
- 800cb40:	b580      	push	{r7, lr}
- 800cb42:	b086      	sub	sp, #24
- 800cb44:	af00      	add	r7, sp, #0
+ 800cb44:	b580      	push	{r7, lr}
+ 800cb46:	b086      	sub	sp, #24
+ 800cb48:	af00      	add	r7, sp, #0
 	uint32_t indx=0;
- 800cb46:	2300      	movs	r3, #0
- 800cb48:	617b      	str	r3, [r7, #20]
+ 800cb4a:	2300      	movs	r3, #0
+ 800cb4c:	617b      	str	r3, [r7, #20]
 	uint32_t color;
 
 
 	for (int i= 0; i<MAX_LED; i++)
- 800cb4a:	2300      	movs	r3, #0
- 800cb4c:	613b      	str	r3, [r7, #16]
- 800cb4e:	e036      	b.n	800cbbe <ws2812_send+0x7e>
+ 800cb4e:	2300      	movs	r3, #0
+ 800cb50:	613b      	str	r3, [r7, #16]
+ 800cb52:	e036      	b.n	800cbc2 <ws2812_send+0x7e>
 	{
 #if USE_BRIGHTNESS
 		color = ((LED_Mod[i][1]<<16) | (LED_Mod[i][2]<<8) | (LED_Mod[i][3]));
 #else
 		color = ((LED_Data[i][1]<<16) | (LED_Data[i][2]<<8) | (LED_Data[i][3]));
- 800cb50:	4a2f      	ldr	r2, [pc, #188]	; (800cc10 <ws2812_send+0xd0>)
- 800cb52:	693b      	ldr	r3, [r7, #16]
- 800cb54:	009b      	lsls	r3, r3, #2
- 800cb56:	4413      	add	r3, r2
- 800cb58:	785b      	ldrb	r3, [r3, #1]
- 800cb5a:	041a      	lsls	r2, r3, #16
- 800cb5c:	492c      	ldr	r1, [pc, #176]	; (800cc10 <ws2812_send+0xd0>)
- 800cb5e:	693b      	ldr	r3, [r7, #16]
- 800cb60:	009b      	lsls	r3, r3, #2
- 800cb62:	440b      	add	r3, r1
- 800cb64:	789b      	ldrb	r3, [r3, #2]
- 800cb66:	021b      	lsls	r3, r3, #8
- 800cb68:	431a      	orrs	r2, r3
- 800cb6a:	4929      	ldr	r1, [pc, #164]	; (800cc10 <ws2812_send+0xd0>)
- 800cb6c:	693b      	ldr	r3, [r7, #16]
- 800cb6e:	009b      	lsls	r3, r3, #2
- 800cb70:	440b      	add	r3, r1
- 800cb72:	78db      	ldrb	r3, [r3, #3]
- 800cb74:	4313      	orrs	r3, r2
- 800cb76:	607b      	str	r3, [r7, #4]
+ 800cb54:	4a2f      	ldr	r2, [pc, #188]	; (800cc14 <ws2812_send+0xd0>)
+ 800cb56:	693b      	ldr	r3, [r7, #16]
+ 800cb58:	009b      	lsls	r3, r3, #2
+ 800cb5a:	4413      	add	r3, r2
+ 800cb5c:	785b      	ldrb	r3, [r3, #1]
+ 800cb5e:	041a      	lsls	r2, r3, #16
+ 800cb60:	492c      	ldr	r1, [pc, #176]	; (800cc14 <ws2812_send+0xd0>)
+ 800cb62:	693b      	ldr	r3, [r7, #16]
+ 800cb64:	009b      	lsls	r3, r3, #2
+ 800cb66:	440b      	add	r3, r1
+ 800cb68:	789b      	ldrb	r3, [r3, #2]
+ 800cb6a:	021b      	lsls	r3, r3, #8
+ 800cb6c:	431a      	orrs	r2, r3
+ 800cb6e:	4929      	ldr	r1, [pc, #164]	; (800cc14 <ws2812_send+0xd0>)
+ 800cb70:	693b      	ldr	r3, [r7, #16]
+ 800cb72:	009b      	lsls	r3, r3, #2
+ 800cb74:	440b      	add	r3, r1
+ 800cb76:	78db      	ldrb	r3, [r3, #3]
+ 800cb78:	4313      	orrs	r3, r2
+ 800cb7a:	607b      	str	r3, [r7, #4]
 #endif
 
 		for (int i=23; i>=0; i--)
- 800cb78:	2317      	movs	r3, #23
- 800cb7a:	60fb      	str	r3, [r7, #12]
- 800cb7c:	e019      	b.n	800cbb2 <ws2812_send+0x72>
+ 800cb7c:	2317      	movs	r3, #23
+ 800cb7e:	60fb      	str	r3, [r7, #12]
+ 800cb80:	e019      	b.n	800cbb6 <ws2812_send+0x72>
 		{
 			if (color&(1<<i))
- 800cb7e:	2201      	movs	r2, #1
- 800cb80:	68fb      	ldr	r3, [r7, #12]
- 800cb82:	fa02 f303 	lsl.w	r3, r2, r3
- 800cb86:	461a      	mov	r2, r3
- 800cb88:	687b      	ldr	r3, [r7, #4]
- 800cb8a:	4013      	ands	r3, r2
- 800cb8c:	2b00      	cmp	r3, #0
- 800cb8e:	d005      	beq.n	800cb9c <ws2812_send+0x5c>
+ 800cb82:	2201      	movs	r2, #1
+ 800cb84:	68fb      	ldr	r3, [r7, #12]
+ 800cb86:	fa02 f303 	lsl.w	r3, r2, r3
+ 800cb8a:	461a      	mov	r2, r3
+ 800cb8c:	687b      	ldr	r3, [r7, #4]
+ 800cb8e:	4013      	ands	r3, r2
+ 800cb90:	2b00      	cmp	r3, #0
+ 800cb92:	d005      	beq.n	800cba0 <ws2812_send+0x5c>
 			{
 				pwmData[indx] = 40;  // 2/3 of 60
- 800cb90:	4a20      	ldr	r2, [pc, #128]	; (800cc14 <ws2812_send+0xd4>)
- 800cb92:	697b      	ldr	r3, [r7, #20]
- 800cb94:	2128      	movs	r1, #40	; 0x28
- 800cb96:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
- 800cb9a:	e004      	b.n	800cba6 <ws2812_send+0x66>
+ 800cb94:	4a20      	ldr	r2, [pc, #128]	; (800cc18 <ws2812_send+0xd4>)
+ 800cb96:	697b      	ldr	r3, [r7, #20]
+ 800cb98:	2128      	movs	r1, #40	; 0x28
+ 800cb9a:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+ 800cb9e:	e004      	b.n	800cbaa <ws2812_send+0x66>
 			}
 
 			else pwmData[indx] = 20;  // 1/3 of 60
- 800cb9c:	4a1d      	ldr	r2, [pc, #116]	; (800cc14 <ws2812_send+0xd4>)
- 800cb9e:	697b      	ldr	r3, [r7, #20]
- 800cba0:	2114      	movs	r1, #20
- 800cba2:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+ 800cba0:	4a1d      	ldr	r2, [pc, #116]	; (800cc18 <ws2812_send+0xd4>)
+ 800cba2:	697b      	ldr	r3, [r7, #20]
+ 800cba4:	2114      	movs	r1, #20
+ 800cba6:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
 
 			indx++;
- 800cba6:	697b      	ldr	r3, [r7, #20]
- 800cba8:	3301      	adds	r3, #1
- 800cbaa:	617b      	str	r3, [r7, #20]
+ 800cbaa:	697b      	ldr	r3, [r7, #20]
+ 800cbac:	3301      	adds	r3, #1
+ 800cbae:	617b      	str	r3, [r7, #20]
 		for (int i=23; i>=0; i--)
- 800cbac:	68fb      	ldr	r3, [r7, #12]
- 800cbae:	3b01      	subs	r3, #1
- 800cbb0:	60fb      	str	r3, [r7, #12]
- 800cbb2:	68fb      	ldr	r3, [r7, #12]
- 800cbb4:	2b00      	cmp	r3, #0
- 800cbb6:	dae2      	bge.n	800cb7e <ws2812_send+0x3e>
+ 800cbb0:	68fb      	ldr	r3, [r7, #12]
+ 800cbb2:	3b01      	subs	r3, #1
+ 800cbb4:	60fb      	str	r3, [r7, #12]
+ 800cbb6:	68fb      	ldr	r3, [r7, #12]
+ 800cbb8:	2b00      	cmp	r3, #0
+ 800cbba:	dae2      	bge.n	800cb82 <ws2812_send+0x3e>
 	for (int i= 0; i<MAX_LED; i++)
- 800cbb8:	693b      	ldr	r3, [r7, #16]
- 800cbba:	3301      	adds	r3, #1
- 800cbbc:	613b      	str	r3, [r7, #16]
- 800cbbe:	693b      	ldr	r3, [r7, #16]
- 800cbc0:	2b0f      	cmp	r3, #15
- 800cbc2:	ddc5      	ble.n	800cb50 <ws2812_send+0x10>
+ 800cbbc:	693b      	ldr	r3, [r7, #16]
+ 800cbbe:	3301      	adds	r3, #1
+ 800cbc0:	613b      	str	r3, [r7, #16]
+ 800cbc2:	693b      	ldr	r3, [r7, #16]
+ 800cbc4:	2b0f      	cmp	r3, #15
+ 800cbc6:	ddc5      	ble.n	800cb54 <ws2812_send+0x10>
 		}
 
 	}
 
 	for (int i=0; i<50; i++)
- 800cbc4:	2300      	movs	r3, #0
- 800cbc6:	60bb      	str	r3, [r7, #8]
- 800cbc8:	e00a      	b.n	800cbe0 <ws2812_send+0xa0>
+ 800cbc8:	2300      	movs	r3, #0
+ 800cbca:	60bb      	str	r3, [r7, #8]
+ 800cbcc:	e00a      	b.n	800cbe4 <ws2812_send+0xa0>
 	{
 		pwmData[indx] = 0;
- 800cbca:	4a12      	ldr	r2, [pc, #72]	; (800cc14 <ws2812_send+0xd4>)
- 800cbcc:	697b      	ldr	r3, [r7, #20]
- 800cbce:	2100      	movs	r1, #0
- 800cbd0:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
+ 800cbce:	4a12      	ldr	r2, [pc, #72]	; (800cc18 <ws2812_send+0xd4>)
+ 800cbd0:	697b      	ldr	r3, [r7, #20]
+ 800cbd2:	2100      	movs	r1, #0
+ 800cbd4:	f822 1013 	strh.w	r1, [r2, r3, lsl #1]
 		indx++;
- 800cbd4:	697b      	ldr	r3, [r7, #20]
- 800cbd6:	3301      	adds	r3, #1
- 800cbd8:	617b      	str	r3, [r7, #20]
+ 800cbd8:	697b      	ldr	r3, [r7, #20]
+ 800cbda:	3301      	adds	r3, #1
+ 800cbdc:	617b      	str	r3, [r7, #20]
 	for (int i=0; i<50; i++)
- 800cbda:	68bb      	ldr	r3, [r7, #8]
- 800cbdc:	3301      	adds	r3, #1
- 800cbde:	60bb      	str	r3, [r7, #8]
- 800cbe0:	68bb      	ldr	r3, [r7, #8]
- 800cbe2:	2b31      	cmp	r3, #49	; 0x31
- 800cbe4:	ddf1      	ble.n	800cbca <ws2812_send+0x8a>
+ 800cbde:	68bb      	ldr	r3, [r7, #8]
+ 800cbe0:	3301      	adds	r3, #1
+ 800cbe2:	60bb      	str	r3, [r7, #8]
+ 800cbe4:	68bb      	ldr	r3, [r7, #8]
+ 800cbe6:	2b31      	cmp	r3, #49	; 0x31
+ 800cbe8:	ddf1      	ble.n	800cbce <ws2812_send+0x8a>
 	}
 
 	HAL_TIM_PWM_Start_DMA(ws2812_tim, WS2812_TIM_CHANNEL, (uint32_t *)pwmData, indx);
- 800cbe6:	4b0c      	ldr	r3, [pc, #48]	; (800cc18 <ws2812_send+0xd8>)
- 800cbe8:	6818      	ldr	r0, [r3, #0]
- 800cbea:	697b      	ldr	r3, [r7, #20]
- 800cbec:	b29b      	uxth	r3, r3
- 800cbee:	4a09      	ldr	r2, [pc, #36]	; (800cc14 <ws2812_send+0xd4>)
- 800cbf0:	2104      	movs	r1, #4
- 800cbf2:	f7f7 fc25 	bl	8004440 <HAL_TIM_PWM_Start_DMA>
+ 800cbea:	4b0c      	ldr	r3, [pc, #48]	; (800cc1c <ws2812_send+0xd8>)
+ 800cbec:	6818      	ldr	r0, [r3, #0]
+ 800cbee:	697b      	ldr	r3, [r7, #20]
+ 800cbf0:	b29b      	uxth	r3, r3
+ 800cbf2:	4a09      	ldr	r2, [pc, #36]	; (800cc18 <ws2812_send+0xd4>)
+ 800cbf4:	2104      	movs	r1, #4
+ 800cbf6:	f7f7 fc23 	bl	8004440 <HAL_TIM_PWM_Start_DMA>
 	while (datasentflag==0){
- 800cbf6:	bf00      	nop
- 800cbf8:	4b08      	ldr	r3, [pc, #32]	; (800cc1c <ws2812_send+0xdc>)
- 800cbfa:	781b      	ldrb	r3, [r3, #0]
- 800cbfc:	b2db      	uxtb	r3, r3
- 800cbfe:	2b00      	cmp	r3, #0
- 800cc00:	d0fa      	beq.n	800cbf8 <ws2812_send+0xb8>
+ 800cbfa:	bf00      	nop
+ 800cbfc:	4b08      	ldr	r3, [pc, #32]	; (800cc20 <ws2812_send+0xdc>)
+ 800cbfe:	781b      	ldrb	r3, [r3, #0]
+ 800cc00:	b2db      	uxtb	r3, r3
+ 800cc02:	2b00      	cmp	r3, #0
+ 800cc04:	d0fa      	beq.n	800cbfc <ws2812_send+0xb8>
 
 	};
 	datasentflag = 0;
- 800cc02:	4b06      	ldr	r3, [pc, #24]	; (800cc1c <ws2812_send+0xdc>)
- 800cc04:	2200      	movs	r2, #0
- 800cc06:	701a      	strb	r2, [r3, #0]
+ 800cc06:	4b06      	ldr	r3, [pc, #24]	; (800cc20 <ws2812_send+0xdc>)
+ 800cc08:	2200      	movs	r2, #0
+ 800cc0a:	701a      	strb	r2, [r3, #0]
 }
- 800cc08:	bf00      	nop
- 800cc0a:	3718      	adds	r7, #24
- 800cc0c:	46bd      	mov	sp, r7
- 800cc0e:	bd80      	pop	{r7, pc}
- 800cc10:	20006314 	.word	0x20006314
- 800cc14:	20006354 	.word	0x20006354
- 800cc18:	20006310 	.word	0x20006310
- 800cc1c:	2000630c 	.word	0x2000630c
+ 800cc0c:	bf00      	nop
+ 800cc0e:	3718      	adds	r7, #24
+ 800cc10:	46bd      	mov	sp, r7
+ 800cc12:	bd80      	pop	{r7, pc}
+ 800cc14:	20006314 	.word	0x20006314
+ 800cc18:	20006354 	.word	0x20006354
+ 800cc1c:	20006310 	.word	0x20006310
+ 800cc20:	2000630c 	.word	0x2000630c
 
-0800cc20 <init_distance_sensor_handler>:
+0800cc24 <init_distance_sensor_handler>:
 
 //Flag to determine what caused the interrupt Trigger or Echo-Timeout
 uint8_t TriggerFlag = 0;
 
 void init_distance_sensor_handler(distance_sensor_handler_t *handler,
 		TIM_HandleTypeDef *timer, void *isr_callback) {
- 800cc20:	b480      	push	{r7}
- 800cc22:	b085      	sub	sp, #20
- 800cc24:	af00      	add	r7, sp, #0
- 800cc26:	60f8      	str	r0, [r7, #12]
- 800cc28:	60b9      	str	r1, [r7, #8]
- 800cc2a:	607a      	str	r2, [r7, #4]
+ 800cc24:	b480      	push	{r7}
+ 800cc26:	b085      	sub	sp, #20
+ 800cc28:	af00      	add	r7, sp, #0
+ 800cc2a:	60f8      	str	r0, [r7, #12]
+ 800cc2c:	60b9      	str	r1, [r7, #8]
+ 800cc2e:	607a      	str	r2, [r7, #4]
 	handler->distance_sensors = distance_sensors;
- 800cc2c:	68fb      	ldr	r3, [r7, #12]
- 800cc2e:	4a0b      	ldr	r2, [pc, #44]	; (800cc5c <init_distance_sensor_handler+0x3c>)
- 800cc30:	605a      	str	r2, [r3, #4]
+ 800cc30:	68fb      	ldr	r3, [r7, #12]
+ 800cc32:	4a0b      	ldr	r2, [pc, #44]	; (800cc60 <init_distance_sensor_handler+0x3c>)
+ 800cc34:	605a      	str	r2, [r3, #4]
 	handler->timer = timer;
- 800cc32:	68fb      	ldr	r3, [r7, #12]
- 800cc34:	68ba      	ldr	r2, [r7, #8]
- 800cc36:	601a      	str	r2, [r3, #0]
+ 800cc36:	68fb      	ldr	r3, [r7, #12]
+ 800cc38:	68ba      	ldr	r2, [r7, #8]
+ 800cc3a:	601a      	str	r2, [r3, #0]
 	handler->num_sensors = 0;
- 800cc38:	68fb      	ldr	r3, [r7, #12]
- 800cc3a:	2200      	movs	r2, #0
- 800cc3c:	721a      	strb	r2, [r3, #8]
+ 800cc3c:	68fb      	ldr	r3, [r7, #12]
+ 800cc3e:	2200      	movs	r2, #0
+ 800cc40:	721a      	strb	r2, [r3, #8]
 	handler->isr_callback = isr_callback;
- 800cc3e:	68fb      	ldr	r3, [r7, #12]
- 800cc40:	687a      	ldr	r2, [r7, #4]
- 800cc42:	60da      	str	r2, [r3, #12]
+ 800cc42:	68fb      	ldr	r3, [r7, #12]
+ 800cc44:	687a      	ldr	r2, [r7, #4]
+ 800cc46:	60da      	str	r2, [r3, #12]
 	handler->initialized = 1;
- 800cc44:	68fb      	ldr	r3, [r7, #12]
- 800cc46:	2201      	movs	r2, #1
- 800cc48:	749a      	strb	r2, [r3, #18]
+ 800cc48:	68fb      	ldr	r3, [r7, #12]
+ 800cc4a:	2201      	movs	r2, #1
+ 800cc4c:	749a      	strb	r2, [r3, #18]
 	distance_sensor_handler_ptr = handler;
- 800cc4a:	4a05      	ldr	r2, [pc, #20]	; (800cc60 <init_distance_sensor_handler+0x40>)
- 800cc4c:	68fb      	ldr	r3, [r7, #12]
- 800cc4e:	6013      	str	r3, [r2, #0]
+ 800cc4e:	4a05      	ldr	r2, [pc, #20]	; (800cc64 <init_distance_sensor_handler+0x40>)
+ 800cc50:	68fb      	ldr	r3, [r7, #12]
+ 800cc52:	6013      	str	r3, [r2, #0]
 }
- 800cc50:	bf00      	nop
- 800cc52:	3714      	adds	r7, #20
- 800cc54:	46bd      	mov	sp, r7
- 800cc56:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800cc5a:	4770      	bx	lr
- 800cc5c:	200066bc 	.word	0x200066bc
- 800cc60:	200066cc 	.word	0x200066cc
+ 800cc54:	bf00      	nop
+ 800cc56:	3714      	adds	r7, #20
+ 800cc58:	46bd      	mov	sp, r7
+ 800cc5a:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800cc5e:	4770      	bx	lr
+ 800cc60:	200066bc 	.word	0x200066bc
+ 800cc64:	200066cc 	.word	0x200066cc
 
-0800cc64 <register_distance_sensor>:
+0800cc68 <register_distance_sensor>:
 
 void register_distance_sensor(distance_sensor_handler_t *handler,
 		distance_sensor_t *sensor) {
- 800cc64:	b480      	push	{r7}
- 800cc66:	b083      	sub	sp, #12
- 800cc68:	af00      	add	r7, sp, #0
- 800cc6a:	6078      	str	r0, [r7, #4]
- 800cc6c:	6039      	str	r1, [r7, #0]
+ 800cc68:	b480      	push	{r7}
+ 800cc6a:	b083      	sub	sp, #12
+ 800cc6c:	af00      	add	r7, sp, #0
+ 800cc6e:	6078      	str	r0, [r7, #4]
+ 800cc70:	6039      	str	r1, [r7, #0]
 	handler->num_sensors++;
- 800cc6e:	687b      	ldr	r3, [r7, #4]
- 800cc70:	7a1b      	ldrb	r3, [r3, #8]
- 800cc72:	3301      	adds	r3, #1
- 800cc74:	b2da      	uxtb	r2, r3
- 800cc76:	687b      	ldr	r3, [r7, #4]
- 800cc78:	721a      	strb	r2, [r3, #8]
-	handler->distance_sensors[handler->num_sensors - 1] = sensor;
+ 800cc72:	687b      	ldr	r3, [r7, #4]
+ 800cc74:	7a1b      	ldrb	r3, [r3, #8]
+ 800cc76:	3301      	adds	r3, #1
+ 800cc78:	b2da      	uxtb	r2, r3
  800cc7a:	687b      	ldr	r3, [r7, #4]
- 800cc7c:	685a      	ldr	r2, [r3, #4]
+ 800cc7c:	721a      	strb	r2, [r3, #8]
+	handler->distance_sensors[handler->num_sensors - 1] = sensor;
  800cc7e:	687b      	ldr	r3, [r7, #4]
- 800cc80:	7a1b      	ldrb	r3, [r3, #8]
- 800cc82:	f103 4380 	add.w	r3, r3, #1073741824	; 0x40000000
- 800cc86:	3b01      	subs	r3, #1
- 800cc88:	009b      	lsls	r3, r3, #2
- 800cc8a:	4413      	add	r3, r2
- 800cc8c:	683a      	ldr	r2, [r7, #0]
- 800cc8e:	601a      	str	r2, [r3, #0]
+ 800cc80:	685a      	ldr	r2, [r3, #4]
+ 800cc82:	687b      	ldr	r3, [r7, #4]
+ 800cc84:	7a1b      	ldrb	r3, [r3, #8]
+ 800cc86:	f103 4380 	add.w	r3, r3, #1073741824	; 0x40000000
+ 800cc8a:	3b01      	subs	r3, #1
+ 800cc8c:	009b      	lsls	r3, r3, #2
+ 800cc8e:	4413      	add	r3, r2
+ 800cc90:	683a      	ldr	r2, [r7, #0]
+ 800cc92:	601a      	str	r2, [r3, #0]
 	sensor->distance = -1;
- 800cc90:	683b      	ldr	r3, [r7, #0]
- 800cc92:	4a0a      	ldr	r2, [pc, #40]	; (800ccbc <register_distance_sensor+0x58>)
- 800cc94:	611a      	str	r2, [r3, #16]
+ 800cc94:	683b      	ldr	r3, [r7, #0]
+ 800cc96:	4a0a      	ldr	r2, [pc, #40]	; (800ccc0 <register_distance_sensor+0x58>)
+ 800cc98:	611a      	str	r2, [r3, #16]
 	sensor->overflow = 1;
- 800cc96:	683b      	ldr	r3, [r7, #0]
- 800cc98:	2201      	movs	r2, #1
- 800cc9a:	751a      	strb	r2, [r3, #20]
+ 800cc9a:	683b      	ldr	r3, [r7, #0]
+ 800cc9c:	2201      	movs	r2, #1
+ 800cc9e:	751a      	strb	r2, [r3, #20]
 	sensor->tick = 0;
- 800cc9c:	683b      	ldr	r3, [r7, #0]
- 800cc9e:	2200      	movs	r2, #0
- 800cca0:	619a      	str	r2, [r3, #24]
+ 800cca0:	683b      	ldr	r3, [r7, #0]
+ 800cca2:	2200      	movs	r2, #0
+ 800cca4:	619a      	str	r2, [r3, #24]
 	sensor->id = handler->num_sensors - 1;
- 800cca2:	687b      	ldr	r3, [r7, #4]
- 800cca4:	7a1b      	ldrb	r3, [r3, #8]
- 800cca6:	3b01      	subs	r3, #1
- 800cca8:	b2da      	uxtb	r2, r3
- 800ccaa:	683b      	ldr	r3, [r7, #0]
- 800ccac:	771a      	strb	r2, [r3, #28]
+ 800cca6:	687b      	ldr	r3, [r7, #4]
+ 800cca8:	7a1b      	ldrb	r3, [r3, #8]
+ 800ccaa:	3b01      	subs	r3, #1
+ 800ccac:	b2da      	uxtb	r2, r3
+ 800ccae:	683b      	ldr	r3, [r7, #0]
+ 800ccb0:	771a      	strb	r2, [r3, #28]
 }
- 800ccae:	bf00      	nop
- 800ccb0:	370c      	adds	r7, #12
- 800ccb2:	46bd      	mov	sp, r7
- 800ccb4:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800ccb8:	4770      	bx	lr
- 800ccba:	bf00      	nop
- 800ccbc:	bf800000 	.word	0xbf800000
+ 800ccb2:	bf00      	nop
+ 800ccb4:	370c      	adds	r7, #12
+ 800ccb6:	46bd      	mov	sp, r7
+ 800ccb8:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800ccbc:	4770      	bx	lr
+ 800ccbe:	bf00      	nop
+ 800ccc0:	bf800000 	.word	0xbf800000
 
-0800ccc0 <distance_meas_task>:
+0800ccc4 <distance_meas_task>:
 
 void distance_meas_task(distance_sensor_handler_t *handler) {
- 800ccc0:	b580      	push	{r7, lr}
- 800ccc2:	b082      	sub	sp, #8
- 800ccc4:	af00      	add	r7, sp, #0
- 800ccc6:	6078      	str	r0, [r7, #4]
+ 800ccc4:	b580      	push	{r7, lr}
+ 800ccc6:	b082      	sub	sp, #8
+ 800ccc8:	af00      	add	r7, sp, #0
+ 800ccca:	6078      	str	r0, [r7, #4]
 	//check if handler is initialized
 	if (handler->initialized != 1) {
- 800ccc8:	687b      	ldr	r3, [r7, #4]
- 800ccca:	7c9b      	ldrb	r3, [r3, #18]
- 800cccc:	2b01      	cmp	r3, #1
- 800ccce:	d126      	bne.n	800cd1e <distance_meas_task+0x5e>
+ 800cccc:	687b      	ldr	r3, [r7, #4]
+ 800ccce:	7c9b      	ldrb	r3, [r3, #18]
+ 800ccd0:	2b01      	cmp	r3, #1
+ 800ccd2:	d126      	bne.n	800cd22 <distance_meas_task+0x5e>
 		return;
 	}
 	//check if any sensors are registered
 	if (handler->num_sensors == 0) {
- 800ccd0:	687b      	ldr	r3, [r7, #4]
- 800ccd2:	7a1b      	ldrb	r3, [r3, #8]
- 800ccd4:	2b00      	cmp	r3, #0
- 800ccd6:	d024      	beq.n	800cd22 <distance_meas_task+0x62>
+ 800ccd4:	687b      	ldr	r3, [r7, #4]
+ 800ccd6:	7a1b      	ldrb	r3, [r3, #8]
+ 800ccd8:	2b00      	cmp	r3, #0
+ 800ccda:	d024      	beq.n	800cd26 <distance_meas_task+0x62>
 		return;
 	}
 
 	while (1) {
 		// Start the measurement for the current sensor
 		if (handler->current_sensor > (handler->num_sensors - 1)) {
- 800ccd8:	687b      	ldr	r3, [r7, #4]
- 800ccda:	7a1a      	ldrb	r2, [r3, #8]
  800ccdc:	687b      	ldr	r3, [r7, #4]
- 800ccde:	7a5b      	ldrb	r3, [r3, #9]
- 800cce0:	429a      	cmp	r2, r3
- 800cce2:	d802      	bhi.n	800ccea <distance_meas_task+0x2a>
+ 800ccde:	7a1a      	ldrb	r2, [r3, #8]
+ 800cce0:	687b      	ldr	r3, [r7, #4]
+ 800cce2:	7a5b      	ldrb	r3, [r3, #9]
+ 800cce4:	429a      	cmp	r2, r3
+ 800cce6:	d802      	bhi.n	800ccee <distance_meas_task+0x2a>
 			handler->current_sensor = 0;
- 800cce4:	687b      	ldr	r3, [r7, #4]
- 800cce6:	2200      	movs	r2, #0
- 800cce8:	725a      	strb	r2, [r3, #9]
+ 800cce8:	687b      	ldr	r3, [r7, #4]
+ 800ccea:	2200      	movs	r2, #0
+ 800ccec:	725a      	strb	r2, [r3, #9]
 		}
 		start_distance_measure(handler, handler->current_sensor);
- 800ccea:	687b      	ldr	r3, [r7, #4]
- 800ccec:	7a5b      	ldrb	r3, [r3, #9]
- 800ccee:	4619      	mov	r1, r3
- 800ccf0:	6878      	ldr	r0, [r7, #4]
- 800ccf2:	f000 f81d 	bl	800cd30 <start_distance_measure>
+ 800ccee:	687b      	ldr	r3, [r7, #4]
+ 800ccf0:	7a5b      	ldrb	r3, [r3, #9]
+ 800ccf2:	4619      	mov	r1, r3
+ 800ccf4:	6878      	ldr	r0, [r7, #4]
+ 800ccf6:	f000 f81d 	bl	800cd34 <start_distance_measure>
 		//wait for EXTI from Echo (measurement completed) and afterwards change to next Sensor
 		while (RunVar == 0) {
- 800ccf6:	bf00      	nop
- 800ccf8:	4b0c      	ldr	r3, [pc, #48]	; (800cd2c <distance_meas_task+0x6c>)
- 800ccfa:	781b      	ldrb	r3, [r3, #0]
- 800ccfc:	2b00      	cmp	r3, #0
- 800ccfe:	d0fb      	beq.n	800ccf8 <distance_meas_task+0x38>
+ 800ccfa:	bf00      	nop
+ 800ccfc:	4b0c      	ldr	r3, [pc, #48]	; (800cd30 <distance_meas_task+0x6c>)
+ 800ccfe:	781b      	ldrb	r3, [r3, #0]
+ 800cd00:	2b00      	cmp	r3, #0
+ 800cd02:	d0fb      	beq.n	800ccfc <distance_meas_task+0x38>
 		}
 		RunVar = 0;
- 800cd00:	4b0a      	ldr	r3, [pc, #40]	; (800cd2c <distance_meas_task+0x6c>)
- 800cd02:	2200      	movs	r2, #0
- 800cd04:	701a      	strb	r2, [r3, #0]
+ 800cd04:	4b0a      	ldr	r3, [pc, #40]	; (800cd30 <distance_meas_task+0x6c>)
+ 800cd06:	2200      	movs	r2, #0
+ 800cd08:	701a      	strb	r2, [r3, #0]
 		handler->current_sensor++;
- 800cd06:	687b      	ldr	r3, [r7, #4]
- 800cd08:	7a5b      	ldrb	r3, [r3, #9]
- 800cd0a:	3301      	adds	r3, #1
- 800cd0c:	b2da      	uxtb	r2, r3
- 800cd0e:	687b      	ldr	r3, [r7, #4]
- 800cd10:	725a      	strb	r2, [r3, #9]
-		osDelay(handler->meas_freq);
+ 800cd0a:	687b      	ldr	r3, [r7, #4]
+ 800cd0c:	7a5b      	ldrb	r3, [r3, #9]
+ 800cd0e:	3301      	adds	r3, #1
+ 800cd10:	b2da      	uxtb	r2, r3
  800cd12:	687b      	ldr	r3, [r7, #4]
- 800cd14:	8a1b      	ldrh	r3, [r3, #16]
- 800cd16:	4618      	mov	r0, r3
- 800cd18:	f7fc fa20 	bl	800915c <osDelay>
+ 800cd14:	725a      	strb	r2, [r3, #9]
+		osDelay(handler->meas_freq);
+ 800cd16:	687b      	ldr	r3, [r7, #4]
+ 800cd18:	8a1b      	ldrh	r3, [r3, #16]
+ 800cd1a:	4618      	mov	r0, r3
+ 800cd1c:	f7fc fa1e 	bl	800915c <osDelay>
 		if (handler->current_sensor > (handler->num_sensors - 1)) {
- 800cd1c:	e7dc      	b.n	800ccd8 <distance_meas_task+0x18>
-		return;
- 800cd1e:	bf00      	nop
- 800cd20:	e000      	b.n	800cd24 <distance_meas_task+0x64>
+ 800cd20:	e7dc      	b.n	800ccdc <distance_meas_task+0x18>
 		return;
  800cd22:	bf00      	nop
+ 800cd24:	e000      	b.n	800cd28 <distance_meas_task+0x64>
+		return;
+ 800cd26:	bf00      	nop
 
 	}
 }
- 800cd24:	3708      	adds	r7, #8
- 800cd26:	46bd      	mov	sp, r7
- 800cd28:	bd80      	pop	{r7, pc}
- 800cd2a:	bf00      	nop
- 800cd2c:	200066d4 	.word	0x200066d4
+ 800cd28:	3708      	adds	r7, #8
+ 800cd2a:	46bd      	mov	sp, r7
+ 800cd2c:	bd80      	pop	{r7, pc}
+ 800cd2e:	bf00      	nop
+ 800cd30:	200066d4 	.word	0x200066d4
 
-0800cd30 <start_distance_measure>:
+0800cd34 <start_distance_measure>:
 
 void start_distance_measure(distance_sensor_handler_t *handler,
 		uint8_t sensor_id) {
- 800cd30:	b580      	push	{r7, lr}
- 800cd32:	b082      	sub	sp, #8
- 800cd34:	af00      	add	r7, sp, #0
- 800cd36:	6078      	str	r0, [r7, #4]
- 800cd38:	460b      	mov	r3, r1
- 800cd3a:	70fb      	strb	r3, [r7, #3]
+ 800cd34:	b580      	push	{r7, lr}
+ 800cd36:	b082      	sub	sp, #8
+ 800cd38:	af00      	add	r7, sp, #0
+ 800cd3a:	6078      	str	r0, [r7, #4]
+ 800cd3c:	460b      	mov	r3, r1
+ 800cd3e:	70fb      	strb	r3, [r7, #3]
 
 	//activate Interrupts
 	InterruptReady = 1;
- 800cd3c:	4b16      	ldr	r3, [pc, #88]	; (800cd98 <start_distance_measure+0x68>)
- 800cd3e:	2201      	movs	r2, #1
- 800cd40:	701a      	strb	r2, [r3, #0]
+ 800cd40:	4b17      	ldr	r3, [pc, #92]	; (800cda0 <start_distance_measure+0x6c>)
+ 800cd42:	2201      	movs	r2, #1
+ 800cd44:	701a      	strb	r2, [r3, #0]
 
 	//pointer to current sensor for EXTI callback function
 	current_sensor_ptr = handler->distance_sensors[sensor_id];
- 800cd42:	687b      	ldr	r3, [r7, #4]
- 800cd44:	685a      	ldr	r2, [r3, #4]
- 800cd46:	78fb      	ldrb	r3, [r7, #3]
- 800cd48:	009b      	lsls	r3, r3, #2
- 800cd4a:	4413      	add	r3, r2
- 800cd4c:	681b      	ldr	r3, [r3, #0]
- 800cd4e:	4a13      	ldr	r2, [pc, #76]	; (800cd9c <start_distance_measure+0x6c>)
- 800cd50:	6013      	str	r3, [r2, #0]
+ 800cd46:	687b      	ldr	r3, [r7, #4]
+ 800cd48:	685a      	ldr	r2, [r3, #4]
+ 800cd4a:	78fb      	ldrb	r3, [r7, #3]
+ 800cd4c:	009b      	lsls	r3, r3, #2
+ 800cd4e:	4413      	add	r3, r2
+ 800cd50:	681b      	ldr	r3, [r3, #0]
+ 800cd52:	4a14      	ldr	r2, [pc, #80]	; (800cda4 <start_distance_measure+0x70>)
+ 800cd54:	6013      	str	r3, [r2, #0]
 
 	//Set Counter of timer to 1 -> triggers in ~10ys
-	__HAL_TIM_SET_COUNTER(&*handler->timer, 1);
- 800cd52:	687b      	ldr	r3, [r7, #4]
- 800cd54:	681b      	ldr	r3, [r3, #0]
- 800cd56:	681b      	ldr	r3, [r3, #0]
- 800cd58:	2201      	movs	r2, #1
- 800cd5a:	625a      	str	r2, [r3, #36]	; 0x24
+	__HAL_TIM_SET_COUNTER(handler->timer, 1);
+ 800cd56:	687b      	ldr	r3, [r7, #4]
+ 800cd58:	681b      	ldr	r3, [r3, #0]
+ 800cd5a:	681b      	ldr	r3, [r3, #0]
+ 800cd5c:	2201      	movs	r2, #1
+ 800cd5e:	625a      	str	r2, [r3, #36]	; 0x24
 
 	// Start the timer
-	HAL_TIM_Base_Start_IT(&*handler->timer);
- 800cd5c:	687b      	ldr	r3, [r7, #4]
- 800cd5e:	681b      	ldr	r3, [r3, #0]
- 800cd60:	4618      	mov	r0, r3
- 800cd62:	f7f7 fab1 	bl	80042c8 <HAL_TIM_Base_Start_IT>
+	HAL_TIM_Base_Start_IT(handler->timer);
+ 800cd60:	687b      	ldr	r3, [r7, #4]
+ 800cd62:	681b      	ldr	r3, [r3, #0]
+ 800cd64:	4618      	mov	r0, r3
+ 800cd66:	f7f7 faaf 	bl	80042c8 <HAL_TIM_Base_Start_IT>
 
 	//Generate trigger Pulse for at least 10us -> Counter Period = 1sec*CPU Clockspeed[MHZ] / Total prescaler-value
 	HAL_GPIO_WritePin(
 			handler->distance_sensors[handler->current_sensor]->trig_port,
- 800cd66:	687b      	ldr	r3, [r7, #4]
- 800cd68:	685a      	ldr	r2, [r3, #4]
  800cd6a:	687b      	ldr	r3, [r7, #4]
- 800cd6c:	7a5b      	ldrb	r3, [r3, #9]
- 800cd6e:	009b      	lsls	r3, r3, #2
- 800cd70:	4413      	add	r3, r2
- 800cd72:	681b      	ldr	r3, [r3, #0]
+ 800cd6c:	685a      	ldr	r2, [r3, #4]
+ 800cd6e:	687b      	ldr	r3, [r7, #4]
+ 800cd70:	7a5b      	ldrb	r3, [r3, #9]
+ 800cd72:	009b      	lsls	r3, r3, #2
+ 800cd74:	4413      	add	r3, r2
+ 800cd76:	681b      	ldr	r3, [r3, #0]
 	HAL_GPIO_WritePin(
- 800cd74:	6898      	ldr	r0, [r3, #8]
+ 800cd78:	6898      	ldr	r0, [r3, #8]
 			handler->distance_sensors[handler->current_sensor]->trig_pin, 1);
- 800cd76:	687b      	ldr	r3, [r7, #4]
- 800cd78:	685a      	ldr	r2, [r3, #4]
  800cd7a:	687b      	ldr	r3, [r7, #4]
- 800cd7c:	7a5b      	ldrb	r3, [r3, #9]
- 800cd7e:	009b      	lsls	r3, r3, #2
- 800cd80:	4413      	add	r3, r2
- 800cd82:	681b      	ldr	r3, [r3, #0]
+ 800cd7c:	685a      	ldr	r2, [r3, #4]
+ 800cd7e:	687b      	ldr	r3, [r7, #4]
+ 800cd80:	7a5b      	ldrb	r3, [r3, #9]
+ 800cd82:	009b      	lsls	r3, r3, #2
+ 800cd84:	4413      	add	r3, r2
+ 800cd86:	681b      	ldr	r3, [r3, #0]
 	HAL_GPIO_WritePin(
- 800cd84:	899b      	ldrh	r3, [r3, #12]
- 800cd86:	2201      	movs	r2, #1
- 800cd88:	4619      	mov	r1, r3
- 800cd8a:	f7f5 fa8b 	bl	80022a4 <HAL_GPIO_WritePin>
+ 800cd88:	899b      	ldrh	r3, [r3, #12]
+ 800cd8a:	2201      	movs	r2, #1
+ 800cd8c:	4619      	mov	r1, r3
+ 800cd8e:	f7f5 fa89 	bl	80022a4 <HAL_GPIO_WritePin>
+	TriggerFlag = 1;
+ 800cd92:	4b05      	ldr	r3, [pc, #20]	; (800cda8 <start_distance_measure+0x74>)
+ 800cd94:	2201      	movs	r2, #1
+ 800cd96:	701a      	strb	r2, [r3, #0]
 
 }
- 800cd8e:	bf00      	nop
- 800cd90:	3708      	adds	r7, #8
- 800cd92:	46bd      	mov	sp, r7
- 800cd94:	bd80      	pop	{r7, pc}
- 800cd96:	bf00      	nop
- 800cd98:	200066d5 	.word	0x200066d5
- 800cd9c:	200066d0 	.word	0x200066d0
+ 800cd98:	bf00      	nop
+ 800cd9a:	3708      	adds	r7, #8
+ 800cd9c:	46bd      	mov	sp, r7
+ 800cd9e:	bd80      	pop	{r7, pc}
+ 800cda0:	200066d5 	.word	0x200066d5
+ 800cda4:	200066d0 	.word	0x200066d0
+ 800cda8:	200066d6 	.word	0x200066d6
+ 800cdac:	00000000 	.word	0x00000000
 
-0800cda0 <HAL_GPIO_EXTI_Callback>:
+0800cdb0 <HAL_GPIO_EXTI_Callback>:
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
- 800cda0:	b580      	push	{r7, lr}
- 800cda2:	b084      	sub	sp, #16
- 800cda4:	af00      	add	r7, sp, #0
- 800cda6:	4603      	mov	r3, r0
- 800cda8:	80fb      	strh	r3, [r7, #6]
+ 800cdb0:	b580      	push	{r7, lr}
+ 800cdb2:	b084      	sub	sp, #16
+ 800cdb4:	af00      	add	r7, sp, #0
+ 800cdb6:	4603      	mov	r3, r0
+ 800cdb8:	80fb      	strh	r3, [r7, #6]
 
 	//tell interrupt it is caused by the echo function
 	TriggerFlag = 0;
- 800cdaa:	4b37      	ldr	r3, [pc, #220]	; (800ce88 <HAL_GPIO_EXTI_Callback+0xe8>)
- 800cdac:	2200      	movs	r2, #0
- 800cdae:	701a      	strb	r2, [r3, #0]
+ 800cdba:	4b35      	ldr	r3, [pc, #212]	; (800ce90 <HAL_GPIO_EXTI_Callback+0xe0>)
+ 800cdbc:	2200      	movs	r2, #0
+ 800cdbe:	701a      	strb	r2, [r3, #0]
 	if (InterruptReady) {
- 800cdb0:	4b36      	ldr	r3, [pc, #216]	; (800ce8c <HAL_GPIO_EXTI_Callback+0xec>)
- 800cdb2:	781b      	ldrb	r3, [r3, #0]
- 800cdb4:	2b00      	cmp	r3, #0
- 800cdb6:	d05a      	beq.n	800ce6e <HAL_GPIO_EXTI_Callback+0xce>
+ 800cdc0:	4b34      	ldr	r3, [pc, #208]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xe4>)
+ 800cdc2:	781b      	ldrb	r3, [r3, #0]
+ 800cdc4:	2b00      	cmp	r3, #0
+ 800cdc6:	d05a      	beq.n	800ce7e <HAL_GPIO_EXTI_Callback+0xce>
 		//Interrupt rising edge -> start Timer
 		if (HAL_GPIO_ReadPin(current_sensor_ptr->echo_port,
- 800cdb8:	4b35      	ldr	r3, [pc, #212]	; (800ce90 <HAL_GPIO_EXTI_Callback+0xf0>)
- 800cdba:	681b      	ldr	r3, [r3, #0]
- 800cdbc:	681a      	ldr	r2, [r3, #0]
+ 800cdc8:	4b33      	ldr	r3, [pc, #204]	; (800ce98 <HAL_GPIO_EXTI_Callback+0xe8>)
+ 800cdca:	681b      	ldr	r3, [r3, #0]
+ 800cdcc:	681a      	ldr	r2, [r3, #0]
 				current_sensor_ptr->echo_pin)) {
- 800cdbe:	4b34      	ldr	r3, [pc, #208]	; (800ce90 <HAL_GPIO_EXTI_Callback+0xf0>)
- 800cdc0:	681b      	ldr	r3, [r3, #0]
+ 800cdce:	4b32      	ldr	r3, [pc, #200]	; (800ce98 <HAL_GPIO_EXTI_Callback+0xe8>)
+ 800cdd0:	681b      	ldr	r3, [r3, #0]
 		if (HAL_GPIO_ReadPin(current_sensor_ptr->echo_port,
- 800cdc2:	889b      	ldrh	r3, [r3, #4]
- 800cdc4:	4619      	mov	r1, r3
- 800cdc6:	4610      	mov	r0, r2
- 800cdc8:	f7f5 fa54 	bl	8002274 <HAL_GPIO_ReadPin>
- 800cdcc:	4603      	mov	r3, r0
- 800cdce:	2b00      	cmp	r3, #0
- 800cdd0:	d00c      	beq.n	800cdec <HAL_GPIO_EXTI_Callback+0x4c>
+ 800cdd2:	889b      	ldrh	r3, [r3, #4]
+ 800cdd4:	4619      	mov	r1, r3
+ 800cdd6:	4610      	mov	r0, r2
+ 800cdd8:	f7f5 fa4c 	bl	8002274 <HAL_GPIO_ReadPin>
+ 800cddc:	4603      	mov	r3, r0
+ 800cdde:	2b00      	cmp	r3, #0
+ 800cde0:	d00c      	beq.n	800cdfc <HAL_GPIO_EXTI_Callback+0x4c>
 			// Start the timer
 			__HAL_TIM_SET_COUNTER(&*distance_sensor_handler_ptr->timer, 0);
- 800cdd2:	4b30      	ldr	r3, [pc, #192]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800cdd4:	681b      	ldr	r3, [r3, #0]
- 800cdd6:	681b      	ldr	r3, [r3, #0]
- 800cdd8:	681b      	ldr	r3, [r3, #0]
- 800cdda:	2200      	movs	r2, #0
- 800cddc:	625a      	str	r2, [r3, #36]	; 0x24
+ 800cde2:	4b2e      	ldr	r3, [pc, #184]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800cde4:	681b      	ldr	r3, [r3, #0]
+ 800cde6:	681b      	ldr	r3, [r3, #0]
+ 800cde8:	681b      	ldr	r3, [r3, #0]
+ 800cdea:	2200      	movs	r2, #0
+ 800cdec:	625a      	str	r2, [r3, #36]	; 0x24
 			HAL_TIM_Base_Start(&*distance_sensor_handler_ptr->timer);
- 800cdde:	4b2d      	ldr	r3, [pc, #180]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800cde0:	681b      	ldr	r3, [r3, #0]
- 800cde2:	681b      	ldr	r3, [r3, #0]
- 800cde4:	4618      	mov	r0, r3
- 800cde6:	f7f7 f9ed 	bl	80041c4 <HAL_TIM_Base_Start>
- 800cdea:	e040      	b.n	800ce6e <HAL_GPIO_EXTI_Callback+0xce>
-		}
-		//Interrupt falling edge -> stop Timer
-		else {
-			//Stop the timer
-			HAL_TIM_Base_Stop(&*distance_sensor_handler_ptr->timer);
- 800cdec:	4b29      	ldr	r3, [pc, #164]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800cdee:	681b      	ldr	r3, [r3, #0]
+ 800cdee:	4b2b      	ldr	r3, [pc, #172]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
  800cdf0:	681b      	ldr	r3, [r3, #0]
- 800cdf2:	4618      	mov	r0, r3
- 800cdf4:	f7f7 fa40 	bl	8004278 <HAL_TIM_Base_Stop>
-
-			//detect how many ticks during Echo (timer counter mode: down): Timer_Period - Timer_Counter
-			uint32_t tick = (uint32_t) (distance_sensor_timer->Init.Period)
- 800cdf8:	4b27      	ldr	r3, [pc, #156]	; (800ce98 <HAL_GPIO_EXTI_Callback+0xf8>)
- 800cdfa:	681b      	ldr	r3, [r3, #0]
- 800cdfc:	68da      	ldr	r2, [r3, #12]
-					- __HAL_TIM_GET_COUNTER(
- 800cdfe:	4b25      	ldr	r3, [pc, #148]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800ce00:	681b      	ldr	r3, [r3, #0]
- 800ce02:	681b      	ldr	r3, [r3, #0]
- 800ce04:	681b      	ldr	r3, [r3, #0]
- 800ce06:	6a5b      	ldr	r3, [r3, #36]	; 0x24
-			uint32_t tick = (uint32_t) (distance_sensor_timer->Init.Period)
- 800ce08:	1ad3      	subs	r3, r2, r3
- 800ce0a:	60fb      	str	r3, [r7, #12]
-							&*distance_sensor_handler_ptr->timer);
-
-			//calculate elapsed time during Echo
-			time_elapsed = tick / TIMER_FREQUENCY;
- 800ce0c:	68f8      	ldr	r0, [r7, #12]
- 800ce0e:	f7f3 fb29 	bl	8000464 <__aeabi_ui2d>
- 800ce12:	a31b      	add	r3, pc, #108	; (adr r3, 800ce80 <HAL_GPIO_EXTI_Callback+0xe0>)
- 800ce14:	e9d3 2300 	ldrd	r2, r3, [r3]
- 800ce18:	f7f3 fcc8 	bl	80007ac <__aeabi_ddiv>
- 800ce1c:	4602      	mov	r2, r0
- 800ce1e:	460b      	mov	r3, r1
- 800ce20:	4610      	mov	r0, r2
- 800ce22:	4619      	mov	r1, r3
- 800ce24:	f7f3 fdaa 	bl	800097c <__aeabi_d2f>
- 800ce28:	4603      	mov	r3, r0
- 800ce2a:	4a1c      	ldr	r2, [pc, #112]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xfc>)
- 800ce2c:	6013      	str	r3, [r2, #0]
-			//write distance value to current sensor
-			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
-					0.5 * 343.5 * time_elapsed;
- 800ce2e:	4b1b      	ldr	r3, [pc, #108]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xfc>)
- 800ce30:	edd3 7a00 	vldr	s15, [r3]
-			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
- 800ce34:	4b17      	ldr	r3, [pc, #92]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800ce36:	681b      	ldr	r3, [r3, #0]
- 800ce38:	685a      	ldr	r2, [r3, #4]
- 800ce3a:	4b16      	ldr	r3, [pc, #88]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800ce3c:	681b      	ldr	r3, [r3, #0]
- 800ce3e:	7a5b      	ldrb	r3, [r3, #9]
- 800ce40:	009b      	lsls	r3, r3, #2
- 800ce42:	4413      	add	r3, r2
- 800ce44:	681b      	ldr	r3, [r3, #0]
-					0.5 * 343.5 * time_elapsed;
- 800ce46:	ed9f 7a16 	vldr	s14, [pc, #88]	; 800cea0 <HAL_GPIO_EXTI_Callback+0x100>
- 800ce4a:	ee67 7a87 	vmul.f32	s15, s15, s14
-			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
- 800ce4e:	edc3 7a04 	vstr	s15, [r3, #16]
-			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->overflow =
- 800ce52:	4b10      	ldr	r3, [pc, #64]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800ce54:	681b      	ldr	r3, [r3, #0]
- 800ce56:	685a      	ldr	r2, [r3, #4]
- 800ce58:	4b0e      	ldr	r3, [pc, #56]	; (800ce94 <HAL_GPIO_EXTI_Callback+0xf4>)
- 800ce5a:	681b      	ldr	r3, [r3, #0]
- 800ce5c:	7a5b      	ldrb	r3, [r3, #9]
- 800ce5e:	009b      	lsls	r3, r3, #2
- 800ce60:	4413      	add	r3, r2
- 800ce62:	681b      	ldr	r3, [r3, #0]
- 800ce64:	2200      	movs	r2, #0
- 800ce66:	751a      	strb	r2, [r3, #20]
-					0;
-
-			//enable next Trigger-Pulse
+ 800cdf2:	681b      	ldr	r3, [r3, #0]
+ 800cdf4:	4618      	mov	r0, r3
+ 800cdf6:	f7f7 f9e5 	bl	80041c4 <HAL_TIM_Base_Start>
 			RunVar = 1;
- 800ce68:	4b0e      	ldr	r3, [pc, #56]	; (800cea4 <HAL_GPIO_EXTI_Callback+0x104>)
- 800ce6a:	2201      	movs	r2, #1
- 800ce6c:	701a      	strb	r2, [r3, #0]
 		}
 	}
 	//Interrupt is caused by SensorTrigger to put Trigger Signal to low again
-	TriggerFlag = 1;
- 800ce6e:	4b06      	ldr	r3, [pc, #24]	; (800ce88 <HAL_GPIO_EXTI_Callback+0xe8>)
- 800ce70:	2201      	movs	r2, #1
- 800ce72:	701a      	strb	r2, [r3, #0]
+//	TriggerFlag = 1;
 }
- 800ce74:	bf00      	nop
- 800ce76:	3710      	adds	r7, #16
- 800ce78:	46bd      	mov	sp, r7
- 800ce7a:	bd80      	pop	{r7, pc}
- 800ce7c:	f3af 8000 	nop.w
- 800ce80:	00000000 	.word	0x00000000
- 800ce84:	41086a00 	.word	0x41086a00
- 800ce88:	200066d6 	.word	0x200066d6
- 800ce8c:	200066d5 	.word	0x200066d5
- 800ce90:	200066d0 	.word	0x200066d0
- 800ce94:	200066cc 	.word	0x200066cc
- 800ce98:	200062b4 	.word	0x200062b4
- 800ce9c:	200066b8 	.word	0x200066b8
- 800cea0:	432bc000 	.word	0x432bc000
- 800cea4:	200066d4 	.word	0x200066d4
+ 800cdfa:	e040      	b.n	800ce7e <HAL_GPIO_EXTI_Callback+0xce>
+			HAL_TIM_Base_Stop(&*distance_sensor_handler_ptr->timer);
+ 800cdfc:	4b27      	ldr	r3, [pc, #156]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800cdfe:	681b      	ldr	r3, [r3, #0]
+ 800ce00:	681b      	ldr	r3, [r3, #0]
+ 800ce02:	4618      	mov	r0, r3
+ 800ce04:	f7f7 fa38 	bl	8004278 <HAL_TIM_Base_Stop>
+			uint32_t tick = (uint32_t) (distance_sensor_timer->Init.Period)
+ 800ce08:	4b25      	ldr	r3, [pc, #148]	; (800cea0 <HAL_GPIO_EXTI_Callback+0xf0>)
+ 800ce0a:	681b      	ldr	r3, [r3, #0]
+ 800ce0c:	68da      	ldr	r2, [r3, #12]
+					- __HAL_TIM_GET_COUNTER(
+ 800ce0e:	4b23      	ldr	r3, [pc, #140]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800ce10:	681b      	ldr	r3, [r3, #0]
+ 800ce12:	681b      	ldr	r3, [r3, #0]
+ 800ce14:	681b      	ldr	r3, [r3, #0]
+ 800ce16:	6a5b      	ldr	r3, [r3, #36]	; 0x24
+			uint32_t tick = (uint32_t) (distance_sensor_timer->Init.Period)
+ 800ce18:	1ad3      	subs	r3, r2, r3
+ 800ce1a:	60fb      	str	r3, [r7, #12]
+			time_elapsed = tick / TIMER_FREQUENCY;
+ 800ce1c:	68f8      	ldr	r0, [r7, #12]
+ 800ce1e:	f7f3 fb21 	bl	8000464 <__aeabi_ui2d>
+ 800ce22:	a319      	add	r3, pc, #100	; (adr r3, 800ce88 <HAL_GPIO_EXTI_Callback+0xd8>)
+ 800ce24:	e9d3 2300 	ldrd	r2, r3, [r3]
+ 800ce28:	f7f3 fcc0 	bl	80007ac <__aeabi_ddiv>
+ 800ce2c:	4602      	mov	r2, r0
+ 800ce2e:	460b      	mov	r3, r1
+ 800ce30:	4610      	mov	r0, r2
+ 800ce32:	4619      	mov	r1, r3
+ 800ce34:	f7f3 fda2 	bl	800097c <__aeabi_d2f>
+ 800ce38:	4603      	mov	r3, r0
+ 800ce3a:	4a1a      	ldr	r2, [pc, #104]	; (800cea4 <HAL_GPIO_EXTI_Callback+0xf4>)
+ 800ce3c:	6013      	str	r3, [r2, #0]
+					0.5 * 343.5 * time_elapsed;
+ 800ce3e:	4b19      	ldr	r3, [pc, #100]	; (800cea4 <HAL_GPIO_EXTI_Callback+0xf4>)
+ 800ce40:	edd3 7a00 	vldr	s15, [r3]
+			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
+ 800ce44:	4b15      	ldr	r3, [pc, #84]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800ce46:	681b      	ldr	r3, [r3, #0]
+ 800ce48:	685a      	ldr	r2, [r3, #4]
+ 800ce4a:	4b14      	ldr	r3, [pc, #80]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800ce4c:	681b      	ldr	r3, [r3, #0]
+ 800ce4e:	7a5b      	ldrb	r3, [r3, #9]
+ 800ce50:	009b      	lsls	r3, r3, #2
+ 800ce52:	4413      	add	r3, r2
+ 800ce54:	681b      	ldr	r3, [r3, #0]
+					0.5 * 343.5 * time_elapsed;
+ 800ce56:	ed9f 7a14 	vldr	s14, [pc, #80]	; 800cea8 <HAL_GPIO_EXTI_Callback+0xf8>
+ 800ce5a:	ee67 7a87 	vmul.f32	s15, s15, s14
+			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
+ 800ce5e:	edc3 7a04 	vstr	s15, [r3, #16]
+			distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->overflow =
+ 800ce62:	4b0e      	ldr	r3, [pc, #56]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800ce64:	681b      	ldr	r3, [r3, #0]
+ 800ce66:	685a      	ldr	r2, [r3, #4]
+ 800ce68:	4b0c      	ldr	r3, [pc, #48]	; (800ce9c <HAL_GPIO_EXTI_Callback+0xec>)
+ 800ce6a:	681b      	ldr	r3, [r3, #0]
+ 800ce6c:	7a5b      	ldrb	r3, [r3, #9]
+ 800ce6e:	009b      	lsls	r3, r3, #2
+ 800ce70:	4413      	add	r3, r2
+ 800ce72:	681b      	ldr	r3, [r3, #0]
+ 800ce74:	2200      	movs	r2, #0
+ 800ce76:	751a      	strb	r2, [r3, #20]
+			RunVar = 1;
+ 800ce78:	4b0c      	ldr	r3, [pc, #48]	; (800ceac <HAL_GPIO_EXTI_Callback+0xfc>)
+ 800ce7a:	2201      	movs	r2, #1
+ 800ce7c:	701a      	strb	r2, [r3, #0]
+}
+ 800ce7e:	bf00      	nop
+ 800ce80:	3710      	adds	r7, #16
+ 800ce82:	46bd      	mov	sp, r7
+ 800ce84:	bd80      	pop	{r7, pc}
+ 800ce86:	bf00      	nop
+ 800ce88:	00000000 	.word	0x00000000
+ 800ce8c:	41086a00 	.word	0x41086a00
+ 800ce90:	200066d6 	.word	0x200066d6
+ 800ce94:	200066d5 	.word	0x200066d5
+ 800ce98:	200066d0 	.word	0x200066d0
+ 800ce9c:	200066cc 	.word	0x200066cc
+ 800cea0:	200062b4 	.word	0x200062b4
+ 800cea4:	200066b8 	.word	0x200066b8
+ 800cea8:	432bc000 	.word	0x432bc000
+ 800ceac:	200066d4 	.word	0x200066d4
 
-0800cea8 <sensor_timeout>:
+0800ceb0 <sensor_timeout>:
 
 void sensor_timeout() {
- 800cea8:	b480      	push	{r7}
- 800ceaa:	af00      	add	r7, sp, #0
+ 800ceb0:	b480      	push	{r7}
+ 800ceb2:	af00      	add	r7, sp, #0
 	//Distance Sensor Timeout: Distance of current Sensor = -1
 	distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->distance =
- 800ceac:	4b0d      	ldr	r3, [pc, #52]	; (800cee4 <sensor_timeout+0x3c>)
- 800ceae:	681b      	ldr	r3, [r3, #0]
- 800ceb0:	685a      	ldr	r2, [r3, #4]
- 800ceb2:	4b0c      	ldr	r3, [pc, #48]	; (800cee4 <sensor_timeout+0x3c>)
- 800ceb4:	681b      	ldr	r3, [r3, #0]
- 800ceb6:	7a5b      	ldrb	r3, [r3, #9]
- 800ceb8:	009b      	lsls	r3, r3, #2
- 800ceba:	4413      	add	r3, r2
+ 800ceb4:	4b0e      	ldr	r3, [pc, #56]	; (800cef0 <sensor_timeout+0x40>)
+ 800ceb6:	681b      	ldr	r3, [r3, #0]
+ 800ceb8:	685a      	ldr	r2, [r3, #4]
+ 800ceba:	4b0d      	ldr	r3, [pc, #52]	; (800cef0 <sensor_timeout+0x40>)
  800cebc:	681b      	ldr	r3, [r3, #0]
- 800cebe:	4a0a      	ldr	r2, [pc, #40]	; (800cee8 <sensor_timeout+0x40>)
- 800cec0:	611a      	str	r2, [r3, #16]
+ 800cebe:	7a5b      	ldrb	r3, [r3, #9]
+ 800cec0:	009b      	lsls	r3, r3, #2
+ 800cec2:	4413      	add	r3, r2
+ 800cec4:	681b      	ldr	r3, [r3, #0]
+ 800cec6:	4a0b      	ldr	r2, [pc, #44]	; (800cef4 <sensor_timeout+0x44>)
+ 800cec8:	611a      	str	r2, [r3, #16]
 			-1;
 	distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->overflow =
- 800cec2:	4b08      	ldr	r3, [pc, #32]	; (800cee4 <sensor_timeout+0x3c>)
- 800cec4:	681b      	ldr	r3, [r3, #0]
- 800cec6:	685a      	ldr	r2, [r3, #4]
- 800cec8:	4b06      	ldr	r3, [pc, #24]	; (800cee4 <sensor_timeout+0x3c>)
- 800ceca:	681b      	ldr	r3, [r3, #0]
- 800cecc:	7a5b      	ldrb	r3, [r3, #9]
- 800cece:	009b      	lsls	r3, r3, #2
- 800ced0:	4413      	add	r3, r2
+ 800ceca:	4b09      	ldr	r3, [pc, #36]	; (800cef0 <sensor_timeout+0x40>)
+ 800cecc:	681b      	ldr	r3, [r3, #0]
+ 800cece:	685a      	ldr	r2, [r3, #4]
+ 800ced0:	4b07      	ldr	r3, [pc, #28]	; (800cef0 <sensor_timeout+0x40>)
  800ced2:	681b      	ldr	r3, [r3, #0]
- 800ced4:	2201      	movs	r2, #1
- 800ced6:	751a      	strb	r2, [r3, #20]
+ 800ced4:	7a5b      	ldrb	r3, [r3, #9]
+ 800ced6:	009b      	lsls	r3, r3, #2
+ 800ced8:	4413      	add	r3, r2
+ 800ceda:	681b      	ldr	r3, [r3, #0]
+ 800cedc:	2201      	movs	r2, #1
+ 800cede:	751a      	strb	r2, [r3, #20]
 			1;
+	RunVar = 1;
+ 800cee0:	4b05      	ldr	r3, [pc, #20]	; (800cef8 <sensor_timeout+0x48>)
+ 800cee2:	2201      	movs	r2, #1
+ 800cee4:	701a      	strb	r2, [r3, #0]
 }
- 800ced8:	bf00      	nop
- 800ceda:	46bd      	mov	sp, r7
- 800cedc:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800cee0:	4770      	bx	lr
- 800cee2:	bf00      	nop
- 800cee4:	200066cc 	.word	0x200066cc
- 800cee8:	bf800000 	.word	0xbf800000
+ 800cee6:	bf00      	nop
+ 800cee8:	46bd      	mov	sp, r7
+ 800ceea:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 800ceee:	4770      	bx	lr
+ 800cef0:	200066cc 	.word	0x200066cc
+ 800cef4:	bf800000 	.word	0xbf800000
+ 800cef8:	200066d4 	.word	0x200066d4
 
-0800ceec <distance_sensor_timer_callback>:
+0800cefc <distance_sensor_timer_callback>:
 
 void distance_sensor_timer_callback() {
- 800ceec:	b580      	push	{r7, lr}
- 800ceee:	af00      	add	r7, sp, #0
-	if (TriggerFlag == 1) //Innterupt from Distance-Sensor Trigger Function
- 800cef0:	4b11      	ldr	r3, [pc, #68]	; (800cf38 <distance_sensor_timer_callback+0x4c>)
- 800cef2:	781b      	ldrb	r3, [r3, #0]
- 800cef4:	2b01      	cmp	r3, #1
- 800cef6:	d117      	bne.n	800cf28 <distance_sensor_timer_callback+0x3c>
+ 800cefc:	b580      	push	{r7, lr}
+ 800cefe:	af00      	add	r7, sp, #0
+	if (TriggerFlag == 1) //Interrupt from Distance-Sensor Trigger Function
+ 800cf00:	4b13      	ldr	r3, [pc, #76]	; (800cf50 <distance_sensor_timer_callback+0x54>)
+ 800cf02:	781b      	ldrb	r3, [r3, #0]
+ 800cf04:	2b01      	cmp	r3, #1
+ 800cf06:	d11b      	bne.n	800cf40 <distance_sensor_timer_callback+0x44>
 			{
 		HAL_GPIO_WritePin(
 				distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->trig_port,
- 800cef8:	4b10      	ldr	r3, [pc, #64]	; (800cf3c <distance_sensor_timer_callback+0x50>)
- 800cefa:	681b      	ldr	r3, [r3, #0]
- 800cefc:	685a      	ldr	r2, [r3, #4]
- 800cefe:	4b0f      	ldr	r3, [pc, #60]	; (800cf3c <distance_sensor_timer_callback+0x50>)
- 800cf00:	681b      	ldr	r3, [r3, #0]
- 800cf02:	7a5b      	ldrb	r3, [r3, #9]
- 800cf04:	009b      	lsls	r3, r3, #2
- 800cf06:	4413      	add	r3, r2
- 800cf08:	681b      	ldr	r3, [r3, #0]
+ 800cf08:	4b12      	ldr	r3, [pc, #72]	; (800cf54 <distance_sensor_timer_callback+0x58>)
+ 800cf0a:	681b      	ldr	r3, [r3, #0]
+ 800cf0c:	685a      	ldr	r2, [r3, #4]
+ 800cf0e:	4b11      	ldr	r3, [pc, #68]	; (800cf54 <distance_sensor_timer_callback+0x58>)
+ 800cf10:	681b      	ldr	r3, [r3, #0]
+ 800cf12:	7a5b      	ldrb	r3, [r3, #9]
+ 800cf14:	009b      	lsls	r3, r3, #2
+ 800cf16:	4413      	add	r3, r2
+ 800cf18:	681b      	ldr	r3, [r3, #0]
 		HAL_GPIO_WritePin(
- 800cf0a:	6898      	ldr	r0, [r3, #8]
+ 800cf1a:	6898      	ldr	r0, [r3, #8]
 				distance_sensor_handler_ptr->distance_sensors[distance_sensor_handler_ptr->current_sensor]->trig_pin,
- 800cf0c:	4b0b      	ldr	r3, [pc, #44]	; (800cf3c <distance_sensor_timer_callback+0x50>)
- 800cf0e:	681b      	ldr	r3, [r3, #0]
- 800cf10:	685a      	ldr	r2, [r3, #4]
- 800cf12:	4b0a      	ldr	r3, [pc, #40]	; (800cf3c <distance_sensor_timer_callback+0x50>)
- 800cf14:	681b      	ldr	r3, [r3, #0]
- 800cf16:	7a5b      	ldrb	r3, [r3, #9]
- 800cf18:	009b      	lsls	r3, r3, #2
- 800cf1a:	4413      	add	r3, r2
- 800cf1c:	681b      	ldr	r3, [r3, #0]
+ 800cf1c:	4b0d      	ldr	r3, [pc, #52]	; (800cf54 <distance_sensor_timer_callback+0x58>)
+ 800cf1e:	681b      	ldr	r3, [r3, #0]
+ 800cf20:	685a      	ldr	r2, [r3, #4]
+ 800cf22:	4b0c      	ldr	r3, [pc, #48]	; (800cf54 <distance_sensor_timer_callback+0x58>)
+ 800cf24:	681b      	ldr	r3, [r3, #0]
+ 800cf26:	7a5b      	ldrb	r3, [r3, #9]
+ 800cf28:	009b      	lsls	r3, r3, #2
+ 800cf2a:	4413      	add	r3, r2
+ 800cf2c:	681b      	ldr	r3, [r3, #0]
 		HAL_GPIO_WritePin(
- 800cf1e:	899b      	ldrh	r3, [r3, #12]
- 800cf20:	2200      	movs	r2, #0
- 800cf22:	4619      	mov	r1, r3
- 800cf24:	f7f5 f9be 	bl	80022a4 <HAL_GPIO_WritePin>
+ 800cf2e:	899b      	ldrh	r3, [r3, #12]
+ 800cf30:	2200      	movs	r2, #0
+ 800cf32:	4619      	mov	r1, r3
+ 800cf34:	f7f5 f9b6 	bl	80022a4 <HAL_GPIO_WritePin>
 				0);
+		TriggerFlag = 0;
+ 800cf38:	4b05      	ldr	r3, [pc, #20]	; (800cf50 <distance_sensor_timer_callback+0x54>)
+ 800cf3a:	2200      	movs	r2, #0
+ 800cf3c:	701a      	strb	r2, [r3, #0]
 	}
-	if (TriggerFlag == 0) //Interrupt from Distance-Sensor Timeout Echo
- 800cf28:	4b03      	ldr	r3, [pc, #12]	; (800cf38 <distance_sensor_timer_callback+0x4c>)
- 800cf2a:	781b      	ldrb	r3, [r3, #0]
- 800cf2c:	2b00      	cmp	r3, #0
- 800cf2e:	d101      	bne.n	800cf34 <distance_sensor_timer_callback+0x48>
+	else if (TriggerFlag == 0) //Interrupt from Distance-Sensor Timeout Echo
 			{
 		sensor_timeout();
- 800cf30:	f7ff ffba 	bl	800cea8 <sensor_timeout>
 	}
 }
- 800cf34:	bf00      	nop
- 800cf36:	bd80      	pop	{r7, pc}
- 800cf38:	200066d6 	.word	0x200066d6
- 800cf3c:	200066cc 	.word	0x200066cc
+ 800cf3e:	e005      	b.n	800cf4c <distance_sensor_timer_callback+0x50>
+	else if (TriggerFlag == 0) //Interrupt from Distance-Sensor Timeout Echo
+ 800cf40:	4b03      	ldr	r3, [pc, #12]	; (800cf50 <distance_sensor_timer_callback+0x54>)
+ 800cf42:	781b      	ldrb	r3, [r3, #0]
+ 800cf44:	2b00      	cmp	r3, #0
+ 800cf46:	d101      	bne.n	800cf4c <distance_sensor_timer_callback+0x50>
+		sensor_timeout();
+ 800cf48:	f7ff ffb2 	bl	800ceb0 <sensor_timeout>
+}
+ 800cf4c:	bf00      	nop
+ 800cf4e:	bd80      	pop	{r7, pc}
+ 800cf50:	200066d6 	.word	0x200066d6
+ 800cf54:	200066cc 	.word	0x200066cc
 
-0800cf40 <__libc_init_array>:
- 800cf40:	b570      	push	{r4, r5, r6, lr}
- 800cf42:	4d0d      	ldr	r5, [pc, #52]	; (800cf78 <__libc_init_array+0x38>)
- 800cf44:	4c0d      	ldr	r4, [pc, #52]	; (800cf7c <__libc_init_array+0x3c>)
- 800cf46:	1b64      	subs	r4, r4, r5
- 800cf48:	10a4      	asrs	r4, r4, #2
- 800cf4a:	2600      	movs	r6, #0
- 800cf4c:	42a6      	cmp	r6, r4
- 800cf4e:	d109      	bne.n	800cf64 <__libc_init_array+0x24>
- 800cf50:	4d0b      	ldr	r5, [pc, #44]	; (800cf80 <__libc_init_array+0x40>)
- 800cf52:	4c0c      	ldr	r4, [pc, #48]	; (800cf84 <__libc_init_array+0x44>)
- 800cf54:	f000 f8f2 	bl	800d13c <_init>
- 800cf58:	1b64      	subs	r4, r4, r5
- 800cf5a:	10a4      	asrs	r4, r4, #2
- 800cf5c:	2600      	movs	r6, #0
- 800cf5e:	42a6      	cmp	r6, r4
- 800cf60:	d105      	bne.n	800cf6e <__libc_init_array+0x2e>
- 800cf62:	bd70      	pop	{r4, r5, r6, pc}
- 800cf64:	f855 3b04 	ldr.w	r3, [r5], #4
- 800cf68:	4798      	blx	r3
- 800cf6a:	3601      	adds	r6, #1
- 800cf6c:	e7ee      	b.n	800cf4c <__libc_init_array+0xc>
- 800cf6e:	f855 3b04 	ldr.w	r3, [r5], #4
- 800cf72:	4798      	blx	r3
- 800cf74:	3601      	adds	r6, #1
- 800cf76:	e7f2      	b.n	800cf5e <__libc_init_array+0x1e>
- 800cf78:	0800d2d4 	.word	0x0800d2d4
- 800cf7c:	0800d2d4 	.word	0x0800d2d4
- 800cf80:	0800d2d4 	.word	0x0800d2d4
- 800cf84:	0800d2d8 	.word	0x0800d2d8
+0800cf58 <__libc_init_array>:
+ 800cf58:	b570      	push	{r4, r5, r6, lr}
+ 800cf5a:	4d0d      	ldr	r5, [pc, #52]	; (800cf90 <__libc_init_array+0x38>)
+ 800cf5c:	4c0d      	ldr	r4, [pc, #52]	; (800cf94 <__libc_init_array+0x3c>)
+ 800cf5e:	1b64      	subs	r4, r4, r5
+ 800cf60:	10a4      	asrs	r4, r4, #2
+ 800cf62:	2600      	movs	r6, #0
+ 800cf64:	42a6      	cmp	r6, r4
+ 800cf66:	d109      	bne.n	800cf7c <__libc_init_array+0x24>
+ 800cf68:	4d0b      	ldr	r5, [pc, #44]	; (800cf98 <__libc_init_array+0x40>)
+ 800cf6a:	4c0c      	ldr	r4, [pc, #48]	; (800cf9c <__libc_init_array+0x44>)
+ 800cf6c:	f000 f8f2 	bl	800d154 <_init>
+ 800cf70:	1b64      	subs	r4, r4, r5
+ 800cf72:	10a4      	asrs	r4, r4, #2
+ 800cf74:	2600      	movs	r6, #0
+ 800cf76:	42a6      	cmp	r6, r4
+ 800cf78:	d105      	bne.n	800cf86 <__libc_init_array+0x2e>
+ 800cf7a:	bd70      	pop	{r4, r5, r6, pc}
+ 800cf7c:	f855 3b04 	ldr.w	r3, [r5], #4
+ 800cf80:	4798      	blx	r3
+ 800cf82:	3601      	adds	r6, #1
+ 800cf84:	e7ee      	b.n	800cf64 <__libc_init_array+0xc>
+ 800cf86:	f855 3b04 	ldr.w	r3, [r5], #4
+ 800cf8a:	4798      	blx	r3
+ 800cf8c:	3601      	adds	r6, #1
+ 800cf8e:	e7f2      	b.n	800cf76 <__libc_init_array+0x1e>
+ 800cf90:	0800d2ec 	.word	0x0800d2ec
+ 800cf94:	0800d2ec 	.word	0x0800d2ec
+ 800cf98:	0800d2ec 	.word	0x0800d2ec
+ 800cf9c:	0800d2f0 	.word	0x0800d2f0
 
-0800cf88 <__retarget_lock_acquire_recursive>:
- 800cf88:	4770      	bx	lr
+0800cfa0 <__retarget_lock_acquire_recursive>:
+ 800cfa0:	4770      	bx	lr
 
-0800cf8a <__retarget_lock_release_recursive>:
- 800cf8a:	4770      	bx	lr
+0800cfa2 <__retarget_lock_release_recursive>:
+ 800cfa2:	4770      	bx	lr
 
-0800cf8c <memcpy>:
- 800cf8c:	440a      	add	r2, r1
- 800cf8e:	4291      	cmp	r1, r2
- 800cf90:	f100 33ff 	add.w	r3, r0, #4294967295
- 800cf94:	d100      	bne.n	800cf98 <memcpy+0xc>
- 800cf96:	4770      	bx	lr
- 800cf98:	b510      	push	{r4, lr}
- 800cf9a:	f811 4b01 	ldrb.w	r4, [r1], #1
- 800cf9e:	f803 4f01 	strb.w	r4, [r3, #1]!
- 800cfa2:	4291      	cmp	r1, r2
- 800cfa4:	d1f9      	bne.n	800cf9a <memcpy+0xe>
- 800cfa6:	bd10      	pop	{r4, pc}
+0800cfa4 <memcpy>:
+ 800cfa4:	440a      	add	r2, r1
+ 800cfa6:	4291      	cmp	r1, r2
+ 800cfa8:	f100 33ff 	add.w	r3, r0, #4294967295
+ 800cfac:	d100      	bne.n	800cfb0 <memcpy+0xc>
+ 800cfae:	4770      	bx	lr
+ 800cfb0:	b510      	push	{r4, lr}
+ 800cfb2:	f811 4b01 	ldrb.w	r4, [r1], #1
+ 800cfb6:	f803 4f01 	strb.w	r4, [r3, #1]!
+ 800cfba:	4291      	cmp	r1, r2
+ 800cfbc:	d1f9      	bne.n	800cfb2 <memcpy+0xe>
+ 800cfbe:	bd10      	pop	{r4, pc}
 
-0800cfa8 <memset>:
- 800cfa8:	4402      	add	r2, r0
- 800cfaa:	4603      	mov	r3, r0
- 800cfac:	4293      	cmp	r3, r2
- 800cfae:	d100      	bne.n	800cfb2 <memset+0xa>
- 800cfb0:	4770      	bx	lr
- 800cfb2:	f803 1b01 	strb.w	r1, [r3], #1
- 800cfb6:	e7f9      	b.n	800cfac <memset+0x4>
+0800cfc0 <memset>:
+ 800cfc0:	4402      	add	r2, r0
+ 800cfc2:	4603      	mov	r3, r0
+ 800cfc4:	4293      	cmp	r3, r2
+ 800cfc6:	d100      	bne.n	800cfca <memset+0xa>
+ 800cfc8:	4770      	bx	lr
+ 800cfca:	f803 1b01 	strb.w	r1, [r3], #1
+ 800cfce:	e7f9      	b.n	800cfc4 <memset+0x4>
 
-0800cfb8 <cleanup_glue>:
- 800cfb8:	b538      	push	{r3, r4, r5, lr}
- 800cfba:	460c      	mov	r4, r1
- 800cfbc:	6809      	ldr	r1, [r1, #0]
- 800cfbe:	4605      	mov	r5, r0
- 800cfc0:	b109      	cbz	r1, 800cfc6 <cleanup_glue+0xe>
- 800cfc2:	f7ff fff9 	bl	800cfb8 <cleanup_glue>
- 800cfc6:	4621      	mov	r1, r4
- 800cfc8:	4628      	mov	r0, r5
- 800cfca:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
- 800cfce:	f000 b869 	b.w	800d0a4 <_free_r>
+0800cfd0 <cleanup_glue>:
+ 800cfd0:	b538      	push	{r3, r4, r5, lr}
+ 800cfd2:	460c      	mov	r4, r1
+ 800cfd4:	6809      	ldr	r1, [r1, #0]
+ 800cfd6:	4605      	mov	r5, r0
+ 800cfd8:	b109      	cbz	r1, 800cfde <cleanup_glue+0xe>
+ 800cfda:	f7ff fff9 	bl	800cfd0 <cleanup_glue>
+ 800cfde:	4621      	mov	r1, r4
+ 800cfe0:	4628      	mov	r0, r5
+ 800cfe2:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
+ 800cfe6:	f000 b869 	b.w	800d0bc <_free_r>
 	...
 
-0800cfd4 <_reclaim_reent>:
- 800cfd4:	4b2c      	ldr	r3, [pc, #176]	; (800d088 <_reclaim_reent+0xb4>)
- 800cfd6:	681b      	ldr	r3, [r3, #0]
- 800cfd8:	4283      	cmp	r3, r0
- 800cfda:	b570      	push	{r4, r5, r6, lr}
- 800cfdc:	4604      	mov	r4, r0
- 800cfde:	d051      	beq.n	800d084 <_reclaim_reent+0xb0>
- 800cfe0:	6a43      	ldr	r3, [r0, #36]	; 0x24
- 800cfe2:	b143      	cbz	r3, 800cff6 <_reclaim_reent+0x22>
- 800cfe4:	68db      	ldr	r3, [r3, #12]
- 800cfe6:	2b00      	cmp	r3, #0
- 800cfe8:	d14a      	bne.n	800d080 <_reclaim_reent+0xac>
- 800cfea:	6a63      	ldr	r3, [r4, #36]	; 0x24
- 800cfec:	6819      	ldr	r1, [r3, #0]
- 800cfee:	b111      	cbz	r1, 800cff6 <_reclaim_reent+0x22>
- 800cff0:	4620      	mov	r0, r4
- 800cff2:	f000 f857 	bl	800d0a4 <_free_r>
- 800cff6:	6961      	ldr	r1, [r4, #20]
- 800cff8:	b111      	cbz	r1, 800d000 <_reclaim_reent+0x2c>
- 800cffa:	4620      	mov	r0, r4
- 800cffc:	f000 f852 	bl	800d0a4 <_free_r>
- 800d000:	6a61      	ldr	r1, [r4, #36]	; 0x24
- 800d002:	b111      	cbz	r1, 800d00a <_reclaim_reent+0x36>
- 800d004:	4620      	mov	r0, r4
- 800d006:	f000 f84d 	bl	800d0a4 <_free_r>
- 800d00a:	6ba1      	ldr	r1, [r4, #56]	; 0x38
- 800d00c:	b111      	cbz	r1, 800d014 <_reclaim_reent+0x40>
- 800d00e:	4620      	mov	r0, r4
- 800d010:	f000 f848 	bl	800d0a4 <_free_r>
- 800d014:	6be1      	ldr	r1, [r4, #60]	; 0x3c
- 800d016:	b111      	cbz	r1, 800d01e <_reclaim_reent+0x4a>
- 800d018:	4620      	mov	r0, r4
- 800d01a:	f000 f843 	bl	800d0a4 <_free_r>
- 800d01e:	6c21      	ldr	r1, [r4, #64]	; 0x40
- 800d020:	b111      	cbz	r1, 800d028 <_reclaim_reent+0x54>
- 800d022:	4620      	mov	r0, r4
- 800d024:	f000 f83e 	bl	800d0a4 <_free_r>
- 800d028:	6de1      	ldr	r1, [r4, #92]	; 0x5c
- 800d02a:	b111      	cbz	r1, 800d032 <_reclaim_reent+0x5e>
- 800d02c:	4620      	mov	r0, r4
- 800d02e:	f000 f839 	bl	800d0a4 <_free_r>
- 800d032:	6da1      	ldr	r1, [r4, #88]	; 0x58
- 800d034:	b111      	cbz	r1, 800d03c <_reclaim_reent+0x68>
- 800d036:	4620      	mov	r0, r4
- 800d038:	f000 f834 	bl	800d0a4 <_free_r>
- 800d03c:	6b61      	ldr	r1, [r4, #52]	; 0x34
- 800d03e:	b111      	cbz	r1, 800d046 <_reclaim_reent+0x72>
- 800d040:	4620      	mov	r0, r4
- 800d042:	f000 f82f 	bl	800d0a4 <_free_r>
- 800d046:	69a3      	ldr	r3, [r4, #24]
- 800d048:	b1e3      	cbz	r3, 800d084 <_reclaim_reent+0xb0>
- 800d04a:	6aa3      	ldr	r3, [r4, #40]	; 0x28
- 800d04c:	4620      	mov	r0, r4
- 800d04e:	4798      	blx	r3
- 800d050:	6ca1      	ldr	r1, [r4, #72]	; 0x48
- 800d052:	b1b9      	cbz	r1, 800d084 <_reclaim_reent+0xb0>
- 800d054:	4620      	mov	r0, r4
- 800d056:	e8bd 4070 	ldmia.w	sp!, {r4, r5, r6, lr}
- 800d05a:	f7ff bfad 	b.w	800cfb8 <cleanup_glue>
- 800d05e:	5949      	ldr	r1, [r1, r5]
- 800d060:	b941      	cbnz	r1, 800d074 <_reclaim_reent+0xa0>
- 800d062:	3504      	adds	r5, #4
- 800d064:	6a63      	ldr	r3, [r4, #36]	; 0x24
- 800d066:	2d80      	cmp	r5, #128	; 0x80
- 800d068:	68d9      	ldr	r1, [r3, #12]
- 800d06a:	d1f8      	bne.n	800d05e <_reclaim_reent+0x8a>
+0800cfec <_reclaim_reent>:
+ 800cfec:	4b2c      	ldr	r3, [pc, #176]	; (800d0a0 <_reclaim_reent+0xb4>)
+ 800cfee:	681b      	ldr	r3, [r3, #0]
+ 800cff0:	4283      	cmp	r3, r0
+ 800cff2:	b570      	push	{r4, r5, r6, lr}
+ 800cff4:	4604      	mov	r4, r0
+ 800cff6:	d051      	beq.n	800d09c <_reclaim_reent+0xb0>
+ 800cff8:	6a43      	ldr	r3, [r0, #36]	; 0x24
+ 800cffa:	b143      	cbz	r3, 800d00e <_reclaim_reent+0x22>
+ 800cffc:	68db      	ldr	r3, [r3, #12]
+ 800cffe:	2b00      	cmp	r3, #0
+ 800d000:	d14a      	bne.n	800d098 <_reclaim_reent+0xac>
+ 800d002:	6a63      	ldr	r3, [r4, #36]	; 0x24
+ 800d004:	6819      	ldr	r1, [r3, #0]
+ 800d006:	b111      	cbz	r1, 800d00e <_reclaim_reent+0x22>
+ 800d008:	4620      	mov	r0, r4
+ 800d00a:	f000 f857 	bl	800d0bc <_free_r>
+ 800d00e:	6961      	ldr	r1, [r4, #20]
+ 800d010:	b111      	cbz	r1, 800d018 <_reclaim_reent+0x2c>
+ 800d012:	4620      	mov	r0, r4
+ 800d014:	f000 f852 	bl	800d0bc <_free_r>
+ 800d018:	6a61      	ldr	r1, [r4, #36]	; 0x24
+ 800d01a:	b111      	cbz	r1, 800d022 <_reclaim_reent+0x36>
+ 800d01c:	4620      	mov	r0, r4
+ 800d01e:	f000 f84d 	bl	800d0bc <_free_r>
+ 800d022:	6ba1      	ldr	r1, [r4, #56]	; 0x38
+ 800d024:	b111      	cbz	r1, 800d02c <_reclaim_reent+0x40>
+ 800d026:	4620      	mov	r0, r4
+ 800d028:	f000 f848 	bl	800d0bc <_free_r>
+ 800d02c:	6be1      	ldr	r1, [r4, #60]	; 0x3c
+ 800d02e:	b111      	cbz	r1, 800d036 <_reclaim_reent+0x4a>
+ 800d030:	4620      	mov	r0, r4
+ 800d032:	f000 f843 	bl	800d0bc <_free_r>
+ 800d036:	6c21      	ldr	r1, [r4, #64]	; 0x40
+ 800d038:	b111      	cbz	r1, 800d040 <_reclaim_reent+0x54>
+ 800d03a:	4620      	mov	r0, r4
+ 800d03c:	f000 f83e 	bl	800d0bc <_free_r>
+ 800d040:	6de1      	ldr	r1, [r4, #92]	; 0x5c
+ 800d042:	b111      	cbz	r1, 800d04a <_reclaim_reent+0x5e>
+ 800d044:	4620      	mov	r0, r4
+ 800d046:	f000 f839 	bl	800d0bc <_free_r>
+ 800d04a:	6da1      	ldr	r1, [r4, #88]	; 0x58
+ 800d04c:	b111      	cbz	r1, 800d054 <_reclaim_reent+0x68>
+ 800d04e:	4620      	mov	r0, r4
+ 800d050:	f000 f834 	bl	800d0bc <_free_r>
+ 800d054:	6b61      	ldr	r1, [r4, #52]	; 0x34
+ 800d056:	b111      	cbz	r1, 800d05e <_reclaim_reent+0x72>
+ 800d058:	4620      	mov	r0, r4
+ 800d05a:	f000 f82f 	bl	800d0bc <_free_r>
+ 800d05e:	69a3      	ldr	r3, [r4, #24]
+ 800d060:	b1e3      	cbz	r3, 800d09c <_reclaim_reent+0xb0>
+ 800d062:	6aa3      	ldr	r3, [r4, #40]	; 0x28
+ 800d064:	4620      	mov	r0, r4
+ 800d066:	4798      	blx	r3
+ 800d068:	6ca1      	ldr	r1, [r4, #72]	; 0x48
+ 800d06a:	b1b9      	cbz	r1, 800d09c <_reclaim_reent+0xb0>
  800d06c:	4620      	mov	r0, r4
- 800d06e:	f000 f819 	bl	800d0a4 <_free_r>
- 800d072:	e7ba      	b.n	800cfea <_reclaim_reent+0x16>
- 800d074:	680e      	ldr	r6, [r1, #0]
- 800d076:	4620      	mov	r0, r4
- 800d078:	f000 f814 	bl	800d0a4 <_free_r>
- 800d07c:	4631      	mov	r1, r6
- 800d07e:	e7ef      	b.n	800d060 <_reclaim_reent+0x8c>
- 800d080:	2500      	movs	r5, #0
- 800d082:	e7ef      	b.n	800d064 <_reclaim_reent+0x90>
- 800d084:	bd70      	pop	{r4, r5, r6, pc}
- 800d086:	bf00      	nop
- 800d088:	20000100 	.word	0x20000100
-
-0800d08c <__malloc_lock>:
- 800d08c:	4801      	ldr	r0, [pc, #4]	; (800d094 <__malloc_lock+0x8>)
- 800d08e:	f7ff bf7b 	b.w	800cf88 <__retarget_lock_acquire_recursive>
- 800d092:	bf00      	nop
- 800d094:	200066d7 	.word	0x200066d7
-
-0800d098 <__malloc_unlock>:
- 800d098:	4801      	ldr	r0, [pc, #4]	; (800d0a0 <__malloc_unlock+0x8>)
- 800d09a:	f7ff bf76 	b.w	800cf8a <__retarget_lock_release_recursive>
+ 800d06e:	e8bd 4070 	ldmia.w	sp!, {r4, r5, r6, lr}
+ 800d072:	f7ff bfad 	b.w	800cfd0 <cleanup_glue>
+ 800d076:	5949      	ldr	r1, [r1, r5]
+ 800d078:	b941      	cbnz	r1, 800d08c <_reclaim_reent+0xa0>
+ 800d07a:	3504      	adds	r5, #4
+ 800d07c:	6a63      	ldr	r3, [r4, #36]	; 0x24
+ 800d07e:	2d80      	cmp	r5, #128	; 0x80
+ 800d080:	68d9      	ldr	r1, [r3, #12]
+ 800d082:	d1f8      	bne.n	800d076 <_reclaim_reent+0x8a>
+ 800d084:	4620      	mov	r0, r4
+ 800d086:	f000 f819 	bl	800d0bc <_free_r>
+ 800d08a:	e7ba      	b.n	800d002 <_reclaim_reent+0x16>
+ 800d08c:	680e      	ldr	r6, [r1, #0]
+ 800d08e:	4620      	mov	r0, r4
+ 800d090:	f000 f814 	bl	800d0bc <_free_r>
+ 800d094:	4631      	mov	r1, r6
+ 800d096:	e7ef      	b.n	800d078 <_reclaim_reent+0x8c>
+ 800d098:	2500      	movs	r5, #0
+ 800d09a:	e7ef      	b.n	800d07c <_reclaim_reent+0x90>
+ 800d09c:	bd70      	pop	{r4, r5, r6, pc}
  800d09e:	bf00      	nop
- 800d0a0:	200066d7 	.word	0x200066d7
+ 800d0a0:	20000100 	.word	0x20000100
 
-0800d0a4 <_free_r>:
- 800d0a4:	b537      	push	{r0, r1, r2, r4, r5, lr}
- 800d0a6:	2900      	cmp	r1, #0
- 800d0a8:	d044      	beq.n	800d134 <_free_r+0x90>
- 800d0aa:	f851 3c04 	ldr.w	r3, [r1, #-4]
- 800d0ae:	9001      	str	r0, [sp, #4]
- 800d0b0:	2b00      	cmp	r3, #0
- 800d0b2:	f1a1 0404 	sub.w	r4, r1, #4
- 800d0b6:	bfb8      	it	lt
- 800d0b8:	18e4      	addlt	r4, r4, r3
- 800d0ba:	f7ff ffe7 	bl	800d08c <__malloc_lock>
- 800d0be:	4a1e      	ldr	r2, [pc, #120]	; (800d138 <_free_r+0x94>)
- 800d0c0:	9801      	ldr	r0, [sp, #4]
- 800d0c2:	6813      	ldr	r3, [r2, #0]
- 800d0c4:	b933      	cbnz	r3, 800d0d4 <_free_r+0x30>
- 800d0c6:	6063      	str	r3, [r4, #4]
- 800d0c8:	6014      	str	r4, [r2, #0]
- 800d0ca:	b003      	add	sp, #12
- 800d0cc:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
- 800d0d0:	f7ff bfe2 	b.w	800d098 <__malloc_unlock>
- 800d0d4:	42a3      	cmp	r3, r4
- 800d0d6:	d908      	bls.n	800d0ea <_free_r+0x46>
- 800d0d8:	6825      	ldr	r5, [r4, #0]
- 800d0da:	1961      	adds	r1, r4, r5
- 800d0dc:	428b      	cmp	r3, r1
- 800d0de:	bf01      	itttt	eq
- 800d0e0:	6819      	ldreq	r1, [r3, #0]
- 800d0e2:	685b      	ldreq	r3, [r3, #4]
- 800d0e4:	1949      	addeq	r1, r1, r5
- 800d0e6:	6021      	streq	r1, [r4, #0]
- 800d0e8:	e7ed      	b.n	800d0c6 <_free_r+0x22>
- 800d0ea:	461a      	mov	r2, r3
- 800d0ec:	685b      	ldr	r3, [r3, #4]
- 800d0ee:	b10b      	cbz	r3, 800d0f4 <_free_r+0x50>
- 800d0f0:	42a3      	cmp	r3, r4
- 800d0f2:	d9fa      	bls.n	800d0ea <_free_r+0x46>
- 800d0f4:	6811      	ldr	r1, [r2, #0]
- 800d0f6:	1855      	adds	r5, r2, r1
- 800d0f8:	42a5      	cmp	r5, r4
- 800d0fa:	d10b      	bne.n	800d114 <_free_r+0x70>
- 800d0fc:	6824      	ldr	r4, [r4, #0]
- 800d0fe:	4421      	add	r1, r4
- 800d100:	1854      	adds	r4, r2, r1
- 800d102:	42a3      	cmp	r3, r4
- 800d104:	6011      	str	r1, [r2, #0]
- 800d106:	d1e0      	bne.n	800d0ca <_free_r+0x26>
- 800d108:	681c      	ldr	r4, [r3, #0]
- 800d10a:	685b      	ldr	r3, [r3, #4]
- 800d10c:	6053      	str	r3, [r2, #4]
- 800d10e:	4421      	add	r1, r4
- 800d110:	6011      	str	r1, [r2, #0]
- 800d112:	e7da      	b.n	800d0ca <_free_r+0x26>
- 800d114:	d902      	bls.n	800d11c <_free_r+0x78>
- 800d116:	230c      	movs	r3, #12
- 800d118:	6003      	str	r3, [r0, #0]
- 800d11a:	e7d6      	b.n	800d0ca <_free_r+0x26>
- 800d11c:	6825      	ldr	r5, [r4, #0]
- 800d11e:	1961      	adds	r1, r4, r5
- 800d120:	428b      	cmp	r3, r1
- 800d122:	bf04      	itt	eq
- 800d124:	6819      	ldreq	r1, [r3, #0]
- 800d126:	685b      	ldreq	r3, [r3, #4]
- 800d128:	6063      	str	r3, [r4, #4]
- 800d12a:	bf04      	itt	eq
- 800d12c:	1949      	addeq	r1, r1, r5
- 800d12e:	6021      	streq	r1, [r4, #0]
- 800d130:	6054      	str	r4, [r2, #4]
- 800d132:	e7ca      	b.n	800d0ca <_free_r+0x26>
- 800d134:	b003      	add	sp, #12
- 800d136:	bd30      	pop	{r4, r5, pc}
- 800d138:	200066d8 	.word	0x200066d8
+0800d0a4 <__malloc_lock>:
+ 800d0a4:	4801      	ldr	r0, [pc, #4]	; (800d0ac <__malloc_lock+0x8>)
+ 800d0a6:	f7ff bf7b 	b.w	800cfa0 <__retarget_lock_acquire_recursive>
+ 800d0aa:	bf00      	nop
+ 800d0ac:	200066d7 	.word	0x200066d7
 
-0800d13c <_init>:
- 800d13c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 800d13e:	bf00      	nop
- 800d140:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 800d142:	bc08      	pop	{r3}
- 800d144:	469e      	mov	lr, r3
- 800d146:	4770      	bx	lr
+0800d0b0 <__malloc_unlock>:
+ 800d0b0:	4801      	ldr	r0, [pc, #4]	; (800d0b8 <__malloc_unlock+0x8>)
+ 800d0b2:	f7ff bf76 	b.w	800cfa2 <__retarget_lock_release_recursive>
+ 800d0b6:	bf00      	nop
+ 800d0b8:	200066d7 	.word	0x200066d7
 
-0800d148 <_fini>:
- 800d148:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 800d14a:	bf00      	nop
- 800d14c:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 800d14e:	bc08      	pop	{r3}
- 800d150:	469e      	mov	lr, r3
- 800d152:	4770      	bx	lr
+0800d0bc <_free_r>:
+ 800d0bc:	b537      	push	{r0, r1, r2, r4, r5, lr}
+ 800d0be:	2900      	cmp	r1, #0
+ 800d0c0:	d044      	beq.n	800d14c <_free_r+0x90>
+ 800d0c2:	f851 3c04 	ldr.w	r3, [r1, #-4]
+ 800d0c6:	9001      	str	r0, [sp, #4]
+ 800d0c8:	2b00      	cmp	r3, #0
+ 800d0ca:	f1a1 0404 	sub.w	r4, r1, #4
+ 800d0ce:	bfb8      	it	lt
+ 800d0d0:	18e4      	addlt	r4, r4, r3
+ 800d0d2:	f7ff ffe7 	bl	800d0a4 <__malloc_lock>
+ 800d0d6:	4a1e      	ldr	r2, [pc, #120]	; (800d150 <_free_r+0x94>)
+ 800d0d8:	9801      	ldr	r0, [sp, #4]
+ 800d0da:	6813      	ldr	r3, [r2, #0]
+ 800d0dc:	b933      	cbnz	r3, 800d0ec <_free_r+0x30>
+ 800d0de:	6063      	str	r3, [r4, #4]
+ 800d0e0:	6014      	str	r4, [r2, #0]
+ 800d0e2:	b003      	add	sp, #12
+ 800d0e4:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
+ 800d0e8:	f7ff bfe2 	b.w	800d0b0 <__malloc_unlock>
+ 800d0ec:	42a3      	cmp	r3, r4
+ 800d0ee:	d908      	bls.n	800d102 <_free_r+0x46>
+ 800d0f0:	6825      	ldr	r5, [r4, #0]
+ 800d0f2:	1961      	adds	r1, r4, r5
+ 800d0f4:	428b      	cmp	r3, r1
+ 800d0f6:	bf01      	itttt	eq
+ 800d0f8:	6819      	ldreq	r1, [r3, #0]
+ 800d0fa:	685b      	ldreq	r3, [r3, #4]
+ 800d0fc:	1949      	addeq	r1, r1, r5
+ 800d0fe:	6021      	streq	r1, [r4, #0]
+ 800d100:	e7ed      	b.n	800d0de <_free_r+0x22>
+ 800d102:	461a      	mov	r2, r3
+ 800d104:	685b      	ldr	r3, [r3, #4]
+ 800d106:	b10b      	cbz	r3, 800d10c <_free_r+0x50>
+ 800d108:	42a3      	cmp	r3, r4
+ 800d10a:	d9fa      	bls.n	800d102 <_free_r+0x46>
+ 800d10c:	6811      	ldr	r1, [r2, #0]
+ 800d10e:	1855      	adds	r5, r2, r1
+ 800d110:	42a5      	cmp	r5, r4
+ 800d112:	d10b      	bne.n	800d12c <_free_r+0x70>
+ 800d114:	6824      	ldr	r4, [r4, #0]
+ 800d116:	4421      	add	r1, r4
+ 800d118:	1854      	adds	r4, r2, r1
+ 800d11a:	42a3      	cmp	r3, r4
+ 800d11c:	6011      	str	r1, [r2, #0]
+ 800d11e:	d1e0      	bne.n	800d0e2 <_free_r+0x26>
+ 800d120:	681c      	ldr	r4, [r3, #0]
+ 800d122:	685b      	ldr	r3, [r3, #4]
+ 800d124:	6053      	str	r3, [r2, #4]
+ 800d126:	4421      	add	r1, r4
+ 800d128:	6011      	str	r1, [r2, #0]
+ 800d12a:	e7da      	b.n	800d0e2 <_free_r+0x26>
+ 800d12c:	d902      	bls.n	800d134 <_free_r+0x78>
+ 800d12e:	230c      	movs	r3, #12
+ 800d130:	6003      	str	r3, [r0, #0]
+ 800d132:	e7d6      	b.n	800d0e2 <_free_r+0x26>
+ 800d134:	6825      	ldr	r5, [r4, #0]
+ 800d136:	1961      	adds	r1, r4, r5
+ 800d138:	428b      	cmp	r3, r1
+ 800d13a:	bf04      	itt	eq
+ 800d13c:	6819      	ldreq	r1, [r3, #0]
+ 800d13e:	685b      	ldreq	r3, [r3, #4]
+ 800d140:	6063      	str	r3, [r4, #4]
+ 800d142:	bf04      	itt	eq
+ 800d144:	1949      	addeq	r1, r1, r5
+ 800d146:	6021      	streq	r1, [r4, #0]
+ 800d148:	6054      	str	r4, [r2, #4]
+ 800d14a:	e7ca      	b.n	800d0e2 <_free_r+0x26>
+ 800d14c:	b003      	add	sp, #12
+ 800d14e:	bd30      	pop	{r4, r5, pc}
+ 800d150:	200066d8 	.word	0x200066d8
+
+0800d154 <_init>:
+ 800d154:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800d156:	bf00      	nop
+ 800d158:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800d15a:	bc08      	pop	{r3}
+ 800d15c:	469e      	mov	lr, r3
+ 800d15e:	4770      	bx	lr
+
+0800d160 <_fini>:
+ 800d160:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 800d162:	bf00      	nop
+ 800d164:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800d166:	bc08      	pop	{r3}
+ 800d168:	469e      	mov	lr, r3
+ 800d16a:	4770      	bx	lr

@@ -2,6 +2,6 @@
 ../firmware/sensors/distance.c:44:6:register_distance_sensor	16	static
 ../firmware/sensors/distance.c:54:6:distance_meas_task	16	static
 ../firmware/sensors/distance.c:80:6:start_distance_measure	16	static
-../firmware/sensors/distance.c:102:6:HAL_GPIO_EXTI_Callback	24	static
-../firmware/sensors/distance.c:140:6:sensor_timeout	4	static
-../firmware/sensors/distance.c:148:6:distance_sensor_timer_callback	8	static
+../firmware/sensors/distance.c:103:6:HAL_GPIO_EXTI_Callback	24	static
+../firmware/sensors/distance.c:141:6:sensor_timeout	4	static
+../firmware/sensors/distance.c:150:6:distance_sensor_timer_callback	8	static
